@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="openmodelica" nsURI="http://www.example.org/openmodelica" nsPrefix="openmodelica">
+  <eClassifiers xsi:type="ecore:EClass" name="ComponentPrototype" eSuperTypes="#//Class">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//ComponentInstance" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Package" eSuperTypes="#//ComponentPrototype">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="componentprototype" upperBound="-1"
+        eType="#//ComponentPrototype" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExternalObject" eSuperTypes="#//ComponentPrototype"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Model" eSuperTypes="#//ComponentPrototype"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Block" eSuperTypes="#//ComponentPrototype"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Connector" eSuperTypes="#//ComponentPrototype"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Function" eSuperTypes="#//ComponentPrototype"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Class" eSuperTypes="#//Identifier">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="componentParameter" upperBound="-1"
+        eType="#//ComponentParameter" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="extension" eType="#//Extension"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="types" upperBound="-1"
+        eType="#//Type" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Record" eSuperTypes="#//ComponentPrototype"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Type" eSuperTypes="#//ComponentPrototype">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="newAttribute" eType="#//BasicType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ComponentInstance" eSuperTypes="#//Identifier">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="is_a" lowerBound="1" eType="#//ComponentPrototype"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="BasicType">
+    <eLiterals name="REAL"/>
+    <eLiterals name="INTEGER" value="1"/>
+    <eLiterals name="BOOLEAN" value="2"/>
+    <eLiterals name="STRING" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Equation" eSuperTypes="#//ComponentParameter">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="exp" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Algorithm" eSuperTypes="#//ComponentParameter">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="action" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="guard" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Extension" eSuperTypes="#//Identifier">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="componentprototype" lowerBound="1"
+        eType="#//Class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="overload" upperBound="-1"
+        eType="#//OverLoad" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ComponentParameter" abstract="true"
+      eSuperTypes="#//Identifier"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Identifier" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OverLoad" eSuperTypes="#//Identifier">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="OverLoadedSuperParameter"
+        lowerBound="1" eType="#//ComponentParameter"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="OverLoadedSubParameter"
+        lowerBound="1" eType="#//ComponentParameter"/>
+  </eClassifiers>
+</ecore:EPackage>
