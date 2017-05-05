@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+   <extension-point id="modelicaElementFilters" name="Modelica Element Filters" schema="schema/org.modelica.mdt.ui.modelicaElementFilters.exsd"/>
+   
+
+   
+	<extension
+       id="org.mdt.susanMarker"
+       name="SusanMarker"
+       point="org.eclipse.core.resources.markers">
+    <super
+          type="org.eclipse.core.resources.textmarker">
+    </super>
+ </extension>
+ 
+    <extension
+         point="org.eclipse.ui.editors.annotationTypes">
+      <type
+            markerType="org.mdt.susanMarker"
+            name="org.mdt.susanMarker">
+      </type>
+   </extension>
+ 
+   <extension
+         point="org.eclipse.ui.editors.markerAnnotationSpecification">
+      <specification
+            annotationType="org.mdt.susanMarker"
+            colorPreferenceKey="org.mdt.susanMarker.color"
+            colorPreferenceValue="169,169,169"
+            contributesToHeader="false"
+            highlightPreferenceKey="org.mdt.susanMarker.highlight"
+            highlightPreferenceValue="true"
+            includeOnPreferencePage="true"
+            label="SusanMarker"
+            overviewRulerPreferenceKey="org.mdt.susanMarker.overview"
+            overviewRulerPreferenceValue="true"
+            presentationLayer="0"
+            textPreferenceKey="org.mdt.susanMarker.text"
+            textPreferenceValue="true"
+            textStylePreferenceValue="BOX"
+            verticalRulerPreferenceKey="org.mdt.susanMarker.ruler"
+            verticalRulerPreferenceValue="true">
+      </specification>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            id="org.modelica.mdt.ModelicaCategory"
+            name="Modelica"/>
+      <view
+            category="org.modelica.mdt.ModelicaCategory"
+            class="org.modelica.mdt.ui.view.ModelicaProjectsView"
+            icon="icons/etool16/newproject_wiz.gif"
+            id="org.modelica.mdt.ui.view.ModelicaProjectsView"
+            name="Modelica Projects"/>
+      <view
+            category="org.modelica.mdt.ModelicaCategory"
+            class="org.modelica.mdt.ui.view.ModelicaConsoleView"
+            icon="icons/obj16/mo_file.gif"
+            id="org.modelica.mdt.ui.view.ModelicaConsoleView"
+            name="OpenModelica Console"/>
+      <view
+            category="org.modelica.mdt.ModelicaCategory"
+            class="org.modelica.mdt.ui.graph.ModelicaGraphView"
+            icon="icons/obj16/mo_file.gif"
+            id="org.modelica.mdt.ui.graph.ModelicaGraphView"
+            name="Modelica Graph View"/>
+      <view
+            category="org.modelica.mdt.ModelicaCategory"
+            class="org.modelica.mdt.ui.graph.ModelicaDetailedGraphView"
+            icon="icons/obj16/mo_file.gif"
+            id="org.modelica.mdt.ui.graph.ModelicaDetailedGraphView"
+            name="Modelica Detailed Graph View"/> 
+       <view
+            category="org.modelica.mdt.ModelicaCategory"
+            class="org.modelica.mdt.ui.view.ModelicaUnusedView"
+            icon="icons/obj16/mo_file.gif"
+            id="org.modelica.mdt.ui.view.UnusedView"
+            name="Find unused protected Functions and Variables"/>
+       <view
+            category="org.modelica.mdt.ModelicaCategory"
+            class="org.modelica.mdt.ui.view.ModelicaUnusedPublicFuncionsView"
+            icon="icons/obj16/mo_file.png"
+            id="org.modelica.mdt.ui.view.ModelicaUnusedPublicFuncionsView"
+            name="Find unused public Functions"/>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="org.modelica.mdt.ModelicaCategory"
+            name="Modelica"/>
+      <wizard
+            category="org.modelica.mdt.ModelicaCategory"
+            class="org.modelica.mdt.ui.wizards.NewProjectWizard"
+            icon="icons/etool16/newproject_wiz.gif"
+            id="org.modelica.mdt.NewProjectWizard"
+            name="Modelica Project"
+            project="true">
+         <description>
+            Create a new Modelica project.
+         </description>
+      </wizard>
+      <wizard
+            category="org.modelica.mdt.ModelicaCategory"
+            class="org.modelica.mdt.ui.wizards.NewClassWizard"
+            icon="icons/obj16/class_obj.gif"
+            id="org.modelica.mdt.NewClassWizard"
+            name="Modelica Class">
+         <description>
+            Create a new Modelica class.
+         </description>
+         <selection class="org.eclipse.core.resources.IResource"/>  
+      </wizard>
+      <wizard
+            category="org.modelica.mdt.ModelicaCategory"
+            class="org.modelica.mdt.ui.wizards.NewPackageWizard"
+            icon="icons/obj16/package_obj.gif"
+            id="org.modelica.mdt.NewPackageWizard"
+            name="Modelica Package">
+         <description>
+            Create a new Modelica package.
+         </description>
+      </wizard>        
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="org.modelica.mdt.ui.editor.ModelicaEditor"
+            contributorClass="org.modelica.mdt.ui.actions.ModelicaActionContributor"
+            default="true"
+            extensions="mo, mof, mos"
+            icon="icons/obj16/mo_file.gif"
+            id="org.modelica.mdt.ui.editor"
+            name="Modelica Editor"/>
+            
+            <editor
+            class="org.modelica.mdt.ui.editor.SusanEditor"
+            default="false"
+            extensions="tpl"
+            icon="icons/obj16/tpl_file.png"
+            id="org.modelica.mdt.ui.editorSusan"
+            name="Susan Editor">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="org.modelica.mdt.ui.ModelicaPerspective"
+            id="org.modelica.mdt.ui.ModelicaPerspective"
+            name="Modelica"/>
+   </extension>
+   <extension
+         point="org.eclipse.ui.ide.projectNatureImages">
+      <image
+            icon="icons/ovr16/modelica_ovr.gif"
+            id="org.modelica.mdt.modelicaNatureImage"
+            natureId="org.modelica.mdt.core.ModelicaNature"/>
+   </extension>
+   <extension
+         id="ModelicaHelp"
+         name="Modelica Help"
+         point="org.eclipse.help.toc">
+	  <toc
+         extradir="doc"
+         file="doc/toc.xml"
+         primary="true"/>
+   </extension>
+   <extension
+         point="org.eclipse.ui.elementFactories">
+      <factory
+            class="org.modelica.mdt.ui.ModelicaElementFactory"
+            id="org.modelica.mdt.ui.ModelicaElementFactory"/>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="org.modelica.mdt.ui.preferences.ModelicaPreferencePage"
+            id="org.modelica.mdt.ui.modelica"
+            name="Modelica"/>
+   </extension>
+   <extension
+         point="org.eclipse.core.filebuffers.documentSetup">
+      <participant
+            class="org.modelica.mdt.ui.text.ModelicaDocumentSetupParticipant"
+            extensions="mo"/>
+   </extension>
+   <extension
+         point="org.eclipse.ui.console.consolePatternMatchListeners">
+      <consolePatternMatchListener
+            class="org.modelica.mdt.ui.console.MetaModelicaPatternMatchListener"
+            id="org.modelica.mdt.ui.console.MetaModelicaPatternMatchListener"
+            regex="([^:\n\r]+)\\:([0-9]+)(.*)">
+         <enablement>
+            <instanceof value="org.eclipse.ui.console.TextConsole"/>
+         </enablement>
+      </consolePatternMatchListener>
+   </extension>
+   
+   <extension point="org.eclipse.ui.contexts">
+      <context
+  		name="Editing Modelica Source"
+  		description="Editing Modelica Source Context"
+  		parentId="org.eclipse.ui.textEditorScope"
+  		id="org.modelica.mdt.ui.modelicaEditorScope">
+  	  </context>
+   </extension>
+   
+   <extension point="org.eclipse.ui.commands">
+   <category 
+   		name="Source"
+   		description="Modelica Source Actions"
+   		id="org.modelica.mdt.ui.category.source" >
+   </category>
+   <command
+   		name="Show Tooltip Description"
+   		description="Shows the tooltip description for the element at the cursor"
+   		categoryId="org.eclipse.ui.category.edit"
+   		id="org.modelica.mdt.ui.edit.text.show.modelicadoc"
+   >
+   </command>
+   <command
+         defaultHandler="org.modelica.mdt.ui.actions.CommandToggleMarkOccurrences"
+         id="org.modelica.mdt.ui.actions.CommandToggleMarkOccurrencesId"
+         name="Toggle Mark Occurrences">
+         <!--<state class="org.eclipse.ui.handlers.RegistryToggleState:false" id="org.eclipse.ui.commands.toggleState"></state>-->
+   </command>
+   <command
+         defaultHandler="org.modelica.mdt.ui.editor.SusanAddCommentsHandler"
+         id="org.modelica.mdt.ui.SusanComments"
+         name="SusanComments">
+   </command>
+
+   <command
+         defaultHandler="org.modelica.mdt.ui.editor.SusanRemoveCommentsHandler"
+         id="org.modelica.mdt.ui.UnSusanComments"
+         name="SusanUnComment">
+   </command>
+   <command
+         defaultHandler="org.modelica.mdt.ui.editor.SusanAddTabsCommentHandler"
+         id="org.modelica.mdt.ui.SusanAddTabstops"
+         name="SusanAddTabs">
+   </command>
+   <command
+         defaultHandler="org.modelica.mdt.ui.editor.SusanRemoveTabsCommentHandler"
+         id="org.modelica.mdt.ui.SusanRemoveTabs"
+         name="SusanRemoveTabs">
+   </command>
+   <command
+         defaultHandler="org.modelica.mdt.ui.editor.SusanJumpToDeclaration"
+         id="org.modelica.mdt.ui.SusanJumpToDeclaration"
+         name="SusanJumpToDeclaration">
+   </command>
+   </extension>
+   
+   <extension point="org.eclipse.ui.bindings">   
+	  <key
+	  	sequence="F2"
+	  	contextId="org.modelica.mdt.ui.modelicaEditorScope"
+	  	commandId="org.modelica.mdt.ui.edit.text.show.modelicadoc"
+	  	schemeId="org.eclipse.ui.defaultAcceleratorConfiguration" />
+   <key
+         commandId="org.eclipse.ui.project.rebuildAll"
+         contextId="org.eclipse.ui.console.ConsoleView"
+         schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+         sequence="Alt+B">
+   </key>
+   <key
+         commandId="org.eclipse.ui.project.rebuildAll"
+         contextId="org.eclipse.ui.contexts.dialogAndWindow"
+         schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+         sequence="Alt+B">
+   </key>
+   <key
+         commandId="org.eclipse.ui.project.rebuildAll"
+         contextId="org.eclipse.ui.textEditorScope"
+         schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+         sequence="Alt+B">
+   </key>
+   <key
+         commandId="org.eclipse.ui.project.rebuildAll"
+         contextId="org.modelica.mdt.ui.modelicaEditorScope"
+         schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+         sequence="Alt+B">
+   </key>
+   <key
+         commandId="org.modelica.mdt.ui.SusanComments"
+         schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+         sequence="M1+7">
+   </key>
+   <key
+         commandId="org.modelica.mdt.ui.UnSusanComments"
+         schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+         sequence="M1+SHIFT+7">
+   </key>
+   <key
+         commandId="org.modelica.mdt.ui.SusanAddTabstops"
+         schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+         sequence="M1+8">
+   </key>
+   <key
+         commandId="org.modelica.mdt.ui.SusanRemoveTabs"
+         schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+         sequence="M1+Shift+8">
+   </key>
+   <key
+         commandId="org.modelica.mdt.ui.SusanJumpToDeclaration"
+         schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+         sequence="M1+F3">
+   </key>
+  </extension>   
+   
+   <extension
+         id="MetaModelicaBuildMarker"
+         name="MetaModelica Build Error"
+         point="org.eclipse.core.resources.markers">
+      <super type="org.eclipse.core.resources.problemmarker"/>
+      <persistent value="true"/>
+   </extension>
+   <extension
+         point="org.eclipse.ui.ide.resourceFilters">
+      <filter
+            pattern="*.c"
+            selected="false"/>
+      <filter
+            pattern="*.srz"
+            selected="false"/>
+      <filter
+            pattern="*.sig"
+            selected="false"/>
+      <filter
+            pattern="*.h"
+            selected="false"/>
+      <filter
+            pattern="*.cpp"
+            selected="false"/>
+      <filter
+            pattern="*.cc"
+            selected="false"/>
+      <filter
+            pattern="*.hpp"
+            selected="false"/>
+      <filter
+            pattern="*.hpp"
+            selected="false"/>
+      <filter
+            pattern="*.o"
+            selected="false"/>
+      <filter
+            pattern="*.obj"
+            selected="false"/>
+      <filter
+            pattern="*.lib"
+            selected="false"/>
+      <filter
+            pattern="*.a"
+            selected="false"/>
+      <filter
+            pattern="*.pdb"
+            selected="false"/>
+      <filter
+            pattern="StandardLibrary"
+            selected="false"/>
+   </extension>
+   <extension
+         point="org.eclipse.ui.console.consoleFactories">
+      <consoleFactory
+            class="org.modelica.mdt.ui.console.ModelicaConsoleFactory"
+            icon="icons/obj16/mo_file.gif"
+            label="MDT Console"/>
+   </extension>
+   <extension point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension targetID="org.eclipse.ui.resourcePerspective">
+         <perspectiveShortcut id="org.modelica.mdt.ui.ModelicaPerspective"></perspectiveShortcut>
+    	 <view id="org.modelica.mdt.ui.view.ModelicaProjectsView" 
+                relative="org.eclipse.ui.views.ResourceNavigator" 
+                relationship="stack"/>          
+      </perspectiveExtension>
+      <perspectiveExtension targetID="org.modelica.mdt.ui.ModelicaPerspective">
+         <perspectiveShortcut id="org.modelica.mdt.ui.ModelicaPerspective"></perspectiveShortcut>
+      </perspectiveExtension>
+      <perspectiveExtension targetID="org.modelica.mdt.ui.ModelicaPerspective">
+         <perspectiveShortcut id="org.eclipse.debug.ui.DebugPerspective"></perspectiveShortcut>
+      </perspectiveExtension>
+      <perspectiveExtension targetID="org.eclipse.debug.ui.DebugPerspective">
+         <perspectiveShortcut id="org.modelica.mdt.ui.ModelicaPerspective"></perspectiveShortcut>
+      </perspectiveExtension>
+      
+      <perspectiveExtension targetID="org.modelica.mdt.ui.ModelicaPerspective">
+         <showInPart id="org.modelica.mdt.ui.view.ModelicaProjectsView"/>
+         <showInPart id="org.eclipse.team.ui.GenericHistoryView"/>
+         <showInPart id="org.eclipse.ui.views.ResourceNavigator"/>
+      </perspectiveExtension>
+      <perspectiveExtension targetID="org.modelica.mdt.ui.ModelicaPerspective">
+         <showInPart id="org.modelica.mdt.ui.view.ModelicaProjectsView"/>
+         <showInPart id="org.eclipse.team.ui.GenericHistoryView"/>
+         <showInPart id="org.eclipse.ui.views.ResourceNavigator"/>
+      </perspectiveExtension>
+      <perspectiveExtension targetID="org.modelica.mdt.ui.ModelicaPerspective">
+         <showInPart id="org.modelica.mdt.ui.view.ModelicaProjectsView"/>
+         <showInPart id="org.eclipse.team.ui.GenericHistoryView"/>        
+         <showInPart id="org.eclipse.ui.views.ResourceNavigator"/>
+      </perspectiveExtension>
+      <perspectiveExtension targetID="org.eclipse.debug.ui.DebugPerspective">
+         <showInPart id="org.modelica.mdt.ui.view.ModelicaProjectsView"/>
+      </perspectiveExtension>      
+   </extension>
+   
+  <extension point="org.eclipse.core.runtime.adapters">
+		<factory class="org.modelica.mdt.ui.ModelicaElementAdapterFactory" 
+            adaptableType="org.modelica.mdt.core.IModelicaElement">        
+            <adapter type="org.eclipse.core.resources.IResource"/>           
+            <adapter type="org.eclipse.ui.IPersistableElement"/>
+            <adapter type="org.eclipse.ui.IContributorResourceAdapter"/>
+            <adapter type="org.eclipse.ui.ide.IContributorResourceAdapter2"/>
+            <adapter type="org.eclipse.ui.IContainmentAdapter"/>
+            <adapter type="org.eclipse.ui.model.IWorkbenchAdapter"/>
+            <adapter type="org.eclipse.ui.views.properties.IPropertySource"/>
+            <adapter type="org.eclipse.ui.views.tasklist.ITaskListResourceAdapter"/>            
+		</factory>		
+	</extension>
+  <!--
+  <extension
+        point="org.eclipse.ui.workbench.texteditor.spellingEngine">
+     <engine
+           class="org.modelica.mdt.ui.text.spelling.DefaultSpellingEngine"
+           id="org.modelica.mdt.ui.engineModelica">
+     </engine>
+  </extension>
+  -->
+  <extension point="org.eclipse.ui.popupMenus">
+    <!-- put a context menu item into the menu of standard text editors.
+         If the properties editor had an own context menu id, we could
+         target this more specifically. This way, we must have the
+         refactoring itself decide whether the operation can run.
+      -->
+    <viewerContribution targetID="#TextEditorContext" id="org.eclipse.ui.articles.action.contribution.popup.editor">
+      <menu
+         id="org.eclipse.ui.articles.action.contribution.popup.editor.subMenu"
+         label="Modelica Refactorings"
+         path="additions">
+         <separator name="group1"/>
+      </menu>    
+      <action label="Rename Function"
+              class="org.modelica.mdt.ui.refactoring.ui.actions.RenameFunction" 
+              menubarPath="org.eclipse.ui.articles.action.contribution.popup.editor.subMenu/group1" 
+              id="org.modelica.mdt.ui.refactoring.ui.actions.RenameFunction"/>
+      <action label="Rename Component"
+              class="org.modelica.mdt.ui.refactoring.ui.actions.RenameFunction" 
+              menubarPath="org.eclipse.ui.articles.action.contribution.popup.editor.subMenu/group1" 
+              id="org.modelica.mdt.ui.refactoring.ui.actions.RenameFunction"/>
+      <action label="Add Component"
+              class="org.modelica.mdt.ui.refactoring.ui.actions.RenameFunction" 
+              menubarPath="org.eclipse.ui.articles.action.contribution.popup.editor.subMenu/group1" 
+              id="org.modelica.mdt.ui.refactoring.ui.actions.RenameFunction"/>
+      <action label="Delete Component"
+              class="org.modelica.mdt.ui.refactoring.ui.actions.RenameFunction" 
+              menubarPath="org.eclipse.ui.articles.action.contribution.popup.editor.subMenu/group1" 
+              id="org.modelica.mdt.ui.refactoring.ui.actions.RenameFunction"/>
+      <action label="Add New Component to Record"
+              class="org.modelica.mdt.ui.refactoring.ui.actions.RenameFunction" 
+              menubarPath="org.eclipse.ui.articles.action.contribution.popup.editor.subMenu/group1" 
+              id="org.modelica.mdt.ui.refactoring.ui.actions.RenameFunction"/>              
+    </viewerContribution>
+  </extension>
+  <extension point="org.eclipse.ui.menus">
+    <menuContribution allPopups="false" 
+                      locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+      <toolbar id="org.modelica.mdt.ui.actions.CommandToggleMarkOccurrencesId"
+               label="Toggle Mark Occurrences">
+        <command commandId="org.modelica.mdt.ui.actions.CommandToggleMarkOccurrencesId"
+                 icon="icons/mark_occurrences.gif"
+                 label="Toggle Mark Occurrences"
+                 style="toggle">
+        </command>
+      </toolbar>
+    </menuContribution>
+    <menuContribution locationURI="popup:org.modelica.mdt.ui.view.ModelicaProjectsView">
+      <command commandId="org.modelica.mdt.ui.actions.commandgraphopener"
+               icon="icons/obj16/mo_file.gif"
+               label="Generate Graph View"
+               style="push">
+      </command>
+    </menuContribution>
+    <menuContribution locationURI="popup:org.modelica.mdt.ui.view.ModelicaProjectsView">
+      <command commandId="org.modelica.mdt.ui.actions.duplicates"
+               icon="icons/obj16/mo_file.gif"
+               label="Find unused protected Functions and Variables"
+               style="push">
+      </command>
+    </menuContribution>
+        <menuContribution locationURI="popup:org.modelica.mdt.ui.view.ModelicaProjectsView">
+      <command commandId="org.modelica.mdt.ui.actions.duplicateFunctions"
+               icon="icons/obj16/mo_file.gif"
+               label="Find unused public Functions"
+               style="push">
+      </command>
+    </menuContribution>
+    <menuContribution locationURI="popup:org.modelica.mdt.ui.view.ModelicaProjectsView">
+      <command commandId="org.modelica.mdt.ui.actions.commandsimulate"
+        icon="icons/obj16/mo_file.gif"
+        label="Simulate"
+        style="push">
+      </command>
+    </menuContribution>
+    <menuContribution locationURI="popup:org.modelica.mdt.ui.editor.EditorContext?after=additions">
+      <command commandId="org.modelica.mdt.ui.actions.commandgraphopener"
+      	       icon="icons/obj16/mo_file.gif"  
+               label="Generate Graph View"
+               style="push">
+      </command>
+    </menuContribution>
+    <menuContribution locationURI="popup:org.modelica.mdt.ui.editor.EditorContext?after=additions">
+      <command commandId="org.modelica.mdt.ui.actions.commandsimulate"
+               icon="icons/obj16/mo_file.gif"
+               label="Simulate"
+               style="push">
+      </command>
+    </menuContribution>
+  </extension>
+  <extension point="org.eclipse.ui.commands">
+    <command defaultHandler="org.modelica.mdt.ui.actions.GraphHandler"
+             id="org.modelica.mdt.ui.actions.commandgraphopener"
+             name="Generate">
+    </command>
+    <command defaultHandler="org.modelica.mdt.ui.actions.SimulateHandler"
+             id="org.modelica.mdt.ui.actions.commandsimulate"
+             name="simulate">
+    </command>
+    <command defaultHandler="org.modelica.mdt.ui.actions.FindDuplicatesHandler"
+      		 id="org.modelica.mdt.ui.actions.duplicates" 
+      		 name="findDuplicates">
+    </command>
+        <command defaultHandler="org.modelica.mdt.ui.actions.FindUnusedHandler"
+      		 id="org.modelica.mdt.ui.actions.duplicateFunctions" 
+      		 name="fundFunctions">
+    </command>
+  </extension>
+  <extension
+        point="org.eclipse.ui.bindings">
+  </extension>
+</plugin>
