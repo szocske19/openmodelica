@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="ASCII"?>
+<openmodelica:Block xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:openmodelica="http://www.example.org/openmodelica" Name="Block3">
+  <extension Name="Extension-Block1-Block3"/>
+</openmodelica:Block>
