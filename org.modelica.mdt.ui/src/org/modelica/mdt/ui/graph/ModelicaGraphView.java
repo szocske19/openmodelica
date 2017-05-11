@@ -48,6 +48,7 @@ import org.modelica.mdt.internal.core.CompilerProxy;
 import org.modelica.mdt.internal.core.ModelicaSourceFile;
 import org.modelica.mdt.ui.editor.EditorUtility;
 import onlab.common.Logger;
+import onlab.openmodelica.own.implementation.of.mdt.OwnModelicaGraphAnalyzer;
 
 /**
  * This class sets up the view and creates a graph-environment for
@@ -514,6 +515,7 @@ public class ModelicaGraphView extends ViewPart {
 				try
 				{
 					ModelicaGraphAnalyzer.initAnalyze(fileName, selectedPath);
+					//OwnModelicaGraphAnalyzer.initAnalyze(fileName, selectedPath);
 
 				} catch (ConnectException e1)
 				{
