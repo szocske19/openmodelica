@@ -12,8 +12,8 @@
       <genEnumLiterals ecoreEnumLiteral="openmodelica.ecore#//BasicType/BOOLEAN"/>
       <genEnumLiterals ecoreEnumLiteral="openmodelica.ecore#//BasicType/STRING"/>
     </genEnums>
-    <genClasses ecoreClass="openmodelica.ecore#//ComponentPrototype">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference openmodelica.ecore#//ComponentPrototype/children"/>
+    <genClasses ecoreClass="openmodelica.ecore#//Class">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference openmodelica.ecore#//Class/children"/>
     </genClasses>
     <genClasses ecoreClass="openmodelica.ecore#//Package">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference openmodelica.ecore#//Package/componentprototype"/>
@@ -23,15 +23,15 @@
     <genClasses ecoreClass="openmodelica.ecore#//Block"/>
     <genClasses ecoreClass="openmodelica.ecore#//Connector"/>
     <genClasses ecoreClass="openmodelica.ecore#//Function"/>
-    <genClasses ecoreClass="openmodelica.ecore#//Class">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference openmodelica.ecore#//Class/componentParameter"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference openmodelica.ecore#//Class/extension"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference openmodelica.ecore#//Class/types"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference openmodelica.ecore#//Package/componentprototype"/>
+    <genClasses ecoreClass="openmodelica.ecore#//ComponentPrototype">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference openmodelica.ecore#//ComponentPrototype/componentParameter"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference openmodelica.ecore#//ComponentPrototype/extension"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference openmodelica.ecore#//ComponentPrototype/types"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference openmodelica.ecore#//ComponentPrototype/connectclause"/>
     </genClasses>
     <genClasses ecoreClass="openmodelica.ecore#//Record"/>
     <genClasses ecoreClass="openmodelica.ecore#//Type">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute openmodelica.ecore#//Type/newAttribute"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute openmodelica.ecore#//Type/type"/>
     </genClasses>
     <genClasses ecoreClass="openmodelica.ecore#//ComponentInstance">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference openmodelica.ecore#//ComponentInstance/is_a"/>
@@ -54,6 +54,18 @@
     <genClasses ecoreClass="openmodelica.ecore#//OverLoad">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference openmodelica.ecore#//OverLoad/OverLoadedSuperParameter"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference openmodelica.ecore#//OverLoad/OverLoadedSubParameter"/>
+    </genClasses>
+    <genClasses ecoreClass="openmodelica.ecore#//ConnectClause">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference openmodelica.ecore#//ConnectClause/firstPart"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference openmodelica.ecore#//ConnectClause/secondPart"/>
+    </genClasses>
+    <genClasses ecoreClass="openmodelica.ecore#//Target"/>
+    <genClasses ecoreClass="openmodelica.ecore#//VarTarget">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference openmodelica.ecore#//VarTarget/componentinstance"/>
+    </genClasses>
+    <genClasses ecoreClass="openmodelica.ecore#//InstanceTarget">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference openmodelica.ecore#//InstanceTarget/target"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference openmodelica.ecore#//InstanceTarget/componentinstance"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
