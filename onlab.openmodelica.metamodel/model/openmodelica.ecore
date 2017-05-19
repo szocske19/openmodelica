@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="openmodelica" nsURI="http://www.example.org/openmodelica" nsPrefix="openmodelica">
-  <eClassifiers xsi:type="ecore:EClass" name="Class" eSuperTypes="#//ComponentPrototype">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
-        eType="#//ComponentInstance" containment="true"/>
-  </eClassifiers>
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="openmodelica" nsURI="hu.bme.mit.inf.onlab/openmodelica" nsPrefix="openmodelica">
+  <eClassifiers xsi:type="ecore:EClass" name="Class" eSuperTypes="#//ComponentPrototype"/>
   <eClassifiers xsi:type="ecore:EClass" name="Package" eSuperTypes="#//Class">
     <eStructuralFeatures xsi:type="ecore:EReference" name="componentprototype" upperBound="-1"
-        eType="#//Class" containment="true"/>
+        eType="#//ComponentPrototype" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExternalObject" eSuperTypes="#//Class"/>
   <eClassifiers xsi:type="ecore:EClass" name="Model" eSuperTypes="#//Class"/>
@@ -24,13 +21,15 @@
         eType="#//Type" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="connectclause" upperBound="-1"
         eType="#//ConnectClause" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//ComponentInstance" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Record" eSuperTypes="#//Class"/>
   <eClassifiers xsi:type="ecore:EClass" name="Type" eSuperTypes="#//Class">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//BasicType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ComponentInstance" eSuperTypes="#//Identifier">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="is_a" lowerBound="1" eType="#//Class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="is_a" lowerBound="1" eType="#//ComponentPrototype"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="BasicType">
     <eLiterals name="REAL"/>
@@ -64,19 +63,17 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ConnectClause">
     <eStructuralFeatures xsi:type="ecore:EReference" name="firstPart" lowerBound="1"
-        eType="#//Target"/>
+        eType="#//Target" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="secondPart" lowerBound="1"
-        eType="#//Target"/>
+        eType="#//Target" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Target" abstract="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="VarTarget" eSuperTypes="#//Target">
+  <eClassifiers xsi:type="ecore:EClass" name="Target" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EReference" name="componentinstance" lowerBound="1"
         eType="#//ComponentInstance"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VarTarget" eSuperTypes="#//Target"/>
   <eClassifiers xsi:type="ecore:EClass" name="InstanceTarget" eSuperTypes="#//Target">
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
         eType="#//Target" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="componentinstance" lowerBound="1"
-        eType="#//ComponentInstance"/>
   </eClassifiers>
 </ecore:EPackage>

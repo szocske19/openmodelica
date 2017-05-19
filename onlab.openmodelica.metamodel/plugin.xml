@@ -6,18 +6,11 @@
 
 <plugin>
 
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated metamodel -->
-      <package
-            uri="http://www.example.org/metamodel"
-            class="metamodel.MetamodelPackage"
-            genModel="model/openmodelica.genmodel"/>
-   </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated openmodelica -->
       <package
-            uri="http://www.example.org/openmodelica"
+            uri="hu.bme.mit.inf.onlab/openmodelica"
             class="openmodelica.OpenmodelicaPackage"
             genModel="model/openmodelica.genmodel"/>
    </extension>
