@@ -514,8 +514,8 @@ public class ModelicaGraphView extends ViewPart {
 				String fileName = selectedString.replace(".mo", "");
 				try
 				{
-					ModelicaGraphAnalyzer.initAnalyze(fileName, selectedPath);
-					//OwnModelicaGraphAnalyzer.initAnalyze(fileName, selectedPath);
+					//ModelicaGraphAnalyzer.initAnalyze(fileName, selectedPath);
+					OwnModelicaGraphAnalyzer.initAnalyze(fileName, selectedPath);
 
 				} catch (ConnectException e1)
 				{

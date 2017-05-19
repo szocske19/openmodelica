@@ -180,7 +180,6 @@ public class ModelicaGraphAnalyzer {
 		block3.setName("Block3");
 		
 		Extension extension = mmf.createExtension();
-		extension.setName("Extension-Block1-Block3");		
 
 		block3.setExtension(extension);
 		
