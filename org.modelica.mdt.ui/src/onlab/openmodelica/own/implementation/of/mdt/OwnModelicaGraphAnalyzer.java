@@ -45,6 +45,7 @@ public class OwnModelicaGraphAnalyzer
 	private static Waitlist waitlist;
 	
 	private static final SearchStrategy STRATEGY = SearchStrategy.BREADTH_FIRST;
+	private static OpenModelicaModelTransformationToEMFModel tranformation;
 	
 	
 	
@@ -113,16 +114,38 @@ public class OwnModelicaGraphAnalyzer
 
 		for (int j = 0; j < classList.size(); j++) {
 			className = classList.elementAt(j).toString();
-			setUpLogging(className, "traversal");
+			/*setUpLogging(className, "traversal");
 			
-			/*int classType = getTypeOfClass(className, classPath);	
+			int classType = getTypeOfClass(className, classPath);	
 			Class mClass = getClass(classType);			
 			mClass.setName(className);*/
 			
+			long startTime = System.currentTimeMillis();
+			
+			
+			currentCompiler.loadFile(classPath);
+			boolean isPackage = false;
+			
+			for (int i = 0; i < 1000; i++)
+			{
+				isPackage = currentCompiler.isPackage(className);
+			}
 			
 			
 			
-			treeNodeRoot = new TreeNode(className,0, null);
+			long elapsedTime = System.currentTimeMillis() - startTime;	
+			
+			long second = (elapsedTime / 1000) % 60;
+			long minute = (elapsedTime / (1000 * 60)) % 60;
+			long hour = (elapsedTime / (1000 * 60 * 60)) % 24;
+
+			String time = String.format("%02d:%02d:%02d:%d", hour, minute, second, elapsedTime % 1000);
+			
+			System.out.println("isPackage: " + isPackage);
+			System.out.println("elapsedTime: " + time);
+			
+			
+			/*treeNodeRoot = new TreeNode(className,0, null);
 			
 			final int MAX_LEVEL = 10;
 			levelList.clear();
@@ -146,11 +169,12 @@ public class OwnModelicaGraphAnalyzer
 				
 			}
 			
+			tranformation.createOpenModelicaModel(treeNodeRoot);
 			String graph = makeGraph();
 			log.debug(graph);
 			
 			
-			log.debug("className: " + className);
+			log.debug("className: " + className);*/
 
 			
 		}
@@ -208,12 +232,14 @@ public class OwnModelicaGraphAnalyzer
 
 		switch (classType.trim())
 		{
-		case "block":
+		case "Blocks":
 			return OpenmodelicaPackage.BLOCK;
 		case "class":
 			return OpenmodelicaPackage.CLASS;
 		case "model":
 			return OpenmodelicaPackage.MODEL;
+		case "package":
+			return OpenmodelicaPackage.PACKAGE;
 		default:
 			throw new IllegalArgumentException(
 					"The class '" + className + "' is not a valid classifier with " + classType.trim());

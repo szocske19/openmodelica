@@ -36,5 +36,15 @@ public final class FifoWaitlist implements Waitlist {
 	public int size() {
 		return nodes.size();
 	}
+	
+	@Override
+	public void print() {
+		System.out.println("Print start");
+		for (TreeNode treeNode : nodes)
+		{
+			treeNode.print();			
+		}
+		System.out.println("Print end");
+	}
 
 }

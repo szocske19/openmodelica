@@ -20,5 +20,7 @@ public interface Waitlist {
 	default boolean isEmpty() {
 		return size() == 0;
 	}
+	
+	void print();
 
 }

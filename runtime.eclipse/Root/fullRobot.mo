@@ -2,6 +2,10 @@ model fullRobot
   "6 degree of freedom robot with path planning, controllers, motors, brakes, gears and mechanics"
   extends Modelica.Icons.Example;
 
+  import SI = Modelica.SIunits;
+  import Components = Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3.Components;
+  import RobotR3 = Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3;
+  
   parameter SI.Mass mLoad(min=0) = 15 "Mass of load";
   parameter SI.Position rLoad[3]={0.1,0.25,0.1}
     "Distance from last flange to load mass";

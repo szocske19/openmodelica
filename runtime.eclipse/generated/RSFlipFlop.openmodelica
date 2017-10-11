@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ASCII"?>
+<openmodelica:Package xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:openmodelica="hu.bme.mit.inf.onlab/openmodelica" Name="Root">
+  <componentprototype xsi:type="openmodelica:Package" Name="dependency">
+    <componentprototype xsi:type="openmodelica:Connector" Name="Modelica.Blocks.Interfaces.BooleanInput"/>
+    <componentprototype xsi:type="openmodelica:Block" Name="Modelica.Blocks.Logical.Pre"/>
+    <componentprototype xsi:type="openmodelica:Block" Name="Modelica.Blocks.Logical.Nor"/>
+    <componentprototype xsi:type="openmodelica:Connector" Name="Modelica.Blocks.Interfaces.BooleanOutput"/>
+    <componentprototype xsi:type="openmodelica:Block"/>
+  </componentprototype>
+</openmodelica:Package>

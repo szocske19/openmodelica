@@ -3,7 +3,39 @@
 <plugin>
    <extension-point id="modelicaElementFilters" name="Modelica Element Filters" schema="schema/org.modelica.mdt.ui.modelicaElementFilters.exsd"/>
    
-
+	<extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="onlab.openmodelica.own.implementation.of.mdt.ModelicaTransfromHandler"
+            id="org.modelica.mdt.ui.modelicaImport"
+            name="Create OpenModelica EMF model">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.modelica.mdt.ui.view.ModelicaProjectsView">
+         <command
+               commandId="org.modelica.mdt.ui.modelicaImport"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="selection">
+                  <count
+                        value="1">
+                  </count>
+                  <iterate>
+                     <instanceof
+                           value="org.eclipse.core.runtime.IAdaptable">
+                     </instanceof>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
    
 	<extension
        id="org.mdt.susanMarker"
