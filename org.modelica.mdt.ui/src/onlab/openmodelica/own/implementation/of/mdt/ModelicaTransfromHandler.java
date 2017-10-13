@@ -5,17 +5,10 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IPath;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.handlers.HandlerUtil;
-import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
-import org.eclipse.viatra.query.runtime.emf.EMFScope;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
 import org.modelica.mdt.internal.core.ModelicaSourceFile;
-import org.eclipse.uml2.uml.Package;
 
 public class ModelicaTransfromHandler extends AbstractHandler
 {
@@ -37,14 +30,15 @@ public class ModelicaTransfromHandler extends AbstractHandler
 				IStructuredSelection selectedFileSelection = (IStructuredSelection) selection;
 				ModelicaSourceFile selectedFile=(ModelicaSourceFile)selectedFileSelection.getFirstElement();
 				
-				
 				String selectedString = selectedFile.getElementName();
 				IFile selectedIFile = selectedFile.getResource();
 				IPath selectedPath = selectedIFile.getFullPath();
 				IPath selectedLocation = selectedIFile.getLocation();
 				String fileName = selectedString.replace(".mo", "");
 				
-				org.eclipse.uml2.uml.Package model = getUmlmodelPackage(selection);
+//				ModelicaSourceFile model = getUmlmodelPackage(selection);
+				
+//				ResourceSet resSet = new ResourceSetImpl();
 				
 				System.out.println("fileName: " + fileName + ", selectedPath: " + selectedPath + "\n");
 				
@@ -66,22 +60,5 @@ public class ModelicaTransfromHandler extends AbstractHandler
 
         return null;
 	}
-	
-	private Package getUmlmodelPackage(IStructuredSelection selection) {
-        Package model = null;
-        Object selectedElement = selection.toList().get(0);
-        if (selectedElement instanceof Package) {
-            model = (Package) selectedElement;
-        } else if (selectedElement instanceof IAdaptable) {
-            IAdaptable adaptableElement = (IAdaptable) selectedElement;
-            model = (Package) adaptableElement.<Package> getAdapter(Package.class);
-        }else if (selectedElement instanceof ModelicaSourceFile) {
-            IAdaptable adaptableElement = (IAdaptable) selectedElement;
-			model = (Package) adaptableElement.<Package> getAdapter(Package.class);
-		}
-
-        return model;
-
-    }
 
 }
