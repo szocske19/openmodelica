@@ -6442,7 +6442,7 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_0Rq3ESwPEee6ra4oKRn8Ag" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="Liquid" foregroundColor="255,252,216">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_3xrOsK5nEeev2NpGiL7SIw" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="Liquid" foregroundColor="255,252,216">
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
@@ -6585,7 +6585,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_0R780ywPEee6ra4oKRn8Ag" name="[0..1] extension" sourceNode="_0RpB4CwPEee6ra4oKRn8Ag" targetNode="_0RvIgCwPEee6ra4oKRn8Ag">
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_0R780ywPEee6ra4oKRn8Ag" name="[0..*] extension" sourceNode="_0RpB4CwPEee6ra4oKRn8Ag" targetNode="_0RvIgCwPEee6ra4oKRn8Ag">
         <target xmi:type="ecore:EReference" href="openmodelica.ecore#//ComponentPrototype/extension"/>
         <semanticElements xmi:type="ecore:EReference" href="openmodelica.ecore#//ComponentPrototype/extension"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_0R8j4CwPEee6ra4oKRn8Ag" description="_0R6usSwPEee6ra4oKRn8Ag" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">

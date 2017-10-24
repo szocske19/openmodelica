@@ -191,7 +191,8 @@ public class OwnModelicaGraphAnalyzer
 			}
 			
 		}
-		node.setChildren(tmp);
+//		TODO TreeNode children changed, but this code not updated
+//		node.setChildren(tmp);
 		
 	}
 	
@@ -364,9 +365,10 @@ public class OwnModelicaGraphAnalyzer
 		for(Map.Entry<String, TreeNode> entry : classContentMap.entrySet()) {
 		    String key = entry.getKey();
 		    TreeNode value = entry.getValue();
-		    for (TreeNode treeNode: value.getChildren()) {
-		    	graph += "\"" + key + "\" -> \"" + treeNode.getName() + "\";\n";
-		    }
+//			TODO TreeNode children changed, but this code not updated
+//		    for (TreeNode treeNode: value.getChildren()) {
+//		    	graph += "\"" + key + "\" -> \"" + treeNode.getName() + "\";\n";
+//		    }
 		    
 		}
 		graph += "}";

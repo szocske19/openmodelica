@@ -9,12 +9,18 @@ import openmodelica.OpenmodelicaFactory;
 public class TreeNode
 {
 	private ArrayList<ComponentReference> children;
+	private ArrayList<ExtensionReference> extension;
 	private TreeNode parent;
 	private String name; // key
 	private int level;
 	private ComponentPrototype componentPrototype;
 	private int prototypeType;
 
+	public void setExtension(ArrayList<ExtensionReference> extension)
+	{
+		this.extension = extension;
+	}
+	
 	public TreeNode getParent()
 	{
 		return parent;
@@ -23,6 +29,11 @@ public class TreeNode
 	public int getPrototypeType()
 	{
 		return prototypeType;
+	}
+	
+	public void setPrototypeType(int prototypeType)
+	{
+		this.prototypeType = prototypeType;
 	}
 
 	public ComponentPrototype getComponentPrototype()
@@ -60,23 +71,12 @@ public class TreeNode
 		children.add(child);
 	}
 
-	@Deprecated
-	public TreeNode(String name, int level, TreeNode parent)
-	{
-		this.name = name;
-		this.level = level;
-		this.parent = parent;
-		this.children = new ArrayList<ComponentReference>();
-	}
-
-	public TreeNode(String className, int level, TreeNode parent,
-			int prototypeType)
+	public TreeNode(String className, int level, TreeNode parent)
 	{
 		this.name = className;
 		this.level = level;
 		this.parent = parent;
 		this.children = new ArrayList<ComponentReference>();
-		this.prototypeType = prototypeType;
 	}
 
 	public void print()

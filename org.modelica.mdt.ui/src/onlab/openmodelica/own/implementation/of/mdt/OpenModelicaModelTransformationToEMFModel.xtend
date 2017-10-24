@@ -92,7 +92,6 @@ class OpenModelicaModelTransformationToEMFModel {
 				if (currentNode.getLevel() < MAX_LEVEL) {
 					expandNode(currentNode);
 				}
-				setSuperType(currentNode)
 			}
 			EditingDomainHelperUtility.runWithTransaction(editingDomain,
 				[createEMFModelAndFile(treeNode)]
@@ -101,12 +100,6 @@ class OpenModelicaModelTransformationToEMFModel {
 			println("#######################################################")
 			println("		EMF Model: " + className + " created" )
 			println("#######################################################")
-		}
-	}
-	def setSuperType(TreeNode treeNode){
-		val num =  currentCompiler.getInheritanceCount(treeNode.name);
-		for (var i = 0; i < num; i++) {
-			val res = currentCompiler.getNthInheritedClass(treeNode.name, i+1);
 		}
 	}
 	
@@ -124,8 +117,14 @@ class OpenModelicaModelTransformationToEMFModel {
 			metaClassMap.put(treeNode.getName(), treeNode);
 			waitlist.add(treeNode);
 			loadModel(treeNode.name);
+			treeNode.setProperties
 			return treeNode
 		}
+	}
+	
+	def setProperties(TreeNode treeNode){		
+		val type = getTypeOfClass(treeNode.name)
+		treeNode.setPrototypeType(type)
 	}
 	
 	def boolean isInMetaClassMap(String treeNodeName) {
@@ -133,10 +132,7 @@ class OpenModelicaModelTransformationToEMFModel {
 	}
 
 	def TreeNode createTreeNode(String className, int level, TreeNode parent) {
-		val type = getTypeOfClass(className)
-
-		val treeNode = new TreeNode(className, level, parent, type)
-		
+		val treeNode = new TreeNode(className, level, parent)
 		return treeNode
 	}
 
@@ -181,18 +177,16 @@ class OpenModelicaModelTransformationToEMFModel {
 	}
 
 	def expandNode(TreeNode parant) {
-		val listOfChildren = getChildrenOfNode(parant);
-		for (ComponentReference componentReference : listOfChildren) {
-
-		}
-		parant.setChildren(listOfChildren);
+		val listOfChildren = getChildrenOfNode(parant)	
+		parant.setChildren(listOfChildren)		
+		
+		val listOfSuperClasses = getSuperTypeList(parant)		
+		parant.setExtension(listOfSuperClasses)
 	}
 
 	def ArrayList<ComponentReference> getChildrenOfNode(TreeNode parent) {
-		val level = parent.getLevel() + 1;
-
+		val level = parent.getLevel() + 1;		
 		val componentReferenceList = new ArrayList<ComponentReference>();
-
 		val className = parent.getName();
 
 		val componentList = currentCompiler.getComponents(className);
@@ -206,6 +200,22 @@ class OpenModelicaModelTransformationToEMFModel {
 		}
 
 		return componentReferenceList;
+	}
+	
+	def ArrayList<ExtensionReference> getSuperTypeList(TreeNode subTreeNode){		
+		val level = subTreeNode.getLevel() + 1;
+		val extensionReferenceList = new ArrayList<ExtensionReference>();		
+		
+		val num = currentCompiler.getInheritanceCount(subTreeNode.name);
+		for (var i = 0; i < num; i++) {
+			val res = currentCompiler.getNthInheritedClass(subTreeNode.name, i+1).firstResult;
+			if(!isPrimitive(res)){
+				val superTreeNode = createOrGetTreeNode(res, level, subTreeNode)
+				val extensionReference = new ExtensionReference(superTreeNode)
+				extensionReferenceList.add(extensionReference)	
+			}
+		}		
+		return extensionReferenceList
 	}
 	
 	def loadModel(String sourceName){

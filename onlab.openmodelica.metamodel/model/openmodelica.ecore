@@ -15,8 +15,8 @@
       eSuperTypes="#//Identifier">
     <eStructuralFeatures xsi:type="ecore:EReference" name="componentParameter" upperBound="-1"
         eType="#//ComponentParameter" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="extension" eType="#//Extension"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="extension" upperBound="-1"
+        eType="#//Extension" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="types" upperBound="-1"
         eType="#//Type" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="connectclause" upperBound="-1"

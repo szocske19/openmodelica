@@ -1,60 +1,235 @@
-<?xml version="1.0" encoding="ASCII"?>
+<?xml version="1.0" encoding="ISO-8859-1"?>
 <openmodelica:Package xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:openmodelica="hu.bme.mit.inf.onlab/openmodelica" Name="Root">
   <componentprototype xsi:type="openmodelica:Package" Name="dependency">
     <componentprototype xsi:type="openmodelica:Type" Name="Modelica.Blocks.Types.Init"/>
-    <componentprototype xsi:type="openmodelica:Connector" Name="Modelica.Electrical.Analog.Interfaces.Pin"/>
+    <componentprototype xsi:type="openmodelica:Connector" Name="Modelica.Electrical.Analog.Interfaces.Pin">
+      <children Name="v" is_a="//@componentprototype.0/@componentprototype.9"/>
+      <children Name="i" is_a="//@componentprototype.0/@componentprototype.31"/>
+    </componentprototype>
     <componentprototype xsi:type="openmodelica:Type" Name="Modelica.SIunits.Capacitance"/>
     <componentprototype xsi:type="openmodelica:Type" Name="Modelica.SIunits.LinearTemperatureCoefficient"/>
     <componentprototype xsi:type="openmodelica:Type" Name="Modelica.SIunits.Temperature"/>
     <componentprototype xsi:type="openmodelica:Type" Name="Modelica.SIunits.Resistance"/>
     <componentprototype xsi:type="openmodelica:Type" Name="Modelica.SIunits.Inductance"/>
-    <componentprototype xsi:type="openmodelica:Connector" Name="Modelica.Mechanics.Rotational.Interfaces.Support"/>
+    <componentprototype xsi:type="openmodelica:Connector" Name="Modelica.Mechanics.Rotational.Interfaces.Support">
+      <children Name="phi" is_a="//@componentprototype.0/@componentprototype.82"/>
+      <children Name="tau" is_a="//@componentprototype.0/@componentprototype.81"/>
+    </componentprototype>
     <componentprototype xsi:type="openmodelica:Type" Name="Modelica.SIunits.ElectricalTorqueConstant"/>
     <componentprototype xsi:type="openmodelica:Type" Name="Modelica.SIunits.Voltage"/>
-    <componentprototype xsi:type="openmodelica:Connector" Name="Modelica.Electrical.Analog.Interfaces.NegativePin"/>
-    <componentprototype xsi:type="openmodelica:Connector" Name="Modelica.Electrical.Analog.Interfaces.PositivePin"/>
+    <componentprototype xsi:type="openmodelica:Connector" Name="Modelica.Electrical.Analog.Interfaces.NegativePin">
+      <children Name="v" is_a="//@componentprototype.0/@componentprototype.9"/>
+      <children Name="i" is_a="//@componentprototype.0/@componentprototype.31"/>
+    </componentprototype>
+    <componentprototype xsi:type="openmodelica:Connector" Name="Modelica.Electrical.Analog.Interfaces.PositivePin">
+      <children Name="v" is_a="//@componentprototype.0/@componentprototype.9"/>
+      <children Name="i" is_a="//@componentprototype.0/@componentprototype.31"/>
+    </componentprototype>
     <componentprototype xsi:type="openmodelica:Type" Name="Modelica.Mechanics.MultiBody.Frames.Quaternions.Orientation"/>
     <componentprototype xsi:type="openmodelica:Type" Name="Modelica.Mechanics.MultiBody.Frames.TransformationMatrices.Orientation"/>
-    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.Rotational.Components.InitializeFlange.Set_flange_tau"/>
-    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.Rotational.Components.InitializeFlange.Set_a_start"/>
-    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.Rotational.Components.InitializeFlange.Set_w_start"/>
-    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.Rotational.Components.InitializeFlange.Set_phi_start"/>
-    <componentprototype xsi:type="openmodelica:Block" Name="Modelica.Blocks.Math.Add3"/>
-    <componentprototype xsi:type="openmodelica:Block" Name="Modelica.Blocks.Math.Feedback"/>
-    <componentprototype xsi:type="openmodelica:Block" Name="Modelica.Blocks.Continuous.PI"/>
-    <componentprototype xsi:type="openmodelica:Block" Name="Modelica.Blocks.Math.Gain"/>
-    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.Rotational.Components.Inertia"/>
-    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Electrical.Analog.Sensors.CurrentSensor"/>
-    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Electrical.Analog.Basic.Ground"/>
-    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Electrical.Analog.Basic.Capacitor"/>
-    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Electrical.Analog.Basic.Resistor"/>
-    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Electrical.Analog.Basic.Inductor"/>
-    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Electrical.Analog.Basic.EMF"/>
-    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Electrical.Analog.Ideal.IdealOpAmp"/>
-    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Electrical.Analog.Sources.SignalVoltage"/>
+    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.Rotational.Components.InitializeFlange.Set_flange_tau">
+      <children Name="flange" is_a="//@componentprototype.0/@componentprototype.72"/>
+    </componentprototype>
+    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.Rotational.Components.InitializeFlange.Set_a_start">
+      <children Name="a_start" is_a="//@componentprototype.0/@componentprototype.37"/>
+      <children Name="flange" is_a="//@componentprototype.0/@componentprototype.72"/>
+      <children Name="w" is_a="//@componentprototype.0/@componentprototype.89"/>
+    </componentprototype>
+    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.Rotational.Components.InitializeFlange.Set_w_start">
+      <children Name="w_start" is_a="//@componentprototype.0/@componentprototype.37"/>
+      <children Name="flange" is_a="//@componentprototype.0/@componentprototype.72"/>
+    </componentprototype>
+    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.Rotational.Components.InitializeFlange.Set_phi_start">
+      <children Name="phi_start" is_a="//@componentprototype.0/@componentprototype.37"/>
+      <children Name="flange" is_a="//@componentprototype.0/@componentprototype.72"/>
+    </componentprototype>
+    <componentprototype xsi:type="openmodelica:Block" Name="Modelica.Blocks.Math.Add3">
+      <children Name="u1" is_a="//@componentprototype.0/@componentprototype.37"/>
+      <children Name="u2" is_a="//@componentprototype.0/@componentprototype.37"/>
+      <children Name="u3" is_a="//@componentprototype.0/@componentprototype.37"/>
+      <children Name="y" is_a="//@componentprototype.0/@componentprototype.39"/>
+    </componentprototype>
+    <componentprototype xsi:type="openmodelica:Block" Name="Modelica.Blocks.Math.Feedback">
+      <children Name="u1" is_a="//@componentprototype.0/@componentprototype.37"/>
+      <children Name="u2" is_a="//@componentprototype.0/@componentprototype.37"/>
+      <children Name="y" is_a="//@componentprototype.0/@componentprototype.39"/>
+    </componentprototype>
+    <componentprototype xsi:type="openmodelica:Block" Name="Modelica.Blocks.Continuous.PI">
+      <children Name="T" is_a="//@componentprototype.0/@componentprototype.90"/>
+      <children Name="initType" is_a="//@componentprototype.0/@componentprototype.0"/>
+    </componentprototype>
+    <componentprototype xsi:type="openmodelica:Block" Name="Modelica.Blocks.Math.Gain">
+      <children Name="u" is_a="//@componentprototype.0/@componentprototype.37"/>
+      <children Name="y" is_a="//@componentprototype.0/@componentprototype.39"/>
+    </componentprototype>
+    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.Rotational.Components.Inertia">
+      <children Name="flange_a" is_a="//@componentprototype.0/@componentprototype.80"/>
+      <children Name="flange_b" is_a="//@componentprototype.0/@componentprototype.72"/>
+      <children Name="J" is_a="//@componentprototype.0/@componentprototype.73"/>
+      <children Name="stateSelect" is_a="//@componentprototype.0/@componentprototype.50"/>
+      <children Name="phi" is_a="//@componentprototype.0/@componentprototype.82"/>
+      <children Name="w" is_a="//@componentprototype.0/@componentprototype.89"/>
+      <children Name="a" is_a="//@componentprototype.0/@componentprototype.88"/>
+    </componentprototype>
+    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Electrical.Analog.Sensors.CurrentSensor">
+      <children Name="p" is_a="//@componentprototype.0/@componentprototype.11"/>
+      <children Name="n" is_a="//@componentprototype.0/@componentprototype.10"/>
+      <children Name="i" is_a="//@componentprototype.0/@componentprototype.39"/>
+    </componentprototype>
+    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Electrical.Analog.Basic.Ground">
+      <children Name="p" is_a="//@componentprototype.0/@componentprototype.1"/>
+    </componentprototype>
+    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Electrical.Analog.Basic.Capacitor">
+      <children Name="C" is_a="//@componentprototype.0/@componentprototype.2"/>
+    </componentprototype>
+    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Electrical.Analog.Basic.Resistor">
+      <children Name="R" is_a="//@componentprototype.0/@componentprototype.5"/>
+      <children Name="T_ref" is_a="//@componentprototype.0/@componentprototype.4"/>
+      <children Name="alpha" is_a="//@componentprototype.0/@componentprototype.3"/>
+      <children Name="R_actual" is_a="//@componentprototype.0/@componentprototype.5"/>
+    </componentprototype>
+    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Electrical.Analog.Basic.Inductor">
+      <children Name="L" is_a="//@componentprototype.0/@componentprototype.6"/>
+    </componentprototype>
+    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Electrical.Analog.Basic.EMF">
+      <children Name="k" is_a="//@componentprototype.0/@componentprototype.8"/>
+      <children Name="v" is_a="//@componentprototype.0/@componentprototype.9"/>
+      <children Name="i" is_a="//@componentprototype.0/@componentprototype.31"/>
+      <children Name="phi" is_a="//@componentprototype.0/@componentprototype.82"/>
+      <children Name="w" is_a="//@componentprototype.0/@componentprototype.89"/>
+      <children Name="p" is_a="//@componentprototype.0/@componentprototype.11"/>
+      <children Name="n" is_a="//@componentprototype.0/@componentprototype.10"/>
+      <children Name="flange" is_a="//@componentprototype.0/@componentprototype.72"/>
+      <children Name="support" is_a="//@componentprototype.0/@componentprototype.7"/>
+      <children Name="fixed" is_a="//@componentprototype.0/@componentprototype.48"/>
+      <children Name="internalSupport" is_a="//@componentprototype.0/@componentprototype.47"/>
+    </componentprototype>
+    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Electrical.Analog.Ideal.IdealOpAmp">
+      <children Name="v1" is_a="//@componentprototype.0/@componentprototype.9"/>
+      <children Name="v2" is_a="//@componentprototype.0/@componentprototype.9"/>
+      <children Name="i1" is_a="//@componentprototype.0/@componentprototype.31"/>
+      <children Name="i2" is_a="//@componentprototype.0/@componentprototype.31"/>
+      <children Name="p1" is_a="//@componentprototype.0/@componentprototype.11"/>
+      <children Name="n1" is_a="//@componentprototype.0/@componentprototype.10"/>
+      <children Name="p2" is_a="//@componentprototype.0/@componentprototype.11"/>
+      <children Name="n2" is_a="//@componentprototype.0/@componentprototype.10"/>
+    </componentprototype>
+    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Electrical.Analog.Sources.SignalVoltage">
+      <children Name="p" is_a="//@componentprototype.0/@componentprototype.11"/>
+      <children Name="n" is_a="//@componentprototype.0/@componentprototype.10"/>
+      <children Name="v" is_a="//@componentprototype.0/@componentprototype.37"/>
+      <children Name="i" is_a="//@componentprototype.0/@componentprototype.31"/>
+    </componentprototype>
     <componentprototype xsi:type="openmodelica:Type" Name="Modelica.SIunits.Current"/>
-    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.Rotational.Components.BearingFriction"/>
-    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.Rotational.Components.IdealGear"/>
+    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.Rotational.Components.BearingFriction">
+      <children Name="phi" is_a="//@componentprototype.0/@componentprototype.82"/>
+      <children Name="tau" is_a="//@componentprototype.0/@componentprototype.81"/>
+      <children Name="w" is_a="//@componentprototype.0/@componentprototype.89"/>
+      <children Name="a" is_a="//@componentprototype.0/@componentprototype.88"/>
+    </componentprototype>
+    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.Rotational.Components.IdealGear">
+      <children Name="phi_a" is_a="//@componentprototype.0/@componentprototype.82"/>
+      <children Name="phi_b" is_a="//@componentprototype.0/@componentprototype.82"/>
+    </componentprototype>
     <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Blocks.Routing.BooleanPassThrough"/>
     <componentprototype xsi:type="openmodelica:Connector" Name="Modelica.Blocks.Interfaces.BooleanInput"/>
     <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Blocks.Routing.RealPassThrough"/>
     <componentprototype xsi:type="openmodelica:Connector" Name="Modelica.Blocks.Interfaces.RealInput"/>
     <componentprototype xsi:type="openmodelica:Connector" Name="Modelica.Blocks.Interfaces.BooleanOutput"/>
     <componentprototype xsi:type="openmodelica:Connector" Name="Modelica.Blocks.Interfaces.RealOutput"/>
-    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.MultiBody.Parts.Body"/>
-    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.MultiBody.Parts.FixedTranslation"/>
+    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.MultiBody.Parts.Body">
+      <children Name="frame_a" is_a="//@componentprototype.0/@componentprototype.52"/>
+      <children Name="r_CM" is_a="//@componentprototype.0/@componentprototype.92"/>
+      <children Name="m" is_a="//@componentprototype.0/@componentprototype.93"/>
+      <children Name="I_11" is_a="//@componentprototype.0/@componentprototype.73"/>
+      <children Name="I_22" is_a="//@componentprototype.0/@componentprototype.73"/>
+      <children Name="I_33" is_a="//@componentprototype.0/@componentprototype.73"/>
+      <children Name="I_21" is_a="//@componentprototype.0/@componentprototype.73"/>
+      <children Name="I_31" is_a="//@componentprototype.0/@componentprototype.73"/>
+      <children Name="I_32" is_a="//@componentprototype.0/@componentprototype.73"/>
+      <children Name="r_0" is_a="//@componentprototype.0/@componentprototype.92"/>
+      <children Name="v_0" is_a="//@componentprototype.0/@componentprototype.45"/>
+      <children Name="a_0" is_a="//@componentprototype.0/@componentprototype.91"/>
+      <children Name="angles_start" is_a="//@componentprototype.0/@componentprototype.82"/>
+      <children Name="sequence_start" is_a="//@componentprototype.0/@componentprototype.44"/>
+      <children Name="w_0_start" is_a="//@componentprototype.0/@componentprototype.89"/>
+      <children Name="z_0_start" is_a="//@componentprototype.0/@componentprototype.88"/>
+      <children Name="sphereDiameter" is_a="//@componentprototype.0/@componentprototype.55"/>
+      <children Name="sphereColor" is_a="//@componentprototype.0/@componentprototype.57"/>
+      <children Name="cylinderDiameter" is_a="//@componentprototype.0/@componentprototype.55"/>
+      <children Name="cylinderColor" is_a="//@componentprototype.0/@componentprototype.57"/>
+      <children Name="specularCoefficient" is_a="//@componentprototype.0/@componentprototype.51"/>
+      <children Name="sequence_angleStates" is_a="//@componentprototype.0/@componentprototype.44"/>
+      <children Name="I" is_a="//@componentprototype.0/@componentprototype.73"/>
+      <children Name="R_start" is_a="//@componentprototype.0/@componentprototype.49"/>
+      <children Name="z_a_start" is_a="//@componentprototype.0/@componentprototype.88"/>
+      <children Name="w_a" is_a="//@componentprototype.0/@componentprototype.89"/>
+      <children Name="z_a" is_a="//@componentprototype.0/@componentprototype.88"/>
+      <children Name="g_0" is_a="//@componentprototype.0/@componentprototype.91"/>
+      <children Name="world" is_a="//@componentprototype.0/@componentprototype.79"/>
+      <children Name="Q_start" is_a="//@componentprototype.0/@componentprototype.12"/>
+      <children Name="Q" is_a="//@componentprototype.0/@componentprototype.12"/>
+      <children Name="phi_start" is_a="//@componentprototype.0/@componentprototype.82"/>
+      <children Name="phi" is_a="//@componentprototype.0/@componentprototype.82"/>
+      <children Name="phi_d" is_a="//@componentprototype.0/@componentprototype.89"/>
+      <children Name="phi_dd" is_a="//@componentprototype.0/@componentprototype.88"/>
+      <children Name="cylinder" is_a="//@componentprototype.0/@componentprototype.54"/>
+      <children Name="sphere" is_a="//@componentprototype.0/@componentprototype.54"/>
+    </componentprototype>
+    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.MultiBody.Parts.FixedTranslation">
+      <children Name="frame_a" is_a="//@componentprototype.0/@componentprototype.52"/>
+      <children Name="frame_b" is_a="//@componentprototype.0/@componentprototype.62"/>
+      <children Name="r" is_a="//@componentprototype.0/@componentprototype.92"/>
+      <children Name="shapeType" is_a="//@componentprototype.0/@componentprototype.43"/>
+      <children Name="r_shape" is_a="//@componentprototype.0/@componentprototype.92"/>
+      <children Name="lengthDirection" is_a="//@componentprototype.0/@componentprototype.59"/>
+      <children Name="widthDirection" is_a="//@componentprototype.0/@componentprototype.59"/>
+      <children Name="length" is_a="//@componentprototype.0/@componentprototype.56"/>
+      <children Name="width" is_a="//@componentprototype.0/@componentprototype.58"/>
+      <children Name="height" is_a="//@componentprototype.0/@componentprototype.58"/>
+      <children Name="extra" is_a="//@componentprototype.0/@componentprototype.42"/>
+      <children Name="color" is_a="//@componentprototype.0/@componentprototype.57"/>
+      <children Name="specularCoefficient" is_a="//@componentprototype.0/@componentprototype.51"/>
+      <children Name="world" is_a="//@componentprototype.0/@componentprototype.79"/>
+      <children Name="shape" is_a="//@componentprototype.0/@componentprototype.54"/>
+    </componentprototype>
     <componentprototype xsi:type="openmodelica:Type" Name="Modelica.Mechanics.MultiBody.Types.ShapeExtra"/>
     <componentprototype xsi:type="openmodelica:Type" Name="Modelica.Mechanics.MultiBody.Types.ShapeType"/>
     <componentprototype xsi:type="openmodelica:Type" Name="Modelica.Mechanics.MultiBody.Types.RotationSequence"/>
     <componentprototype xsi:type="openmodelica:Type" Name="Modelica.SIunits.Velocity"/>
-    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.Rotational.Sources.ConstantTorque"/>
-    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.Rotational.Interfaces.InternalSupport"/>
-    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.Rotational.Components.Fixed"/>
-    <componentprototype xsi:type="openmodelica:Record" Name="Modelica.Mechanics.MultiBody.Frames.Orientation"/>
+    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.Rotational.Sources.ConstantTorque">
+      <children Name="tau_constant" is_a="//@componentprototype.0/@componentprototype.81"/>
+      <children Name="w" is_a="//@componentprototype.0/@componentprototype.89"/>
+      <children Name="tau" is_a="//@componentprototype.0/@componentprototype.81"/>
+    </componentprototype>
+    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.Rotational.Interfaces.InternalSupport">
+      <children Name="tau" is_a="//@componentprototype.0/@componentprototype.81"/>
+      <children Name="phi" is_a="//@componentprototype.0/@componentprototype.82"/>
+      <children Name="flange" is_a="//@componentprototype.0/@componentprototype.80"/>
+    </componentprototype>
+    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.Rotational.Components.Fixed">
+      <children Name="phi0" is_a="//@componentprototype.0/@componentprototype.82"/>
+      <children Name="flange" is_a="//@componentprototype.0/@componentprototype.72"/>
+    </componentprototype>
+    <componentprototype xsi:type="openmodelica:Record" Name="Modelica.Mechanics.MultiBody.Frames.Orientation">
+      <children Name="w" is_a="//@componentprototype.0/@componentprototype.89"/>
+    </componentprototype>
     <componentprototype xsi:type="openmodelica:Type" Name="StateSelect"/>
     <componentprototype xsi:type="openmodelica:Type" Name="Modelica.Mechanics.MultiBody.Types.SpecularCoefficient"/>
     <componentprototype xsi:type="openmodelica:Connector" Name="Modelica.Mechanics.MultiBody.Interfaces.Frame_a"/>
-    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.MultiBody.Visualizers.Internal.Lines"/>
+    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.MultiBody.Visualizers.Internal.Lines">
+      <children Name="R" is_a="//@componentprototype.0/@componentprototype.49"/>
+      <children Name="r" is_a="//@componentprototype.0/@componentprototype.92"/>
+      <children Name="r_lines" is_a="//@componentprototype.0/@componentprototype.92"/>
+      <children Name="lines" is_a="//@componentprototype.0/@componentprototype.92"/>
+      <children Name="diameter" is_a="//@componentprototype.0/@componentprototype.56"/>
+      <children Name="color" is_a="//@componentprototype.0/@componentprototype.57"/>
+      <children Name="specularCoefficient" is_a="//@componentprototype.0/@componentprototype.51"/>
+      <children Name="R_rel" is_a="//@componentprototype.0/@componentprototype.13"/>
+      <children Name="R_lines" is_a="//@componentprototype.0/@componentprototype.13"/>
+      <children Name="r_abs" is_a="//@componentprototype.0/@componentprototype.92"/>
+      <children Name="cylinders" is_a="//@componentprototype.0/@componentprototype.54"/>
+    </componentprototype>
     <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.MultiBody.Visualizers.Advanced.Shape"/>
     <componentprototype xsi:type="openmodelica:Type" Name="Modelica.SIunits.Diameter"/>
     <componentprototype xsi:type="openmodelica:Type" Name="Modelica.SIunits.Length"/>
@@ -65,36 +240,343 @@
     <componentprototype xsi:type="openmodelica:Type" Name="Modelica.Mechanics.MultiBody.Types.AxisLabel"/>
     <componentprototype xsi:type="openmodelica:Connector" Name="Modelica.Mechanics.MultiBody.Interfaces.Frame_b"/>
     <componentprototype xsi:type="openmodelica:Block" Name="Modelica.Blocks.Sources.Constant"/>
-    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.Rotational.Components.InitializeFlange"/>
-    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.Rotational.Sensors.AccSensor"/>
-    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.Rotational.Sensors.SpeedSensor"/>
-    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.Rotational.Sensors.AngleSensor"/>
-    <componentprototype xsi:type="openmodelica:Connector" Name="Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3.Components.AxisControlBus"/>
-    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3.Components.Controller"/>
-    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3.Components.Motor"/>
-    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3.Components.GearType2"/>
-    <componentprototype xsi:type="openmodelica:Connector" Name="Modelica.Mechanics.Rotational.Interfaces.Flange_b"/>
+    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.Rotational.Components.InitializeFlange">
+      <children Name="stateSelect" is_a="//@componentprototype.0/@componentprototype.50"/>
+      <children Name="phi_start" is_a="//@componentprototype.0/@componentprototype.37"/>
+      <children Name="w_start" is_a="//@componentprototype.0/@componentprototype.37"/>
+      <children Name="a_start" is_a="//@componentprototype.0/@componentprototype.37"/>
+      <children Name="flange" is_a="//@componentprototype.0/@componentprototype.72"/>
+      <children Name="phi_flange" is_a="//@componentprototype.0/@componentprototype.82"/>
+      <children Name="w_flange" is_a="//@componentprototype.0/@componentprototype.89"/>
+      <children Name="set_phi_start" is_a="//@componentprototype.0/@componentprototype.17"/>
+      <children Name="set_w_start" is_a="//@componentprototype.0/@componentprototype.16"/>
+      <children Name="set_a_start" is_a="//@componentprototype.0/@componentprototype.15"/>
+      <children Name="set_flange_tau" is_a="//@componentprototype.0/@componentprototype.14"/>
+    </componentprototype>
+    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.Rotational.Sensors.AccSensor">
+      <children Name="w" is_a="//@componentprototype.0/@componentprototype.89"/>
+      <children Name="a" is_a="//@componentprototype.0/@componentprototype.39"/>
+    </componentprototype>
+    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.Rotational.Sensors.SpeedSensor">
+      <children Name="w" is_a="//@componentprototype.0/@componentprototype.39"/>
+    </componentprototype>
+    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.Rotational.Sensors.AngleSensor">
+      <children Name="phi" is_a="//@componentprototype.0/@componentprototype.39"/>
+    </componentprototype>
+    <componentprototype xsi:type="openmodelica:Connector" Name="Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3.Components.AxisControlBus">
+      <children Name="angle_ref" is_a="//@componentprototype.0/@componentprototype.82"/>
+      <children Name="angle" is_a="//@componentprototype.0/@componentprototype.82"/>
+      <children Name="speed_ref" is_a="//@componentprototype.0/@componentprototype.89"/>
+      <children Name="speed" is_a="//@componentprototype.0/@componentprototype.89"/>
+      <children Name="acceleration_ref" is_a="//@componentprototype.0/@componentprototype.88"/>
+      <children Name="acceleration" is_a="//@componentprototype.0/@componentprototype.88"/>
+      <children Name="current_ref" is_a="//@componentprototype.0/@componentprototype.31"/>
+      <children Name="current" is_a="//@componentprototype.0/@componentprototype.31"/>
+      <children Name="motorAngle" is_a="//@componentprototype.0/@componentprototype.82"/>
+      <children Name="motorSpeed" is_a="//@componentprototype.0/@componentprototype.89"/>
+    </componentprototype>
+    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3.Components.Controller">
+      <children Name="Ts" is_a="//@componentprototype.0/@componentprototype.90"/>
+      <children Name="gain1" is_a="//@componentprototype.0/@componentprototype.21"/>
+      <children Name="PI" is_a="//@componentprototype.0/@componentprototype.20"/>
+      <children Name="feedback1" is_a="//@componentprototype.0/@componentprototype.19"/>
+      <children Name="P" is_a="//@componentprototype.0/@componentprototype.21"/>
+      <children Name="add3" is_a="//@componentprototype.0/@componentprototype.18"/>
+      <children Name="gain2" is_a="//@componentprototype.0/@componentprototype.21"/>
+      <children Name="axisControlBus" is_a="//@componentprototype.0/@componentprototype.68"/>
+    </componentprototype>
+    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3.Components.Motor">
+      <children Name="J" is_a="//@componentprototype.0/@componentprototype.73"/>
+      <children Name="w_max" is_a="//@componentprototype.0/@componentprototype.89"/>
+      <children Name="i_max" is_a="//@componentprototype.0/@componentprototype.31"/>
+      <children Name="flange_motor" is_a="//@componentprototype.0/@componentprototype.72"/>
+      <children Name="Vs" is_a="//@componentprototype.0/@componentprototype.30"/>
+      <children Name="diff" is_a="//@componentprototype.0/@componentprototype.29"/>
+      <children Name="power" is_a="//@componentprototype.0/@componentprototype.29"/>
+      <children Name="emf" is_a="//@componentprototype.0/@componentprototype.28"/>
+      <children Name="La" is_a="//@componentprototype.0/@componentprototype.27"/>
+      <children Name="Ra" is_a="//@componentprototype.0/@componentprototype.26"/>
+      <children Name="Rd2" is_a="//@componentprototype.0/@componentprototype.26"/>
+      <children Name="C" is_a="//@componentprototype.0/@componentprototype.25"/>
+      <children Name="OpI" is_a="//@componentprototype.0/@componentprototype.29"/>
+      <children Name="Rd1" is_a="//@componentprototype.0/@componentprototype.26"/>
+      <children Name="Ri" is_a="//@componentprototype.0/@componentprototype.26"/>
+      <children Name="Rp1" is_a="//@componentprototype.0/@componentprototype.26"/>
+      <children Name="Rp2" is_a="//@componentprototype.0/@componentprototype.26"/>
+      <children Name="Rd4" is_a="//@componentprototype.0/@componentprototype.26"/>
+      <children Name="hall2" is_a="//@componentprototype.0/@componentprototype.30"/>
+      <children Name="Rd3" is_a="//@componentprototype.0/@componentprototype.26"/>
+      <children Name="g1" is_a="//@componentprototype.0/@componentprototype.24"/>
+      <children Name="g2" is_a="//@componentprototype.0/@componentprototype.24"/>
+      <children Name="g3" is_a="//@componentprototype.0/@componentprototype.24"/>
+      <children Name="hall1" is_a="//@componentprototype.0/@componentprototype.23"/>
+      <children Name="g4" is_a="//@componentprototype.0/@componentprototype.24"/>
+      <children Name="g5" is_a="//@componentprototype.0/@componentprototype.24"/>
+      <children Name="phi" is_a="//@componentprototype.0/@componentprototype.67"/>
+      <children Name="speed" is_a="//@componentprototype.0/@componentprototype.66"/>
+      <children Name="Jmotor" is_a="//@componentprototype.0/@componentprototype.22"/>
+      <children Name="axisControlBus" is_a="//@componentprototype.0/@componentprototype.68"/>
+      <children Name="convert1" is_a="//@componentprototype.0/@componentprototype.21"/>
+      <children Name="convert2" is_a="//@componentprototype.0/@componentprototype.21"/>
+    </componentprototype>
+    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3.Components.GearType2">
+      <children Name="Rv0" is_a="//@componentprototype.0/@componentprototype.81"/>
+      <children Name="unitAngularVelocity" is_a="//@componentprototype.0/@componentprototype.89"/>
+      <children Name="unitTorque" is_a="//@componentprototype.0/@componentprototype.81"/>
+      <children Name="gear" is_a="//@componentprototype.0/@componentprototype.33"/>
+      <children Name="bearingFriction" is_a="//@componentprototype.0/@componentprototype.32"/>
+    </componentprototype>
+    <componentprototype xsi:type="openmodelica:Connector" Name="Modelica.Mechanics.Rotational.Interfaces.Flange_b">
+      <children Name="phi" is_a="//@componentprototype.0/@componentprototype.82"/>
+      <children Name="tau" is_a="//@componentprototype.0/@componentprototype.81"/>
+    </componentprototype>
     <componentprototype xsi:type="openmodelica:Type" Name="Modelica.SIunits.Inertia"/>
-    <componentprototype xsi:type="openmodelica:Block" Name="Modelica.Blocks.Logical.TerminateSimulation"/>
-    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3.Components.PathToAxisControlBus"/>
-    <componentprototype xsi:type="openmodelica:Block" Name="Modelica.Blocks.Sources.KinematicPTP2"/>
-    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.MultiBody.Parts.BodyShape"/>
-    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.MultiBody.Joints.Revolute"/>
-    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.MultiBody.World"/>
-    <componentprototype xsi:type="openmodelica:Connector" Name="Modelica.Mechanics.Rotational.Interfaces.Flange_a"/>
+    <componentprototype xsi:type="openmodelica:Block" Name="Modelica.Blocks.Logical.TerminateSimulation">
+      <children Name="condition" is_a="//@componentprototype.0/@componentprototype.38"/>
+    </componentprototype>
+    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3.Components.PathToAxisControlBus">
+      <children Name="q" is_a="//@componentprototype.0/@componentprototype.37"/>
+      <children Name="qd" is_a="//@componentprototype.0/@componentprototype.37"/>
+      <children Name="qdd" is_a="//@componentprototype.0/@componentprototype.37"/>
+      <children Name="axisControlBus" is_a="//@componentprototype.0/@componentprototype.68"/>
+      <children Name="q_axisUsed" is_a="//@componentprototype.0/@componentprototype.36"/>
+      <children Name="qd_axisUsed" is_a="//@componentprototype.0/@componentprototype.36"/>
+      <children Name="qdd_axisUsed" is_a="//@componentprototype.0/@componentprototype.36"/>
+      <children Name="moving" is_a="//@componentprototype.0/@componentprototype.35"/>
+      <children Name="motion_ref_axisUsed" is_a="//@componentprototype.0/@componentprototype.34"/>
+    </componentprototype>
+    <componentprototype xsi:type="openmodelica:Block" Name="Modelica.Blocks.Sources.KinematicPTP2">
+      <children Name="startTime" is_a="//@componentprototype.0/@componentprototype.90"/>
+      <children Name="endTime" is_a="//@componentprototype.0/@componentprototype.90"/>
+      <children Name="q" is_a="//@componentprototype.0/@componentprototype.39"/>
+      <children Name="qd" is_a="//@componentprototype.0/@componentprototype.39"/>
+      <children Name="qdd" is_a="//@componentprototype.0/@componentprototype.39"/>
+      <children Name="moving" is_a="//@componentprototype.0/@componentprototype.38"/>
+      <children Name="Ta1" is_a="//@componentprototype.0/@componentprototype.90"/>
+      <children Name="Ta2" is_a="//@componentprototype.0/@componentprototype.90"/>
+      <children Name="Tv" is_a="//@componentprototype.0/@componentprototype.90"/>
+      <children Name="Te" is_a="//@componentprototype.0/@componentprototype.90"/>
+      <children Name="Ta1s" is_a="//@componentprototype.0/@componentprototype.90"/>
+      <children Name="Ta2s" is_a="//@componentprototype.0/@componentprototype.90"/>
+      <children Name="Tvs" is_a="//@componentprototype.0/@componentprototype.90"/>
+      <children Name="Tes" is_a="//@componentprototype.0/@componentprototype.90"/>
+    </componentprototype>
+    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.MultiBody.Parts.BodyShape">
+      <children Name="frame_a" is_a="//@componentprototype.0/@componentprototype.52"/>
+      <children Name="frame_b" is_a="//@componentprototype.0/@componentprototype.62"/>
+      <children Name="r" is_a="//@componentprototype.0/@componentprototype.92"/>
+      <children Name="r_CM" is_a="//@componentprototype.0/@componentprototype.92"/>
+      <children Name="m" is_a="//@componentprototype.0/@componentprototype.93"/>
+      <children Name="I_11" is_a="//@componentprototype.0/@componentprototype.73"/>
+      <children Name="I_22" is_a="//@componentprototype.0/@componentprototype.73"/>
+      <children Name="I_33" is_a="//@componentprototype.0/@componentprototype.73"/>
+      <children Name="I_21" is_a="//@componentprototype.0/@componentprototype.73"/>
+      <children Name="I_31" is_a="//@componentprototype.0/@componentprototype.73"/>
+      <children Name="I_32" is_a="//@componentprototype.0/@componentprototype.73"/>
+      <children Name="r_0" is_a="//@componentprototype.0/@componentprototype.92"/>
+      <children Name="v_0" is_a="//@componentprototype.0/@componentprototype.45"/>
+      <children Name="a_0" is_a="//@componentprototype.0/@componentprototype.91"/>
+      <children Name="angles_start" is_a="//@componentprototype.0/@componentprototype.82"/>
+      <children Name="sequence_start" is_a="//@componentprototype.0/@componentprototype.44"/>
+      <children Name="w_0_start" is_a="//@componentprototype.0/@componentprototype.89"/>
+      <children Name="z_0_start" is_a="//@componentprototype.0/@componentprototype.88"/>
+      <children Name="shapeType" is_a="//@componentprototype.0/@componentprototype.43"/>
+      <children Name="r_shape" is_a="//@componentprototype.0/@componentprototype.92"/>
+      <children Name="lengthDirection" is_a="//@componentprototype.0/@componentprototype.59"/>
+      <children Name="widthDirection" is_a="//@componentprototype.0/@componentprototype.59"/>
+      <children Name="length" is_a="//@componentprototype.0/@componentprototype.56"/>
+      <children Name="width" is_a="//@componentprototype.0/@componentprototype.58"/>
+      <children Name="height" is_a="//@componentprototype.0/@componentprototype.58"/>
+      <children Name="extra" is_a="//@componentprototype.0/@componentprototype.42"/>
+      <children Name="color" is_a="//@componentprototype.0/@componentprototype.57"/>
+      <children Name="sphereDiameter" is_a="//@componentprototype.0/@componentprototype.55"/>
+      <children Name="sphereColor" is_a="//@componentprototype.0/@componentprototype.57"/>
+      <children Name="specularCoefficient" is_a="//@componentprototype.0/@componentprototype.51"/>
+      <children Name="sequence_angleStates" is_a="//@componentprototype.0/@componentprototype.44"/>
+      <children Name="frameTranslation" is_a="//@componentprototype.0/@componentprototype.41"/>
+      <children Name="body" is_a="//@componentprototype.0/@componentprototype.40"/>
+      <children Name="world" is_a="//@componentprototype.0/@componentprototype.79"/>
+      <children Name="shape1" is_a="//@componentprototype.0/@componentprototype.54"/>
+      <children Name="shape2" is_a="//@componentprototype.0/@componentprototype.54"/>
+    </componentprototype>
+    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.MultiBody.Joints.Revolute">
+      <children Name="axis" is_a="//@componentprototype.0/@componentprototype.80"/>
+      <children Name="support" is_a="//@componentprototype.0/@componentprototype.72"/>
+      <children Name="frame_a" is_a="//@componentprototype.0/@componentprototype.52"/>
+      <children Name="frame_b" is_a="//@componentprototype.0/@componentprototype.62"/>
+      <children Name="n" is_a="//@componentprototype.0/@componentprototype.59"/>
+      <children Name="phi_offset" is_a="//@componentprototype.0/@componentprototype.82"/>
+      <children Name="cylinderLength" is_a="//@componentprototype.0/@componentprototype.58"/>
+      <children Name="cylinderDiameter" is_a="//@componentprototype.0/@componentprototype.58"/>
+      <children Name="cylinderColor" is_a="//@componentprototype.0/@componentprototype.57"/>
+      <children Name="specularCoefficient" is_a="//@componentprototype.0/@componentprototype.51"/>
+      <children Name="stateSelect" is_a="//@componentprototype.0/@componentprototype.50"/>
+      <children Name="phi" is_a="//@componentprototype.0/@componentprototype.82"/>
+      <children Name="w" is_a="//@componentprototype.0/@componentprototype.89"/>
+      <children Name="a" is_a="//@componentprototype.0/@componentprototype.88"/>
+      <children Name="tau" is_a="//@componentprototype.0/@componentprototype.81"/>
+      <children Name="angle" is_a="//@componentprototype.0/@componentprototype.82"/>
+      <children Name="world" is_a="//@componentprototype.0/@componentprototype.79"/>
+      <children Name="R_rel" is_a="//@componentprototype.0/@componentprototype.49"/>
+      <children Name="cylinder" is_a="//@componentprototype.0/@componentprototype.54"/>
+      <children Name="fixed" is_a="//@componentprototype.0/@componentprototype.48"/>
+      <children Name="internalAxis" is_a="//@componentprototype.0/@componentprototype.47"/>
+      <children Name="constantTorque" is_a="//@componentprototype.0/@componentprototype.46"/>
+    </componentprototype>
+    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.MultiBody.World">
+      <children Name="frame_b" is_a="//@componentprototype.0/@componentprototype.62"/>
+      <children Name="label1" is_a="//@componentprototype.0/@componentprototype.61"/>
+      <children Name="label2" is_a="//@componentprototype.0/@componentprototype.61"/>
+      <children Name="gravityType" is_a="//@componentprototype.0/@componentprototype.60"/>
+      <children Name="g" is_a="//@componentprototype.0/@componentprototype.91"/>
+      <children Name="n" is_a="//@componentprototype.0/@componentprototype.59"/>
+      <children Name="axisLength" is_a="//@componentprototype.0/@componentprototype.58"/>
+      <children Name="axisDiameter" is_a="//@componentprototype.0/@componentprototype.58"/>
+      <children Name="axisColor_x" is_a="//@componentprototype.0/@componentprototype.57"/>
+      <children Name="axisColor_y" is_a="//@componentprototype.0/@componentprototype.57"/>
+      <children Name="axisColor_z" is_a="//@componentprototype.0/@componentprototype.57"/>
+      <children Name="gravityArrowTail" is_a="//@componentprototype.0/@componentprototype.92"/>
+      <children Name="gravityArrowLength" is_a="//@componentprototype.0/@componentprototype.56"/>
+      <children Name="gravityArrowDiameter" is_a="//@componentprototype.0/@componentprototype.55"/>
+      <children Name="gravityArrowColor" is_a="//@componentprototype.0/@componentprototype.57"/>
+      <children Name="gravitySphereDiameter" is_a="//@componentprototype.0/@componentprototype.55"/>
+      <children Name="gravitySphereColor" is_a="//@componentprototype.0/@componentprototype.57"/>
+      <children Name="nominalLength" is_a="//@componentprototype.0/@componentprototype.56"/>
+      <children Name="defaultAxisLength" is_a="//@componentprototype.0/@componentprototype.56"/>
+      <children Name="defaultJointLength" is_a="//@componentprototype.0/@componentprototype.56"/>
+      <children Name="defaultJointWidth" is_a="//@componentprototype.0/@componentprototype.56"/>
+      <children Name="defaultForceLength" is_a="//@componentprototype.0/@componentprototype.56"/>
+      <children Name="defaultForceWidth" is_a="//@componentprototype.0/@componentprototype.56"/>
+      <children Name="defaultBodyDiameter" is_a="//@componentprototype.0/@componentprototype.56"/>
+      <children Name="defaultArrowDiameter" is_a="//@componentprototype.0/@componentprototype.56"/>
+      <children Name="headLength" is_a="//@componentprototype.0/@componentprototype.56"/>
+      <children Name="headWidth" is_a="//@componentprototype.0/@componentprototype.56"/>
+      <children Name="lineLength" is_a="//@componentprototype.0/@componentprototype.56"/>
+      <children Name="lineWidth" is_a="//@componentprototype.0/@componentprototype.56"/>
+      <children Name="scaledLabel" is_a="//@componentprototype.0/@componentprototype.56"/>
+      <children Name="labelStart" is_a="//@componentprototype.0/@componentprototype.56"/>
+      <children Name="x_arrowLine" is_a="//@componentprototype.0/@componentprototype.54"/>
+      <children Name="x_arrowHead" is_a="//@componentprototype.0/@componentprototype.54"/>
+      <children Name="x_label" is_a="//@componentprototype.0/@componentprototype.53"/>
+      <children Name="y_arrowLine" is_a="//@componentprototype.0/@componentprototype.54"/>
+      <children Name="y_arrowHead" is_a="//@componentprototype.0/@componentprototype.54"/>
+      <children Name="y_label" is_a="//@componentprototype.0/@componentprototype.53"/>
+      <children Name="z_arrowLine" is_a="//@componentprototype.0/@componentprototype.54"/>
+      <children Name="z_arrowHead" is_a="//@componentprototype.0/@componentprototype.54"/>
+      <children Name="z_label" is_a="//@componentprototype.0/@componentprototype.53"/>
+      <children Name="gravityHeadLength" is_a="//@componentprototype.0/@componentprototype.56"/>
+      <children Name="gravityHeadWidth" is_a="//@componentprototype.0/@componentprototype.56"/>
+      <children Name="gravityLineLength" is_a="//@componentprototype.0/@componentprototype.56"/>
+      <children Name="gravityArrowLine" is_a="//@componentprototype.0/@componentprototype.54"/>
+      <children Name="gravityArrowHead" is_a="//@componentprototype.0/@componentprototype.54"/>
+      <children Name="gravitySphere" is_a="//@componentprototype.0/@componentprototype.54"/>
+    </componentprototype>
+    <componentprototype xsi:type="openmodelica:Connector" Name="Modelica.Mechanics.Rotational.Interfaces.Flange_a">
+      <children Name="phi" is_a="//@componentprototype.0/@componentprototype.82"/>
+      <children Name="tau" is_a="//@componentprototype.0/@componentprototype.81"/>
+    </componentprototype>
     <componentprototype xsi:type="openmodelica:Type" Name="Modelica.SIunits.Torque"/>
     <componentprototype xsi:type="openmodelica:Type" Name="Modelica.SIunits.Angle"/>
-    <componentprototype xsi:type="openmodelica:Connector" Name="Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3.Components.ControlBus"/>
-    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3.Components.AxisType2"/>
+    <componentprototype xsi:type="openmodelica:Connector" Name="Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3.Components.ControlBus">
+      <children Name="axisControlBus1" is_a="//@componentprototype.0/@componentprototype.68"/>
+      <children Name="axisControlBus2" is_a="//@componentprototype.0/@componentprototype.68"/>
+      <children Name="axisControlBus3" is_a="//@componentprototype.0/@componentprototype.68"/>
+      <children Name="axisControlBus4" is_a="//@componentprototype.0/@componentprototype.68"/>
+      <children Name="axisControlBus5" is_a="//@componentprototype.0/@componentprototype.68"/>
+      <children Name="axisControlBus6" is_a="//@componentprototype.0/@componentprototype.68"/>
+    </componentprototype>
+    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3.Components.AxisType2">
+      <children Name="Ts" is_a="//@componentprototype.0/@componentprototype.90"/>
+      <children Name="J" is_a="//@componentprototype.0/@componentprototype.73"/>
+      <children Name="Rv0" is_a="//@componentprototype.0/@componentprototype.81"/>
+      <children Name="flange" is_a="//@componentprototype.0/@componentprototype.72"/>
+      <children Name="gear" is_a="//@componentprototype.0/@componentprototype.71"/>
+      <children Name="motor" is_a="//@componentprototype.0/@componentprototype.70"/>
+      <children Name="controller" is_a="//@componentprototype.0/@componentprototype.69"/>
+      <children Name="axisControlBus" is_a="//@componentprototype.0/@componentprototype.68"/>
+      <children Name="angleSensor" is_a="//@componentprototype.0/@componentprototype.67"/>
+      <children Name="speedSensor" is_a="//@componentprototype.0/@componentprototype.66"/>
+      <children Name="accSensor" is_a="//@componentprototype.0/@componentprototype.65"/>
+      <children Name="initializeFlange" is_a="//@componentprototype.0/@componentprototype.64"/>
+      <children Name="const" is_a="//@componentprototype.0/@componentprototype.63"/>
+    </componentprototype>
     <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3.Components.AxisType1"/>
-    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3.Components.PathPlanning6"/>
-    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3.Components.MechanicalStructure"/>
+    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3.Components.PathPlanning6">
+      <children Name="speedMax" is_a="//@componentprototype.0/@componentprototype.89"/>
+      <children Name="accMax" is_a="//@componentprototype.0/@componentprototype.88"/>
+      <children Name="startTime" is_a="//@componentprototype.0/@componentprototype.90"/>
+      <children Name="swingTime" is_a="//@componentprototype.0/@componentprototype.90"/>
+      <children Name="angleBeg" is_a="//@componentprototype.0/@componentprototype.82"/>
+      <children Name="angleEnd" is_a="//@componentprototype.0/@componentprototype.82"/>
+      <children Name="controlBus" is_a="//@componentprototype.0/@componentprototype.83"/>
+      <children Name="path" is_a="//@componentprototype.0/@componentprototype.76"/>
+      <children Name="pathToAxis1" is_a="//@componentprototype.0/@componentprototype.75"/>
+      <children Name="pathToAxis2" is_a="//@componentprototype.0/@componentprototype.75"/>
+      <children Name="pathToAxis3" is_a="//@componentprototype.0/@componentprototype.75"/>
+      <children Name="pathToAxis4" is_a="//@componentprototype.0/@componentprototype.75"/>
+      <children Name="pathToAxis5" is_a="//@componentprototype.0/@componentprototype.75"/>
+      <children Name="pathToAxis6" is_a="//@componentprototype.0/@componentprototype.75"/>
+      <children Name="terminateSimulation" is_a="//@componentprototype.0/@componentprototype.74"/>
+    </componentprototype>
+    <componentprototype xsi:type="openmodelica:Model" Name="Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3.Components.MechanicalStructure">
+      <children Name="mLoad" is_a="//@componentprototype.0/@componentprototype.93"/>
+      <children Name="rLoad" is_a="//@componentprototype.0/@componentprototype.92"/>
+      <children Name="g" is_a="//@componentprototype.0/@componentprototype.91"/>
+      <children Name="q" is_a="//@componentprototype.0/@componentprototype.82"/>
+      <children Name="qd" is_a="//@componentprototype.0/@componentprototype.89"/>
+      <children Name="qdd" is_a="//@componentprototype.0/@componentprototype.88"/>
+      <children Name="tau" is_a="//@componentprototype.0/@componentprototype.81"/>
+      <children Name="axis1" is_a="//@componentprototype.0/@componentprototype.80"/>
+      <children Name="axis2" is_a="//@componentprototype.0/@componentprototype.80"/>
+      <children Name="axis3" is_a="//@componentprototype.0/@componentprototype.80"/>
+      <children Name="axis4" is_a="//@componentprototype.0/@componentprototype.80"/>
+      <children Name="axis5" is_a="//@componentprototype.0/@componentprototype.80"/>
+      <children Name="axis6" is_a="//@componentprototype.0/@componentprototype.80"/>
+      <children Name="world" is_a="//@componentprototype.0/@componentprototype.79"/>
+      <children Name="r1" is_a="//@componentprototype.0/@componentprototype.78"/>
+      <children Name="r2" is_a="//@componentprototype.0/@componentprototype.78"/>
+      <children Name="r3" is_a="//@componentprototype.0/@componentprototype.78"/>
+      <children Name="r4" is_a="//@componentprototype.0/@componentprototype.78"/>
+      <children Name="r5" is_a="//@componentprototype.0/@componentprototype.78"/>
+      <children Name="r6" is_a="//@componentprototype.0/@componentprototype.78"/>
+      <children Name="b0" is_a="//@componentprototype.0/@componentprototype.77"/>
+      <children Name="b1" is_a="//@componentprototype.0/@componentprototype.77"/>
+      <children Name="b2" is_a="//@componentprototype.0/@componentprototype.77"/>
+      <children Name="b3" is_a="//@componentprototype.0/@componentprototype.77"/>
+      <children Name="b4" is_a="//@componentprototype.0/@componentprototype.77"/>
+      <children Name="b5" is_a="//@componentprototype.0/@componentprototype.77"/>
+      <children Name="b6" is_a="//@componentprototype.0/@componentprototype.77"/>
+      <children Name="load" is_a="//@componentprototype.0/@componentprototype.77"/>
+    </componentprototype>
     <componentprototype xsi:type="openmodelica:Type" Name="Modelica.SIunits.AngularAcceleration"/>
     <componentprototype xsi:type="openmodelica:Type" Name="Modelica.SIunits.AngularVelocity"/>
     <componentprototype xsi:type="openmodelica:Type" Name="Modelica.SIunits.Time"/>
     <componentprototype xsi:type="openmodelica:Type" Name="Modelica.SIunits.Acceleration"/>
     <componentprototype xsi:type="openmodelica:Type" Name="Modelica.SIunits.Position"/>
     <componentprototype xsi:type="openmodelica:Type" Name="Modelica.SIunits.Mass"/>
-    <componentprototype xsi:type="openmodelica:Model"/>
+  </componentprototype>
+  <componentprototype xsi:type="openmodelica:Model" Name="fullRobot">
+    <children Name="mLoad" is_a="//@componentprototype.0/@componentprototype.93"/>
+    <children Name="rLoad" is_a="//@componentprototype.0/@componentprototype.92"/>
+    <children Name="g" is_a="//@componentprototype.0/@componentprototype.91"/>
+    <children Name="refStartTime" is_a="//@componentprototype.0/@componentprototype.90"/>
+    <children Name="refSwingTime" is_a="//@componentprototype.0/@componentprototype.90"/>
+    <children Name="refSpeedMax" is_a="//@componentprototype.0/@componentprototype.89"/>
+    <children Name="refAccMax" is_a="//@componentprototype.0/@componentprototype.88"/>
+    <children Name="Ts1" is_a="//@componentprototype.0/@componentprototype.90"/>
+    <children Name="Ts2" is_a="//@componentprototype.0/@componentprototype.90"/>
+    <children Name="Ts3" is_a="//@componentprototype.0/@componentprototype.90"/>
+    <children Name="Ts4" is_a="//@componentprototype.0/@componentprototype.90"/>
+    <children Name="Ts5" is_a="//@componentprototype.0/@componentprototype.90"/>
+    <children Name="Ts6" is_a="//@componentprototype.0/@componentprototype.90"/>
+    <children Name="mechanics" is_a="//@componentprototype.0/@componentprototype.87"/>
+    <children Name="pathPlanning" is_a="//@componentprototype.0/@componentprototype.86"/>
+    <children Name="axis1" is_a="//@componentprototype.0/@componentprototype.85"/>
+    <children Name="axis2" is_a="//@componentprototype.0/@componentprototype.85"/>
+    <children Name="axis3" is_a="//@componentprototype.0/@componentprototype.85"/>
+    <children Name="axis4" is_a="//@componentprototype.0/@componentprototype.84"/>
+    <children Name="axis5" is_a="//@componentprototype.0/@componentprototype.84"/>
+    <children Name="axis6" is_a="//@componentprototype.0/@componentprototype.84"/>
+    <children Name="controlBus" is_a="//@componentprototype.0/@componentprototype.83"/>
   </componentprototype>
 </openmodelica:Package>
