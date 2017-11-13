@@ -2,7 +2,7 @@
 package onlab.openmodelica.own.implementation.of.mdt
 
 import java.io.IOException
-import openmodelica.Package
+import openmodelica.Root
 import org.eclipse.core.resources.ResourcesPlugin
 import org.eclipse.core.runtime.IPath
 import org.eclipse.core.runtime.Path
@@ -14,14 +14,14 @@ import org.eclipse.emf.ecore.xmi.XMLResource
 
 class CreateEMFFileProvider {	
 	
-	def createEMFFile(ResourceSet resSet, Package rootPackage, IPath filePath, String fileName) {		
+	def createEMFFile(ResourceSet resSet, Root root, IPath filePath, String fileName) {		
 		val eclipseProject = getContainingProject(filePath)
 
 		val fmuXmlUri = URI.createPlatformResourceURI(eclipseProject.name + 
 			"/generated/" + fileName + ".openmodelica", true);		
 
 		val resource = getOrCreateResource(fmuXmlUri, resSet)
-		resource.contents.add(rootPackage)
+		resource.contents.add(root)
 		
 		val metadata = new BasicExtendedMetaData
 

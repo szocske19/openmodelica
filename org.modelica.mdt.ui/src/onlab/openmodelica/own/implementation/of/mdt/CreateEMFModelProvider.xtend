@@ -16,15 +16,9 @@ class CreateEMFModelProvider {
 	private extension OpenmodelicaFactory modelicaFactory = OpenmodelicaFactory.eINSTANCE
 	
 	def createEMFModel(ComponentPrototype rootComponent, Map<String, ComponentPrototype> metaClassMap) {
-		val rootPackage = createPackage() => [ package |
-			package.name = "Root"
+		val root = createRoot() => [ root |
+			root.name = "Root"
 		]
-
-		val dependency = createPackage() => [ package |
-			package.name = "dependency"
-		]	
-			
-		rootPackage.componentprototype.add(dependency)
 		
 		val orderedKeys = new ArrayList<String>(metaClassMap.keySet())		
 		Collections.reverse(orderedKeys)
@@ -32,30 +26,31 @@ class CreateEMFModelProvider {
 		for (String key : orderedKeys) {
 			val componentPrototype = metaClassMap.get(key)
 			if(!key.equals(rootComponent.name)){				
-				dependency.componentprototype.add(componentPrototype)				
+				root.dependencies.add(componentPrototype)				
 			} else {
-				rootPackage.componentprototype.add(componentPrototype)	
+				root.mainClass = componentPrototype	
 			}
 		}
 
-		return rootPackage
+		return root
 	}
 	
 	def ComponentPrototype createComponentPrototype(int prototypeType){
 		switch prototypeType {
-			case OpenmodelicaPackage.CLASS: modelicaFactory.createClass()
-			case OpenmodelicaPackage.PACKAGE: modelicaFactory.createPackage()
-			case OpenmodelicaPackage.EXTERNAL_OBJECT: modelicaFactory.createExternalObject()
-			case OpenmodelicaPackage.MODEL: modelicaFactory.createModel()
 			case OpenmodelicaPackage.BLOCK: modelicaFactory.createBlock()
+			case OpenmodelicaPackage.CLASS: modelicaFactory.createClass()
 			case OpenmodelicaPackage.CONNECTOR: modelicaFactory.createConnector()
+			case OpenmodelicaPackage.EXTERNAL_OBJECT: modelicaFactory.createExternalObject()
 			case OpenmodelicaPackage.FUNCTION: modelicaFactory.createFunction()
+			case OpenmodelicaPackage.MODEL: modelicaFactory.createModel()
+			case OpenmodelicaPackage.PACKAGE: modelicaFactory.createPackage()
 			case OpenmodelicaPackage.RECORD: modelicaFactory.createRecord()
+			
 			case OpenmodelicaPackage.BOOLEAN: modelicaFactory.createBoolean()
+			case OpenmodelicaPackage.ENUMERATION: modelicaFactory.createEnumeration()
 			case OpenmodelicaPackage.INTEGER: modelicaFactory.createInteger()
 			case OpenmodelicaPackage.REAL: modelicaFactory.createReal()
 			case OpenmodelicaPackage.STRING: modelicaFactory.createString()
-			case OpenmodelicaPackage.ENUMERATION: modelicaFactory.createEnumeration()
 			
 //			case OpenmodelicaPackage.TYPE: modelicaFactory.createType()
 			default:
@@ -104,6 +99,14 @@ class CreateEMFModelProvider {
 				modelicaExtension.superClass = superClass.superClass
 			]			
 			cp.extension.add(modelicaExtension)
+		}
+	}
+	
+	def addClass(ComponentPrototype modelicaPackage, ArrayList<ComponentPrototype> cpList){
+		if(modelicaPackage instanceof openmodelica.Package ){
+			for (subcp : cpList) {						
+				modelicaPackage.componentprototype.add(subcp)
+			}		
 		}
 	}
 	

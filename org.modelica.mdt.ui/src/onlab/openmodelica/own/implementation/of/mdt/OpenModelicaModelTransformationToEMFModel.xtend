@@ -20,6 +20,7 @@ import openmodelica.impl.IntegerImpl
 import openmodelica.impl.BooleanImpl
 import openmodelica.impl.StringImpl
 import openmodelica.impl.EnumerationImpl
+import openmodelica.impl.TypeImpl
 
 class OpenModelicaModelTransformationToEMFModel {	
 	private extension CreateEMFFileProvider createEMFFileProvider = new CreateEMFFileProvider();
@@ -29,7 +30,7 @@ class OpenModelicaModelTransformationToEMFModel {
 	private String fileName;
 	private IPath filePath;
 	private IPath fileLocation;
-	private static final SearchStrategy STRATEGY = SearchStrategy.BREADTH_FIRST;
+	private static final SearchStrategy STRATEGY = SearchStrategy.DEPTH_FIRST;
 
 	private static Waitlist waitlist;
 	private static Map<String, ComponentPrototype> metaClassMap
@@ -84,6 +85,8 @@ class OpenModelicaModelTransformationToEMFModel {
 			val className = class.toString();
 
 			val componentPrototype = createOrGetComponentPrototype(className, 0)
+			
+			createComponentPrototypeAndToHierarchy("ExternalObject", 1, OpenmodelicaPackage.EXTERNAL_OBJECT)
 
 			while (!waitlist.isEmpty()) {
 				//waitlist.print
@@ -136,9 +139,11 @@ class OpenModelicaModelTransformationToEMFModel {
 		componentPrototype.name = className
 		levelList.put(componentPrototype.getName(), level);
 		metaClassMap.put(componentPrototype.getName(), componentPrototype);
-		waitlist.add(componentPrototype);
-		if(!isPrimitive(className)){
-			loadModel(componentPrototype.name);			
+		if(!className.equals("ExternalObject")){
+			waitlist.add(componentPrototype);
+			if(!isPrimitive(className)){
+				loadModel(componentPrototype.name);			
+			}		
 		}
 		return componentPrototype
 	}
@@ -177,11 +182,35 @@ class OpenModelicaModelTransformationToEMFModel {
 
 
 	def expandNode(ComponentPrototype cp) {
+		if(cp instanceof openmodelica.Package){
+			val classList = getClassOfPackage(cp)
+			cp.addClass(classList)
+		}
+		
 		val listOfChildren = getChildrenOfNode(cp)	
 		cp.setChildren(listOfChildren)	
 		
-		val listOfSuperClasses = getSuperTypeList(cp)		
-		cp.setExtension(listOfSuperClasses)
+		
+		if( !(cp instanceof TypeImpl) || currentCompiler.isEnumeration(cp.name)){	
+			val listOfSuperClasses = getSuperTypeList(cp)		
+			cp.setExtension(listOfSuperClasses)
+		}
+		
+	}
+	
+	def ArrayList<ComponentPrototype> getClassOfPackage(ComponentPrototype packageCP) {
+		val packageName = packageCP.getName();
+		val level = levelList.get(packageName) + 1;		
+		val cpList = new ArrayList<ComponentPrototype>();
+		
+
+		val classNameList = currentCompiler.getClassNames(packageName);
+		for (className : classNameList) {
+			val child = createOrGetComponentPrototype(packageName + "." + className.toString, level)
+			cpList.add(child)
+		}
+
+		return cpList;
 	}
 
 	def ArrayList<ComponentReference> getChildrenOfNode(ComponentPrototype parent) {
@@ -245,17 +274,21 @@ class OpenModelicaModelTransformationToEMFModel {
 				OpenmodelicaPackage.BLOCK
 			case "class":
 				OpenmodelicaPackage.CLASS
+			case "expandable connector",
+			case "connector":
+				OpenmodelicaPackage.CONNECTOR
+			case "ExternalObject":
+				OpenmodelicaPackage.EXTERNAL_OBJECT		
+			case "function":
+				OpenmodelicaPackage.FUNCTION	
 			case "model":
 				OpenmodelicaPackage.MODEL
 			case "package":
-				OpenmodelicaPackage.PACKAGE
-			case "expandable connector",	
-			case "connector":
-				OpenmodelicaPackage.CONNECTOR
-			case "type":
-				OpenmodelicaPackage.TYPE
+				OpenmodelicaPackage.PACKAGE				
 			case "record":	
 				OpenmodelicaPackage.RECORD
+			case "type":
+				OpenmodelicaPackage.TYPE
 				
 			default:
 				throw new IllegalArgumentException(

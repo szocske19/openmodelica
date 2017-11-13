@@ -4,7 +4,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Class" eSuperTypes="#//ComponentPrototype"/>
   <eClassifiers xsi:type="ecore:EClass" name="Package" eSuperTypes="#//Class">
     <eStructuralFeatures xsi:type="ecore:EReference" name="componentprototype" upperBound="-1"
-        eType="#//ComponentPrototype" containment="true"/>
+        eType="#//ComponentPrototype"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExternalObject" eSuperTypes="#//Class"/>
   <eClassifiers xsi:type="ecore:EClass" name="Model" eSuperTypes="#//Class"/>
@@ -183,4 +183,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="#//EnumElement"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractValue" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Root" eSuperTypes="#//Identifier">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mainClass" lowerBound="1"
+        eType="#//ComponentPrototype" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dependencies" upperBound="-1"
+        eType="#//ComponentPrototype" containment="true"/>
+  </eClassifiers>
 </ecore:EPackage>

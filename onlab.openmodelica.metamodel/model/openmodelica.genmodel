@@ -38,7 +38,7 @@
     </genEnums>
     <genClasses ecoreClass="openmodelica.ecore#//Class"/>
     <genClasses ecoreClass="openmodelica.ecore#//Package">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference openmodelica.ecore#//Package/componentprototype"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference openmodelica.ecore#//Package/componentprototype"/>
     </genClasses>
     <genClasses ecoreClass="openmodelica.ecore#//ExternalObject"/>
     <genClasses ecoreClass="openmodelica.ecore#//Model"/>
@@ -158,5 +158,9 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference openmodelica.ecore#//EnumerationValue/value"/>
     </genClasses>
     <genClasses ecoreClass="openmodelica.ecore#//AbstractValue"/>
+    <genClasses ecoreClass="openmodelica.ecore#//Root">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference openmodelica.ecore#//Root/mainClass"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference openmodelica.ecore#//Root/dependencies"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>
