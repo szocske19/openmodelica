@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<openmodelica:Package xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:openmodelica="hu.bme.mit.inf.onlab/openmodelica" Name="Root">
+  <componentprototype xsi:type="openmodelica:Package" Name="dependency">
+    <componentprototype xsi:type="openmodelica:Real" Name="Modelica.SIunits.Acceleration">
+      <extension superClass="//@componentprototype.0/@componentprototype.2"/>
+    </componentprototype>
+    <componentprototype xsi:type="openmodelica:Real" Name="Modelica.SIunits.Velocity">
+      <extension superClass="//@componentprototype.0/@componentprototype.2"/>
+    </componentprototype>
+    <componentprototype xsi:type="openmodelica:Real" Name="Real"/>
+  </componentprototype>
+  <componentprototype xsi:type="openmodelica:Model" Name="MyTest">
+    <children Name="v" is_a="//@componentprototype.0/@componentprototype.1" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="a" is_a="//@componentprototype.0/@componentprototype.0" comment="" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </componentprototype>
+</openmodelica:Package>
