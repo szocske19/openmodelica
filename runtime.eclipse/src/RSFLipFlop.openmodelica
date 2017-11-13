@@ -1,87 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openmodelica:Package xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:openmodelica="hu.bme.mit.inf.onlab/openmodelica" Name="Root">
-  <componentprototype xsi:type="openmodelica:Block" Name="RSFlipFlop">
-    <extension componentprototype="//@componentprototype.1/@componentprototype.2"/>
-    <connectclause>
-      <firstPart xsi:type="openmodelica:InstanceTarget" componentinstance="//@componentprototype.0/@children.4">
-        <target xsi:type="openmodelica:VarTarget" componentinstance="//@componentprototype.1/@componentprototype.5/@children.2"/>
-      </firstPart>
-      <secondPart xsi:type="openmodelica:InstanceTarget" componentinstance="//@componentprototype.0/@children.3">
-        <target xsi:type="openmodelica:VarTarget" componentinstance="//@componentprototype.1/@componentprototype.5/@children.1"/>
-      </secondPart>
-    </connectclause>
-    <connectclause>
-      <firstPart xsi:type="openmodelica:InstanceTarget" componentinstance="//@componentprototype.0/@children.4">
-        <target xsi:type="openmodelica:VarTarget" componentinstance="//@componentprototype.1/@componentprototype.5/@children.2"/>
-      </firstPart>
-      <secondPart xsi:type="openmodelica:VarTarget" componentinstance="//@componentprototype.0/@children.1"/>
-    </connectclause>
-    <connectclause>
-      <firstPart xsi:type="openmodelica:InstanceTarget" componentinstance="//@componentprototype.0/@children.3">
-        <target xsi:type="openmodelica:VarTarget" componentinstance="//@componentprototype.1/@componentprototype.5/@children.2"/>
-      </firstPart>
-      <secondPart xsi:type="openmodelica:InstanceTarget" componentinstance="//@componentprototype.0/@children.5">
-        <target xsi:type="openmodelica:VarTarget" componentinstance="//@componentprototype.1/@componentprototype.6/@children.0"/>
-      </secondPart>
-    </connectclause>
-    <connectclause>
-      <firstPart xsi:type="openmodelica:InstanceTarget" componentinstance="//@componentprototype.0/@children.5">
-        <target xsi:type="openmodelica:VarTarget" componentinstance="//@componentprototype.1/@componentprototype.6/@children.1"/>
-      </firstPart>
-      <secondPart xsi:type="openmodelica:InstanceTarget" componentinstance="//@componentprototype.0/@children.4">
-        <target xsi:type="openmodelica:VarTarget" componentinstance="//@componentprototype.1/@componentprototype.5/@children.0"/>
-      </secondPart>
-    </connectclause>
-    <connectclause>
-      <firstPart xsi:type="openmodelica:InstanceTarget" componentinstance="//@componentprototype.0/@children.5">
-        <target xsi:type="openmodelica:VarTarget" componentinstance="//@componentprototype.1/@componentprototype.6/@children.1"/>
-      </firstPart>
-      <secondPart xsi:type="openmodelica:VarTarget" componentinstance="//@componentprototype.0/@children.2"/>
-    </connectclause>
-    <connectclause>
-      <firstPart xsi:type="openmodelica:VarTarget" componentinstance="//@componentprototype.0/@children.6"/>
-      <secondPart xsi:type="openmodelica:InstanceTarget" componentinstance="//@componentprototype.0/@children.3">
-        <target xsi:type="openmodelica:VarTarget" componentinstance="//@componentprototype.1/@componentprototype.5/@children.0"/>
-      </secondPart>
-    </connectclause>
-    <connectclause>
-      <firstPart xsi:type="openmodelica:VarTarget" componentinstance="//@componentprototype.0/@children.6"/>
-      <secondPart xsi:type="openmodelica:InstanceTarget" componentinstance="//@componentprototype.0/@children.4">
-        <target xsi:type="openmodelica:VarTarget" componentinstance="//@componentprototype.1/@componentprototype.5/@children.1"/>
-      </secondPart>
-    </connectclause>
-    <children Name="Qini" is_a="//@componentprototype.1/@types.0"/>
-    <children Name="Q" is_a="//@componentprototype.1/@componentprototype.1"/>
-    <children Name="QI" is_a="//@componentprototype.1/@componentprototype.1"/>
-    <children Name="nor" is_a="//@componentprototype.1/@componentprototype.3"/>
-    <children Name="nor1" is_a="//@componentprototype.1/@componentprototype.3"/>
-    <children Name="pre" is_a="//@componentprototype.1/@componentprototype.4"/>
-    <children Name="S" is_a="//@componentprototype.1/@componentprototype.0"/>
-    <children Name="R" is_a="//@componentprototype.1/@componentprototype.0"/>
-  </componentprototype>
   <componentprototype xsi:type="openmodelica:Package" Name="dependency">
     <types Name="BOOLEAN" type="BOOLEAN"/>
     <componentprototype xsi:type="openmodelica:Connector" Name="BooleanInput">
-      <children Name="BooleanInput" is_a="//@componentprototype.1/@types.0"/>
+      <children Name="BooleanInput" is_a="//@componentprototype.0/@types.0"/>
     </componentprototype>
     <componentprototype xsi:type="openmodelica:Connector" Name="BooleanOutput">
-      <children Name="BooleanOutput" is_a="//@componentprototype.1/@types.0"/>
+      <children Name="BooleanOutput" is_a="//@componentprototype.0/@types.0"/>
     </componentprototype>
     <componentprototype xsi:type="openmodelica:Block" Name="partialBooleanBlockIcon"/>
     <componentprototype xsi:type="openmodelica:Block" Name="Nor">
-      <extension componentprototype="//@componentprototype.1/@componentprototype.5"/>
+      <extension componentprototype="//@componentprototype.0/@componentprototype.5"/>
     </componentprototype>
     <componentprototype xsi:type="openmodelica:Block" Name="Pre">
-      <extension componentprototype="//@componentprototype.1/@componentprototype.6"/>
+      <extension componentprototype="//@componentprototype.0/@componentprototype.6"/>
     </componentprototype>
     <componentprototype xsi:type="openmodelica:Block" Name="partialBooleanSI2SO">
-      <children Name="u1" is_a="//@componentprototype.1/@componentprototype.0"/>
-      <children Name="u2" is_a="//@componentprototype.1/@componentprototype.0"/>
-      <children Name="y" is_a="//@componentprototype.1/@componentprototype.1"/>
+      <children Name="u1" is_a="//@componentprototype.0/@componentprototype.0"/>
+      <children Name="u2" is_a="//@componentprototype.0/@componentprototype.0"/>
+      <children Name="y" is_a="//@componentprototype.0/@componentprototype.1"/>
     </componentprototype>
     <componentprototype xsi:type="openmodelica:Block" Name="partialBooleanSISO">
-      <children Name="u" is_a="//@componentprototype.1/@componentprototype.0"/>
-      <children Name="y" is_a="//@componentprototype.1/@componentprototype.1"/>
+      <children Name="u" is_a="//@componentprototype.0/@componentprototype.0"/>
+      <children Name="y" is_a="//@componentprototype.0/@componentprototype.1"/>
     </componentprototype>
+  </componentprototype>
+  <componentprototype xsi:type="openmodelica:Block" Name="RSFlipFlop">
+    <extension componentprototype="//@componentprototype.0/@componentprototype.2"/>
+    <connectclause>
+      <firstPart xsi:type="openmodelica:InstanceTarget" componentinstance="//@componentprototype.1/@children.4">
+        <target xsi:type="openmodelica:VarTarget" componentinstance="//@componentprototype.0/@componentprototype.5/@children.2"/>
+      </firstPart>
+      <secondPart xsi:type="openmodelica:InstanceTarget" componentinstance="//@componentprototype.1/@children.3">
+        <target xsi:type="openmodelica:VarTarget" componentinstance="//@componentprototype.0/@componentprototype.5/@children.1"/>
+      </secondPart>
+    </connectclause>
+    <connectclause>
+      <firstPart xsi:type="openmodelica:InstanceTarget" componentinstance="//@componentprototype.1/@children.4">
+        <target xsi:type="openmodelica:VarTarget" componentinstance="//@componentprototype.0/@componentprototype.5/@children.2"/>
+      </firstPart>
+      <secondPart xsi:type="openmodelica:VarTarget" componentinstance="//@componentprototype.1/@children.1"/>
+    </connectclause>
+    <connectclause>
+      <firstPart xsi:type="openmodelica:InstanceTarget" componentinstance="//@componentprototype.1/@children.3">
+        <target xsi:type="openmodelica:VarTarget" componentinstance="//@componentprototype.0/@componentprototype.5/@children.2"/>
+      </firstPart>
+      <secondPart xsi:type="openmodelica:InstanceTarget" componentinstance="//@componentprototype.1/@children.5">
+        <target xsi:type="openmodelica:VarTarget" componentinstance="//@componentprototype.0/@componentprototype.6/@children.0"/>
+      </secondPart>
+    </connectclause>
+    <connectclause>
+      <firstPart xsi:type="openmodelica:InstanceTarget" componentinstance="//@componentprototype.1/@children.5">
+        <target xsi:type="openmodelica:VarTarget" componentinstance="//@componentprototype.0/@componentprototype.6/@children.1"/>
+      </firstPart>
+      <secondPart xsi:type="openmodelica:InstanceTarget" componentinstance="//@componentprototype.1/@children.4">
+        <target xsi:type="openmodelica:VarTarget" componentinstance="//@componentprototype.0/@componentprototype.5/@children.0"/>
+      </secondPart>
+    </connectclause>
+    <connectclause>
+      <firstPart xsi:type="openmodelica:InstanceTarget" componentinstance="//@componentprototype.1/@children.5">
+        <target xsi:type="openmodelica:VarTarget" componentinstance="//@componentprototype.0/@componentprototype.6/@children.1"/>
+      </firstPart>
+      <secondPart xsi:type="openmodelica:VarTarget" componentinstance="//@componentprototype.1/@children.2"/>
+    </connectclause>
+    <connectclause>
+      <firstPart xsi:type="openmodelica:VarTarget" componentinstance="//@componentprototype.1/@children.6"/>
+      <secondPart xsi:type="openmodelica:InstanceTarget" componentinstance="//@componentprototype.1/@children.3">
+        <target xsi:type="openmodelica:VarTarget" componentinstance="//@componentprototype.0/@componentprototype.5/@children.0"/>
+      </secondPart>
+    </connectclause>
+    <connectclause>
+      <firstPart xsi:type="openmodelica:VarTarget" componentinstance="//@componentprototype.1/@children.6"/>
+      <secondPart xsi:type="openmodelica:InstanceTarget" componentinstance="//@componentprototype.1/@children.4">
+        <target xsi:type="openmodelica:VarTarget" componentinstance="//@componentprototype.0/@componentprototype.5/@children.1"/>
+      </secondPart>
+    </connectclause>
+    <children Name="Qini" is_a="//@componentprototype.0/@types.0"/>
+    <children Name="Q" is_a="//@componentprototype.0/@componentprototype.1"/>
+    <children Name="QI" is_a="//@componentprototype.0/@componentprototype.1"/>
+    <children Name="nor" is_a="//@componentprototype.0/@componentprototype.3"/>
+    <children Name="nor1" is_a="//@componentprototype.0/@componentprototype.3"/>
+    <children Name="pre" is_a="//@componentprototype.0/@componentprototype.4"/>
+    <children Name="S" is_a="//@componentprototype.0/@componentprototype.0"/>
+    <children Name="R" is_a="//@componentprototype.0/@componentprototype.0"/>
   </componentprototype>
 </openmodelica:Package>

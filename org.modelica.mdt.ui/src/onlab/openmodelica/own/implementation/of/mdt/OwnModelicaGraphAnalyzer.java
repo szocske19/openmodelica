@@ -187,7 +187,7 @@ public class OwnModelicaGraphAnalyzer
 			if(!classContentMap.containsKey(treeNode.getName())){
 				classContentMap.put(treeNode.getName(), treeNode);
 				levelList.get(node.getLevel()+1).add(treeNode);
-				waitlist.add(treeNode);
+//				waitlist.add(treeNode);
 			}
 			
 		}

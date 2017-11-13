@@ -85,7 +85,7 @@ public class TreeNode
 				"	name: " + name + " level: " + level + " children:\n");
 		for (ComponentReference componentReference : children)
 		{
-			System.out.print("		" + componentReference.getTreeNode().name);
+			System.out.print("		" + componentReference.toString());
 		}
 	}
 

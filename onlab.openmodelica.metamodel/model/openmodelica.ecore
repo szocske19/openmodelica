@@ -17,19 +17,32 @@
         eType="#//ComponentParameter" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extension" upperBound="-1"
         eType="#//Extension" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="types" upperBound="-1"
-        eType="#//Type" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="connectclause" upperBound="-1"
         eType="#//ConnectClause" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
         eType="#//ComponentInstance" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="overload" upperBound="-1"
+        eType="#//OverLoad" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Record" eSuperTypes="#//Class"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Type" eSuperTypes="#//Class">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//BasicType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Record" eSuperTypes="#//Primitives"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Type" abstract="true" eSuperTypes="#//Primitives">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="quantity" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fixed" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ComponentInstance" eSuperTypes="#//Identifier">
     <eStructuralFeatures xsi:type="ecore:EReference" name="is_a" lowerBound="1" eType="#//ComponentPrototype"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="comment" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isProtected" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isFinal" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isFlow" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isStream" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isReplaceable" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variability" eType="#//Variability"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="innerOuter" eType="#//InnerOuter"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="inputOutput" eType="#//InputOutput"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dimensions" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//AbstractValue"
+        derived="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="BasicType">
     <eLiterals name="REAL"/>
@@ -45,10 +58,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="guard" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Extension">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="componentprototype" lowerBound="1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="superClass" lowerBound="1"
         eType="#//ComponentPrototype"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="overload" upperBound="-1"
-        eType="#//OverLoad" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ComponentParameter" abstract="true"
       eSuperTypes="#//Identifier"/>
@@ -58,8 +69,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="OverLoad">
     <eStructuralFeatures xsi:type="ecore:EReference" name="OverLoadedSuperParameter"
         lowerBound="1" eType="#//ComponentInstance"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="OverLoadedSubParameter"
-        lowerBound="1" eType="#//ComponentInstance"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="extension" eType="#//Extension"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ConnectClause">
     <eStructuralFeatures xsi:type="ecore:EReference" name="firstPart" lowerBound="1"
@@ -76,4 +86,101 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
         eType="#//Target" containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Variability">
+    <eLiterals name="CONSTANT" literal="constant"/>
+    <eLiterals name="PARAMETER" value="1" literal="parameter"/>
+    <eLiterals name="DISCRETE" value="2" literal="discrete"/>
+    <eLiterals name="UNKNOWN" value="3" literal="unknown"/>
+    <eLiterals name="UNSPECIFIED" value="4" literal="unspecified"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="InnerOuter">
+    <eLiterals name="INNER" literal="inner"/>
+    <eLiterals name="OUTER" value="1" literal="outer"/>
+    <eLiterals name="NONE" value="2" literal="none"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="InputOutput">
+    <eLiterals name="INPUT" literal="input"/>
+    <eLiterals name="OUTPUT" value="1" literal="output"/>
+    <eLiterals name="UNSPECIFIED" value="2" literal="unspecified"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Real" eSuperTypes="#//Type">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Double"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"
+        defaultValueLiteral="&quot;&quot;"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="displayUnit" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"
+        defaultValueLiteral="&quot;&quot;"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="min" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Double"
+        defaultValueLiteral="-1.e+60"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="max" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Double"
+        defaultValueLiteral="1.e+60"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="start" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Double"
+        defaultValueLiteral="0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nominal" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Double"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unbounded" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stateSelect" eType="#//StateSelect"
+        defaultValueLiteral="default"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Integer" eSuperTypes="#//Type">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Int"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="min" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Long"
+        defaultValueLiteral="-1000000000000000000"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="max" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Long"
+        defaultValueLiteral="1000000000000000000"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="start" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Int"
+        defaultValueLiteral="0"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Boolean" eSuperTypes="#//Type">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="start" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="String" eSuperTypes="#//Type">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="start" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Enumeration" eSuperTypes="#//Type">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="element" upperBound="-1"
+        eType="#//EnumElement" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//EnumElement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="min" eType="#//EnumElement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="max" eType="#//EnumElement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="start" eType="#//EnumElement"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Primitives" abstract="true" eSuperTypes="#//Class"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="StateSelect">
+    <eLiterals name="NEVER" literal="never"/>
+    <eLiterals name="AVOID" value="1" literal="avoid"/>
+    <eLiterals name="DEFAULT" value="2" literal="default"/>
+    <eLiterals name="PREFER" value="3" literal="prefer"/>
+    <eLiterals name="ALWAYS" value="4" literal="always"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EnumElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="index" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Int"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RealValue" eSuperTypes="#//AbstractValue">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="instanceOf" lowerBound="1"
+        eType="#//Real"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Double"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IntegerValue" eSuperTypes="#//AbstractValue">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="instanceOf" lowerBound="1"
+        eType="#//Integer"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Int"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BooleanValue" eSuperTypes="#//AbstractValue">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="instanceOf" lowerBound="1"
+        eType="#//Boolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StringValue" eSuperTypes="#//AbstractValue">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="instanceOf" lowerBound="1"
+        eType="#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EnumerationValue" eSuperTypes="#//AbstractValue">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="instanceOf" lowerBound="1"
+        eType="#//Enumeration"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="#//EnumElement"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractValue" abstract="true"/>
 </ecore:EPackage>

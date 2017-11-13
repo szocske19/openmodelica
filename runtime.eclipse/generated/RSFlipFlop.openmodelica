@@ -2,27 +2,41 @@
 <openmodelica:Package xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:openmodelica="hu.bme.mit.inf.onlab/openmodelica" Name="Root">
   <componentprototype xsi:type="openmodelica:Package" Name="dependency">
     <componentprototype xsi:type="openmodelica:Block" Name="Modelica.Blocks.Interfaces.partialBooleanSISO">
-      <children Name="u" is_a="//@componentprototype.0/@componentprototype.3"/>
-      <children Name="y" is_a="//@componentprototype.0/@componentprototype.6"/>
+      <extension superClass="//@componentprototype.0/@componentprototype.2"/>
+      <children Name="u" is_a="//@componentprototype.0/@componentprototype.3" comment="Connector of Boolean input signal" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+      <children Name="y" is_a="//@componentprototype.0/@componentprototype.6" comment="Connector of Boolean output signal" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
     </componentprototype>
     <componentprototype xsi:type="openmodelica:Block" Name="Modelica.Blocks.Interfaces.partialBooleanSI2SO">
-      <children Name="u1" is_a="//@componentprototype.0/@componentprototype.3"/>
-      <children Name="u2" is_a="//@componentprototype.0/@componentprototype.3"/>
-      <children Name="y" is_a="//@componentprototype.0/@componentprototype.6"/>
+      <extension superClass="//@componentprototype.0/@componentprototype.2"/>
+      <children Name="u1" is_a="//@componentprototype.0/@componentprototype.3" comment="Connector of first Boolean input signal" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+      <children Name="u2" is_a="//@componentprototype.0/@componentprototype.3" comment="Connector of second Boolean input signal" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+      <children Name="y" is_a="//@componentprototype.0/@componentprototype.6" comment="Connector of Boolean output signal" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
     </componentprototype>
     <componentprototype xsi:type="openmodelica:Block" Name="Modelica.Blocks.Icons.PartialBooleanBlock"/>
-    <componentprototype xsi:type="openmodelica:Connector" Name="Modelica.Blocks.Interfaces.BooleanInput"/>
-    <componentprototype xsi:type="openmodelica:Block" Name="Modelica.Blocks.Logical.Pre"/>
-    <componentprototype xsi:type="openmodelica:Block" Name="Modelica.Blocks.Logical.Nor"/>
-    <componentprototype xsi:type="openmodelica:Connector" Name="Modelica.Blocks.Interfaces.BooleanOutput"/>
+    <componentprototype xsi:type="openmodelica:Connector" Name="Modelica.Blocks.Interfaces.BooleanInput">
+      <extension superClass="//@componentprototype.0/@componentprototype.7"/>
+    </componentprototype>
+    <componentprototype xsi:type="openmodelica:Block" Name="Modelica.Blocks.Logical.Pre">
+      <extension superClass="//@componentprototype.0/@componentprototype.0"/>
+      <children Name="pre_u_start" is_a="//@componentprototype.0/@componentprototype.7" comment="Start value of pre(u) at initial time" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    </componentprototype>
+    <componentprototype xsi:type="openmodelica:Block" Name="Modelica.Blocks.Logical.Nor">
+      <extension superClass="//@componentprototype.0/@componentprototype.1"/>
+    </componentprototype>
+    <componentprototype xsi:type="openmodelica:Connector" Name="Modelica.Blocks.Interfaces.BooleanOutput">
+      <extension superClass="//@componentprototype.0/@componentprototype.7"/>
+    </componentprototype>
+    <componentprototype xsi:type="openmodelica:Boolean" Name="Boolean"/>
   </componentprototype>
   <componentprototype xsi:type="openmodelica:Block" Name="RSFlipFlop">
-    <children Name="Q" is_a="//@componentprototype.0/@componentprototype.6"/>
-    <children Name="QI" is_a="//@componentprototype.0/@componentprototype.6"/>
-    <children Name="nor" is_a="//@componentprototype.0/@componentprototype.5"/>
-    <children Name="nor1" is_a="//@componentprototype.0/@componentprototype.5"/>
-    <children Name="pre" is_a="//@componentprototype.0/@componentprototype.4"/>
-    <children Name="S" is_a="//@componentprototype.0/@componentprototype.3"/>
-    <children Name="R" is_a="//@componentprototype.0/@componentprototype.3"/>
+    <extension superClass="//@componentprototype.0/@componentprototype.2"/>
+    <children Name="Qini" is_a="//@componentprototype.0/@componentprototype.7" comment="Start value of Q at initial time" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="Q" is_a="//@componentprototype.0/@componentprototype.6" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="QI" is_a="//@componentprototype.0/@componentprototype.6" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="nor" is_a="//@componentprototype.0/@componentprototype.5" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="nor1" is_a="//@componentprototype.0/@componentprototype.5" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="pre" is_a="//@componentprototype.0/@componentprototype.4" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="S" is_a="//@componentprototype.0/@componentprototype.3" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="R" is_a="//@componentprototype.0/@componentprototype.3" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
   </componentprototype>
 </openmodelica:Package>

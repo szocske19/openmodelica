@@ -47,8 +47,12 @@ public class ComponentAdvancedParser {
 				matcher.reset();
 				while (matcher.find()) {
 					atributes[j] = matcher.group();
+					atributes[j] = atributes[j].trim();
 					if (atributes[j].endsWith(",")) {
 						atributes[j] = atributes[j].substring(0, atributes[j].length() - 1);
+					}
+					if (atributes[j].startsWith("\"") && atributes[j].endsWith("\"") ){
+						atributes[j] = atributes[j].substring(1, atributes[j].length() - 1);
 					}
 					j++;
 				}

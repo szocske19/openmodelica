@@ -12,6 +12,30 @@
       <genEnumLiterals ecoreEnumLiteral="openmodelica.ecore#//BasicType/BOOLEAN"/>
       <genEnumLiterals ecoreEnumLiteral="openmodelica.ecore#//BasicType/STRING"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="openmodelica.ecore#//Variability">
+      <genEnumLiterals ecoreEnumLiteral="openmodelica.ecore#//Variability/CONSTANT"/>
+      <genEnumLiterals ecoreEnumLiteral="openmodelica.ecore#//Variability/PARAMETER"/>
+      <genEnumLiterals ecoreEnumLiteral="openmodelica.ecore#//Variability/DISCRETE"/>
+      <genEnumLiterals ecoreEnumLiteral="openmodelica.ecore#//Variability/UNKNOWN"/>
+      <genEnumLiterals ecoreEnumLiteral="openmodelica.ecore#//Variability/UNSPECIFIED"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="openmodelica.ecore#//InnerOuter">
+      <genEnumLiterals ecoreEnumLiteral="openmodelica.ecore#//InnerOuter/INNER"/>
+      <genEnumLiterals ecoreEnumLiteral="openmodelica.ecore#//InnerOuter/OUTER"/>
+      <genEnumLiterals ecoreEnumLiteral="openmodelica.ecore#//InnerOuter/NONE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="openmodelica.ecore#//InputOutput">
+      <genEnumLiterals ecoreEnumLiteral="openmodelica.ecore#//InputOutput/INPUT"/>
+      <genEnumLiterals ecoreEnumLiteral="openmodelica.ecore#//InputOutput/OUTPUT"/>
+      <genEnumLiterals ecoreEnumLiteral="openmodelica.ecore#//InputOutput/UNSPECIFIED"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="openmodelica.ecore#//StateSelect">
+      <genEnumLiterals ecoreEnumLiteral="openmodelica.ecore#//StateSelect/NEVER"/>
+      <genEnumLiterals ecoreEnumLiteral="openmodelica.ecore#//StateSelect/AVOID"/>
+      <genEnumLiterals ecoreEnumLiteral="openmodelica.ecore#//StateSelect/DEFAULT"/>
+      <genEnumLiterals ecoreEnumLiteral="openmodelica.ecore#//StateSelect/PREFER"/>
+      <genEnumLiterals ecoreEnumLiteral="openmodelica.ecore#//StateSelect/ALWAYS"/>
+    </genEnums>
     <genClasses ecoreClass="openmodelica.ecore#//Class"/>
     <genClasses ecoreClass="openmodelica.ecore#//Package">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference openmodelica.ecore#//Package/componentprototype"/>
@@ -24,16 +48,28 @@
     <genClasses ecoreClass="openmodelica.ecore#//ComponentPrototype">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference openmodelica.ecore#//ComponentPrototype/componentParameter"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference openmodelica.ecore#//ComponentPrototype/extension"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference openmodelica.ecore#//ComponentPrototype/types"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference openmodelica.ecore#//ComponentPrototype/connectclause"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference openmodelica.ecore#//ComponentPrototype/children"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference openmodelica.ecore#//ComponentPrototype/overload"/>
     </genClasses>
     <genClasses ecoreClass="openmodelica.ecore#//Record"/>
     <genClasses ecoreClass="openmodelica.ecore#//Type">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute openmodelica.ecore#//Type/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute openmodelica.ecore#//Type/quantity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute openmodelica.ecore#//Type/fixed"/>
     </genClasses>
     <genClasses ecoreClass="openmodelica.ecore#//ComponentInstance">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference openmodelica.ecore#//ComponentInstance/is_a"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute openmodelica.ecore#//ComponentInstance/comment"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute openmodelica.ecore#//ComponentInstance/isProtected"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute openmodelica.ecore#//ComponentInstance/isFinal"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute openmodelica.ecore#//ComponentInstance/isFlow"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute openmodelica.ecore#//ComponentInstance/isStream"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute openmodelica.ecore#//ComponentInstance/isReplaceable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute openmodelica.ecore#//ComponentInstance/variability"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute openmodelica.ecore#//ComponentInstance/innerOuter"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute openmodelica.ecore#//ComponentInstance/inputOutput"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute openmodelica.ecore#//ComponentInstance/dimensions"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference openmodelica.ecore#//ComponentInstance/value"/>
     </genClasses>
     <genClasses ecoreClass="openmodelica.ecore#//Equation">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute openmodelica.ecore#//Equation/exp"/>
@@ -43,8 +79,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute openmodelica.ecore#//Algorithm/guard"/>
     </genClasses>
     <genClasses ecoreClass="openmodelica.ecore#//Extension">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference openmodelica.ecore#//Extension/componentprototype"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference openmodelica.ecore#//Extension/overload"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference openmodelica.ecore#//Extension/superClass"/>
     </genClasses>
     <genClasses image="false" ecoreClass="openmodelica.ecore#//ComponentParameter"/>
     <genClasses image="false" ecoreClass="openmodelica.ecore#//Identifier">
@@ -52,7 +87,7 @@
     </genClasses>
     <genClasses ecoreClass="openmodelica.ecore#//OverLoad">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference openmodelica.ecore#//OverLoad/OverLoadedSuperParameter"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference openmodelica.ecore#//OverLoad/OverLoadedSubParameter"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference openmodelica.ecore#//OverLoad/extension"/>
     </genClasses>
     <genClasses ecoreClass="openmodelica.ecore#//ConnectClause">
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference openmodelica.ecore#//ConnectClause/firstPart"/>
@@ -65,5 +100,63 @@
     <genClasses ecoreClass="openmodelica.ecore#//InstanceTarget">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference openmodelica.ecore#//InstanceTarget/target"/>
     </genClasses>
+    <genClasses ecoreClass="openmodelica.ecore#//Real">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute openmodelica.ecore#//Real/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute openmodelica.ecore#//Real/unit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute openmodelica.ecore#//Real/displayUnit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute openmodelica.ecore#//Real/min"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute openmodelica.ecore#//Real/max"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute openmodelica.ecore#//Real/start"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute openmodelica.ecore#//Real/nominal"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute openmodelica.ecore#//Real/unbounded"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute openmodelica.ecore#//Real/stateSelect"/>
+    </genClasses>
+    <genClasses ecoreClass="openmodelica.ecore#//Integer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute openmodelica.ecore#//Integer/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute openmodelica.ecore#//Integer/min"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute openmodelica.ecore#//Integer/max"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute openmodelica.ecore#//Integer/start"/>
+    </genClasses>
+    <genClasses ecoreClass="openmodelica.ecore#//Boolean">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute openmodelica.ecore#//Boolean/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute openmodelica.ecore#//Boolean/start"/>
+    </genClasses>
+    <genClasses ecoreClass="openmodelica.ecore#//String">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute openmodelica.ecore#//String/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute openmodelica.ecore#//String/start"/>
+    </genClasses>
+    <genClasses ecoreClass="openmodelica.ecore#//Enumeration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference openmodelica.ecore#//Enumeration/element"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference openmodelica.ecore#//Enumeration/value"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference openmodelica.ecore#//Enumeration/min"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference openmodelica.ecore#//Enumeration/max"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference openmodelica.ecore#//Enumeration/start"/>
+    </genClasses>
+    <genClasses ecoreClass="openmodelica.ecore#//Primitives"/>
+    <genClasses ecoreClass="openmodelica.ecore#//EnumElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute openmodelica.ecore#//EnumElement/index"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute openmodelica.ecore#//EnumElement/name"/>
+    </genClasses>
+    <genClasses ecoreClass="openmodelica.ecore#//RealValue">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference openmodelica.ecore#//RealValue/instanceOf"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute openmodelica.ecore#//RealValue/value"/>
+    </genClasses>
+    <genClasses ecoreClass="openmodelica.ecore#//IntegerValue">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference openmodelica.ecore#//IntegerValue/instanceOf"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute openmodelica.ecore#//IntegerValue/value"/>
+    </genClasses>
+    <genClasses ecoreClass="openmodelica.ecore#//BooleanValue">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference openmodelica.ecore#//BooleanValue/instanceOf"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute openmodelica.ecore#//BooleanValue/value"/>
+    </genClasses>
+    <genClasses ecoreClass="openmodelica.ecore#//StringValue">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference openmodelica.ecore#//StringValue/instanceOf"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute openmodelica.ecore#//StringValue/value"/>
+    </genClasses>
+    <genClasses ecoreClass="openmodelica.ecore#//EnumerationValue">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference openmodelica.ecore#//EnumerationValue/instanceOf"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference openmodelica.ecore#//EnumerationValue/value"/>
+    </genClasses>
+    <genClasses ecoreClass="openmodelica.ecore#//AbstractValue"/>
   </genPackages>
 </genmodel:GenModel>

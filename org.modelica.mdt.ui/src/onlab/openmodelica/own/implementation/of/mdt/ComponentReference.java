@@ -3,24 +3,26 @@ package onlab.openmodelica.own.implementation.of.mdt;
 
 import org.modelica.mdt.core.ComponentElement;
 
+import openmodelica.ComponentPrototype;
+
 public class ComponentReference
 {
-	private ComponentElement component;
-	private TreeNode treeNode;
+	private ComponentElement containmentProperites;
+	private ComponentPrototype cp;
 	
-	public ComponentReference(ComponentElement component, TreeNode treeNode){
-		this.component = component;
-		this.treeNode = treeNode;
+	public ComponentReference(ComponentElement containmentProperites, ComponentPrototype cp){
+		this.containmentProperites = containmentProperites;
+		this.cp = cp;
 	}
 
-	public ComponentElement getComponent()
+	public ComponentElement getProperites()
 	{
-		return component;
+		return containmentProperites;
 	}
 
-	public TreeNode getTreeNode()
+	public ComponentPrototype getComponent()
 	{
-		return treeNode;
+		return cp;
 	}
 	
 	

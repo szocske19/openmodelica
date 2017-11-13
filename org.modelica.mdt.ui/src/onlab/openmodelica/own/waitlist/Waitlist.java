@@ -1,19 +1,19 @@
 package onlab.openmodelica.own.waitlist;
 
-import onlab.openmodelica.own.implementation.of.mdt.TreeNode;
+import openmodelica.ComponentPrototype;
 
 public interface Waitlist {
 
-	void add(final TreeNode node);
+	void add(final ComponentPrototype node);
 
-	TreeNode remove();
+	ComponentPrototype remove();
 
 	int size();
 	
-	TreeNode getFirst();
+	ComponentPrototype getFirst();
 		
 
-	default void addAll(final Iterable<? extends TreeNode> nodes) {
+	default void addAll(final Iterable<? extends ComponentPrototype> nodes) {
 		nodes.forEach(this::add);
 	}
 

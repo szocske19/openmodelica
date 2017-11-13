@@ -181,7 +181,7 @@ public class ModelicaGraphAnalyzer {
 		
 		Extension extension = mmf.createExtension();
 
-		block3.setExtension(extension);
+//		block3.setExtension(extension);
 		
 		
 		
