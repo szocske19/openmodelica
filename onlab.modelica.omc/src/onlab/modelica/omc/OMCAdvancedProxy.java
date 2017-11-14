@@ -12,7 +12,7 @@ public class OMCAdvancedProxy extends OMCProxy {
 	@Override
 	public ICompilerResult getNthImport(String className, int n) throws ConnectException, UnexpectedReplyException {
 		ICompilerResult res = sendExpression("getNthImport(" + className + ", " + n + ")", true);
-		ICompilerResult res2 = sendExpression("tmpImportName := " + res.getFirstResult(), true);
+		sendExpression("tmpImportName := " + res.getFirstResult(), true);
 		ICompilerResult res3 = sendExpression("stringTypeName(tmpImportName[1])", true);
 		res3.trimFirstResult();
 
@@ -66,6 +66,23 @@ public class OMCAdvancedProxy extends OMCProxy {
 		ICompilerResult result = sendExpression(command, true);
 		
 		return result.getFirstResult().trim().equals("true");
+	}
+	
+	@Override
+	public List getLoadedLibraries() throws ConnectException, UnexpectedReplyException{
+		String command = "getLoadedLibraries()";
+		ICompilerResult result = sendExpression(command, true);
+		
+		List list = null;		
+		try {
+			list = LoadedLibrariesParser.parseList(result.getFirstResult());
+		}
+		catch (ModelicaParserException e) {
+			throw new UnexpectedReplyException("Unable to parse list: "
+					+ e.getMessage());
+		}
+		
+		return list;
 	}
 	
 }

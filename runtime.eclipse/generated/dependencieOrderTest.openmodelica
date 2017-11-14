@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<openmodelica:Root xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:openmodelica="hu.bme.mit.inf.onlab/openmodelica" Name="Root">
+  <mainClass xsi:type="openmodelica:Package" Name="dependencieOrderTest" componentprototype="//@dependencies.5 //@dependencies.1 //@dependencies.2 //@dependencies.3"/>
+  <dependencies xsi:type="openmodelica:Real" Name="Real"/>
+  <dependencies xsi:type="openmodelica:Model" Name="dependencieOrderTest.A">
+    <children Name="x" is_a="//@dependencies.0" comment="" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:Model" Name="dependencieOrderTest.B">
+    <extension superClass="//@dependencies.1"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:Model" Name="dependencieOrderTest.C">
+    <extension superClass="//@dependencies.1"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:ExternalObject" Name="ExternalObject"/>
+  <dependencies xsi:type="openmodelica:Model" Name="dependencieOrderTest.D">
+    <children Name="b1" is_a="//@dependencies.2" comment="" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="c1" is_a="//@dependencies.3" comment="" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+</openmodelica:Root>

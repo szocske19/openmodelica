@@ -1,8 +1,7 @@
 
 package onlab.openmodelica.own.implementation.of.mdt;
 
-import org.modelica.mdt.core.ComponentElement;
-
+import onlab.modelica.omc.ComponentElement;
 import openmodelica.ComponentPrototype;
 
 public class ComponentReference

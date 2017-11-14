@@ -15,16 +15,41 @@ class CreateEMFModelProvider {
 	
 	private extension OpenmodelicaFactory modelicaFactory = OpenmodelicaFactory.eINSTANCE
 	
-	def createEMFModel(ComponentPrototype rootComponent, Map<String, ComponentPrototype> metaClassMap) {
+	def createEMFModel(ComponentPrototype rootComponent, Map<String, LevelNode> metaClassMap) {
 		val root = createRoot() => [ root |
 			root.name = "Root"
 		]
 		
-		val orderedKeys = new ArrayList<String>(metaClassMap.keySet())		
-		Collections.reverse(orderedKeys)
+		val keys = new ArrayList<String>(metaClassMap.keySet())	
+		val listOflevelList = new ArrayList<ArrayList<String>>
+		val orderedKeys = new ArrayList<String>	
 		
+		
+		println("\nOriginal order:")
+		for (key : keys) {
+			println(key)
+			val level = metaClassMap.get(key).level
+			while(listOflevelList.size <= level){
+				listOflevelList.add(new ArrayList<String>)				
+			}
+			listOflevelList.get(level).add(key)
+		}
+		Collections.reverse(listOflevelList)		
+				
+			
+		println("\nOrdered order")
+		for(var i = 0 ; i < listOflevelList.size ; i++){	
+			println("Level:" + i)			
+			for (key : listOflevelList.get(i)) {
+				println(key)
+				orderedKeys.add(key)
+			}			
+		}		
+		
+		println("\nAdding dependencies:")
 		for (String key : orderedKeys) {
-			val componentPrototype = metaClassMap.get(key)
+			println(key)
+			val componentPrototype = metaClassMap.get(key).cp
 			if(!key.equals(rootComponent.name)){				
 				root.dependencies.add(componentPrototype)				
 			} else {

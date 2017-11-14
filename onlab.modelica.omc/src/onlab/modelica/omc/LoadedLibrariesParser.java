@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 import org.modelica.mdt.core.List;
 import org.modelica.mdt.core.ModelicaParserException;
 
-public class ComponentAdvancedParser {
+public class LoadedLibrariesParser {
 	public static List parseList(String str) throws ModelicaParserException {
 		List elements = new List();
 
@@ -23,24 +23,18 @@ public class ComponentAdvancedParser {
 
 		String[] tokens = dummy.split("\\},\\{");
 
-		String regex = "(" + 
-					"\\[[^\\]]*\\],|" + 
-					"\\([^\\)]*\\),|" + 
-					"\\{[^\\}]*\\},?|" + 
-					"\"[^\"]*\",|" +
-					"[^(\"|\\(|\\{|\\[)][^,]*," 
-				+ ")";
+		String regex = "\"[^\"]*\",?";
 
 		Pattern pattern = Pattern.compile(regex);
 
 		for (int i = 0; i < tokens.length; i++) {
-			ComponentElement componentElement = null;
+			LoadedLibrary loadedLibrary = null;
 			Matcher matcher = pattern.matcher(tokens[i]);
 
 			int matchCount = 0;
 			while (matcher.find())
 				matchCount++;
-			if (matchCount == 12) {
+			if (matchCount == 2) {
 				String[] atributes = new String[12];
 				int j = 0;
 				matcher.reset();
@@ -55,12 +49,12 @@ public class ComponentAdvancedParser {
 					}
 					j++;
 				}
-				componentElement = new ComponentElement(atributes);
+				loadedLibrary = new LoadedLibrary(atributes);
 			} else {
-				throw new ModelicaParserException("matchCount = " + matchCount + " != 12");
+				throw new ModelicaParserException("matchCount = " + matchCount + " != 2");
 			}
-			componentElement.print();
-			elements.append(componentElement);
+			loadedLibrary.print();
+			elements.append(loadedLibrary);
 
 		}
 		return elements;

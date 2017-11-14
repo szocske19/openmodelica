@@ -11,7 +11,6 @@ import org.eclipse.core.runtime.IPath
 import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
 import org.eclipse.emf.transaction.TransactionalEditingDomain
-import org.modelica.mdt.core.ComponentElement
 import org.modelica.mdt.core.compiler.CompilerInstantiationException
 import org.modelica.mdt.core.compiler.IModelicaCompiler
 import org.modelica.mdt.internal.core.CompilerProxy
@@ -21,11 +20,13 @@ import openmodelica.impl.BooleanImpl
 import openmodelica.impl.StringImpl
 import openmodelica.impl.EnumerationImpl
 import openmodelica.impl.TypeImpl
+import onlab.modelica.omc.ComponentElement
+import onlab.modelica.omc.LoadedLibrary
 
 class OpenModelicaModelTransformationToEMFModel {	
 	private extension CreateEMFFileProvider createEMFFileProvider = new CreateEMFFileProvider();
 	private extension CreateEMFModelProvider createEMFModelProvider = new CreateEMFModelProvider();
-	private final int MAX_LEVEL = 10
+	private final int MAX_LEVEL = 100
 
 	private String fileName;
 	private IPath filePath;
@@ -33,8 +34,8 @@ class OpenModelicaModelTransformationToEMFModel {
 	private static final SearchStrategy STRATEGY = SearchStrategy.DEPTH_FIRST;
 
 	private static Waitlist waitlist;
-	private static Map<String, ComponentPrototype> metaClassMap
-	private static Map<String, Integer> levelList;
+	private static Map<String, LevelNode> metaClassMap
+	private static Map<String, LoadedLibrary> loadedLibraries
 
 	private static IModelicaCompiler currentCompiler;
 	  
@@ -50,8 +51,8 @@ class OpenModelicaModelTransformationToEMFModel {
 		editingDomain = TransactionalEditingDomain.Factory.INSTANCE.createEditingDomain();
 //    	val rset = editingDomain.getResourceSet();
 
-		metaClassMap = new LinkedHashMap<String, ComponentPrototype>(10, 2, false);
-		levelList = new LinkedHashMap<String, Integer>(10, 2, false);
+		metaClassMap = new LinkedHashMap<String, LevelNode>(10, 2, false);
+		loadedLibraries = new LinkedHashMap<String, LoadedLibrary>(10, 2, false);
 
 		try {
 			// initiate compiler
@@ -80,18 +81,20 @@ class OpenModelicaModelTransformationToEMFModel {
 		val classList = currentCompiler.parseFile(classPath);
 
 		currentCompiler.getStandardLibrary();
+		
+		setupLoadedLibraries()
 
 		for (class : classList) {
 			val className = class.toString();
 
-			val componentPrototype = createOrGetComponentPrototype(className, 0)
-			
-			createComponentPrototypeAndToHierarchy("ExternalObject", 1, OpenmodelicaPackage.EXTERNAL_OBJECT)
+			createComponentPrototypeAndToHierarchy("ExternalObject", null, 1, OpenmodelicaPackage.EXTERNAL_OBJECT)
 
+			val componentPrototype = createOrGetComponentPrototype(className, null, 0)
+			
 			while (!waitlist.isEmpty()) {
 				//waitlist.print
 				val currentComponent = waitlist.remove();
-				if (levelList.get(currentComponent.name) < MAX_LEVEL) {
+				if (metaClassMap.get(currentComponent.name).level < MAX_LEVEL) {
 					if(!isPrimitive(currentComponent.name)){
 						expandNode(currentComponent);					
 					}
@@ -112,37 +115,44 @@ class OpenModelicaModelTransformationToEMFModel {
 		createEMFFile(resSet, rootPackage, filePath, fileName)
 	}
 	
-	def ComponentPrototype createOrGetComponentPrototype(String className, int level){
+	def ComponentPrototype createOrGetComponentPrototype(String className, String parent, int level){
 		if(metaClassMap.containsKey(className)){
-			return metaClassMap.get(className)
+			if(metaClassMap.get(className).level < level){
+				println("raiseLevel:")
+				metaClassMap.get(className).raiseLevelAndChangeParent(metaClassMap.get(parent), level-metaClassMap.get(className).level)
+			}
+			return metaClassMap.get(className).cp
 		} else {
 			val type = if (isPrimitive(className)) 
 				className.getTypeofPrimitivClass else className.getTypeOfClass
 			if( OpenmodelicaPackage.TYPE === type){
 				if(currentCompiler.isEnumeration(className)){
-					createComponentPrototypeAndToHierarchy(className, level, OpenmodelicaPackage.ENUMERATION)
+					createComponentPrototypeAndToHierarchy(className, parent, level, OpenmodelicaPackage.ENUMERATION)
 				} else {	
 					val listOfSuperClasses = getSuperTypeListAtDFT(className, level + 1)
 					val superType = getTypeOfComponent(listOfSuperClasses.get(0).getSuperClass)
-					val cp = createComponentPrototypeAndToHierarchy(className, level, superType)					
+					val cp = createComponentPrototypeAndToHierarchy(className, parent, level, superType)					
 					cp.setExtension(listOfSuperClasses)
 					cp
 				}
 			} else {				
-				createComponentPrototypeAndToHierarchy(className, level, type)
+				createComponentPrototypeAndToHierarchy(className, parent, level, type)
 			}
 		}
 	}
 	
-	def ComponentPrototype createComponentPrototypeAndToHierarchy(String className, int level, int type){
+	def ComponentPrototype createComponentPrototypeAndToHierarchy(String className, String parent, int level, int type){
 		val componentPrototype = createComponentPrototype(type)
 		componentPrototype.name = className
-		levelList.put(componentPrototype.getName(), level);
-		metaClassMap.put(componentPrototype.getName(), componentPrototype);
+		val parentNode = metaClassMap.get(parent)
+		val levelNode = new LevelNode(componentPrototype, parentNode,  level)
+		metaClassMap.put(className, levelNode);
 		if(!className.equals("ExternalObject")){
 			waitlist.add(componentPrototype);
 			if(!isPrimitive(className)){
-				loadModel(componentPrototype.name);			
+				if(onlab.openmodelica.own.implementation.of.mdt.OpenModelicaModelTransformationToEMFModel.loadedLibraries.containsKey(className)){
+					loadModel(className);
+				}			
 			}		
 		}
 		return componentPrototype
@@ -156,7 +166,7 @@ class OpenModelicaModelTransformationToEMFModel {
 		for (var i = 1; i <= num; i++) {
 			val res = currentCompiler.getNthInheritedClass(className, i).firstResult;
 			
-			val superCp = createOrGetComponentPrototype(res, level)
+			val superCp = createOrGetComponentPrototype(res, className, level)
 			val extensionReference = new ExtensionReference(superCp)
 			extensionReferenceList.add(extensionReference)				
 		}		
@@ -199,14 +209,14 @@ class OpenModelicaModelTransformationToEMFModel {
 	}
 	
 	def ArrayList<ComponentPrototype> getClassOfPackage(ComponentPrototype packageCP) {
-		val packageName = packageCP.getName();
-		val level = levelList.get(packageName) + 1;		
-		val cpList = new ArrayList<ComponentPrototype>();
+		val packageName = packageCP.getName()
+		val level = metaClassMap.get(packageName).level + 1
+		val cpList = new ArrayList<ComponentPrototype>()
 		
 
 		val classNameList = currentCompiler.getClassNames(packageName);
 		for (className : classNameList) {
-			val child = createOrGetComponentPrototype(packageName + "." + className.toString, level)
+			val child = createOrGetComponentPrototype(packageName + "." + className.toString, packageName, level)
 			cpList.add(child)
 		}
 
@@ -214,15 +224,15 @@ class OpenModelicaModelTransformationToEMFModel {
 	}
 
 	def ArrayList<ComponentReference> getChildrenOfNode(ComponentPrototype parent) {
-		val className = parent.getName();
-		val level = levelList.get(className) + 1;		
-		val componentReferenceList = new ArrayList<ComponentReference>();
+		val className = parent.getName()
+		val level = metaClassMap.get(className).level + 1	
+		val componentReferenceList = new ArrayList<ComponentReference>()
 		
 
 		val componentList = currentCompiler.getComponents(className);
 		for (component : componentList) {
 			val componentElement = component as ComponentElement
-			val child = createOrGetComponentPrototype(componentElement.className, level)
+			val child = createOrGetComponentPrototype(componentElement.className, className, level)
 			val componentReference = new ComponentReference(componentElement, child)
 			componentReferenceList.add(componentReference)	
 
@@ -233,14 +243,14 @@ class OpenModelicaModelTransformationToEMFModel {
 	
 	def ArrayList<ExtensionReference> getSuperTypeList(ComponentPrototype subClass){
 		val className = subClass.getName();
-		val level = levelList.get(className) + 1;
+		val level = metaClassMap.get(className).level + 1
 		val extensionReferenceList = new ArrayList<ExtensionReference>();		
 		
 		val num = currentCompiler.getInheritanceCount(className);
 		for (var i = 1; i <= num; i++) {
 			val res = currentCompiler.getNthInheritedClass(className, i).firstResult;
 			
-			val superTreeNode = createOrGetComponentPrototype(res, level)
+			val superTreeNode = createOrGetComponentPrototype(res, className, level)
 			val extensionReference = new ExtensionReference(superTreeNode)
 			extensionReferenceList.add(extensionReference)	
 			
@@ -251,6 +261,16 @@ class OpenModelicaModelTransformationToEMFModel {
 	def loadModel(String sourceName){
 		val modelPath = currentCompiler.getClassLocation(sourceName).getPath().toString();
 		currentCompiler.loadFile(modelPath);
+		val lib = new LoadedLibrary(#[sourceName,modelPath])
+		loadedLibraries.put(lib.libraryName, lib)
+	}
+		   
+	def setupLoadedLibraries(){
+		val libList = currentCompiler.getLoadedLibraries();
+		for (libElement : libList) {
+			val lib = libElement as LoadedLibrary
+			loadedLibraries.put(lib.libraryName, lib)
+		}
 	}	
 	
 	def isPrimitive(String className) {
