@@ -2,14 +2,14 @@
 package onlab.openmodelica.own.implementation.of.mdt;
 
 import onlab.modelica.omc.ComponentElement;
-import openmodelica.ComponentPrototype;
+import openmodelica.MoClass;
 
 public class ComponentReference
 {
 	private ComponentElement containmentProperites;
-	private ComponentPrototype cp;
+	private MoClass cp;
 	
-	public ComponentReference(ComponentElement containmentProperites, ComponentPrototype cp){
+	public ComponentReference(ComponentElement containmentProperites, MoClass cp){
 		this.containmentProperites = containmentProperites;
 		this.cp = cp;
 	}
@@ -19,7 +19,7 @@ public class ComponentReference
 		return containmentProperites;
 	}
 
-	public ComponentPrototype getComponent()
+	public MoClass getComponent()
 	{
 		return cp;
 	}

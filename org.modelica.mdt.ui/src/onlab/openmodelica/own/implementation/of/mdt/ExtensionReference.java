@@ -1,18 +1,18 @@
 
 package onlab.openmodelica.own.implementation.of.mdt;
 
-import openmodelica.ComponentPrototype;
+import openmodelica.MoClass;
 
 public class ExtensionReference
 {
-	private ComponentPrototype superClass;
+	private MoClass superClass;
 
-	public ComponentPrototype getSuperClass()
+	public MoClass getSuperClass()
 	{
 		return superClass;
 	}
 
-	public ExtensionReference(ComponentPrototype superClass)
+	public ExtensionReference(MoClass superClass)
 	{
 		this.superClass = superClass;
 	}

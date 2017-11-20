@@ -1,12 +1,12 @@
 
 package onlab.openmodelica.own.implementation.of.mdt;
 
-import openmodelica.Class;
+import openmodelica.MoClass;
 
 public class ClassContent
 {
 	private LinkType linkType;
-	private Class node;
+	private MoClass node;
 	
 
 	public LinkType getLinkType()
@@ -19,12 +19,12 @@ public class ClassContent
 		this.linkType = linkType;
 	}
 
-	public Class getNode()
+	public MoClass getNode()
 	{
 		return node;
 	}
 
-	public void setNode(Class node)
+	public void setNode(MoClass node)
 	{
 		this.node = node;
 	}

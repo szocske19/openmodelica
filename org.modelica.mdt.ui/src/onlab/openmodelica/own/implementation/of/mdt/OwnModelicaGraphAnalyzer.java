@@ -33,7 +33,7 @@ import org.modelica.mdt.ui.graph.ModelicaNode;
 import onlab.openmodelica.own.waitlist.FifoWaitlist;
 import onlab.openmodelica.own.waitlist.LifoWaitlist;
 import onlab.openmodelica.own.waitlist.Waitlist;
-import openmodelica.Class;
+import openmodelica.MoClass;
 import openmodelica.OpenmodelicaFactory;
 import openmodelica.OpenmodelicaPackage;
 
@@ -234,13 +234,13 @@ public class OwnModelicaGraphAnalyzer
 		switch (classType.trim())
 		{
 		case "Blocks":
-			return OpenmodelicaPackage.BLOCK;
+			return OpenmodelicaPackage.MO_BLOCK;
 		case "class":
-			return OpenmodelicaPackage.CLASS;
+			return OpenmodelicaPackage.MO_CLASS;
 		case "model":
-			return OpenmodelicaPackage.MODEL;
+			return OpenmodelicaPackage.MO_MODEL;
 		case "package":
-			return OpenmodelicaPackage.PACKAGE;
+			return OpenmodelicaPackage.MO_PACKAGE;
 		default:
 			throw new IllegalArgumentException(
 					"The class '" + className + "' is not a valid classifier with " + classType.trim());
@@ -248,16 +248,16 @@ public class OwnModelicaGraphAnalyzer
 	}
 	
 	
-	private static Class getClass(int type)
+	private static MoClass getClass(int type)
 	{
 		switch (type)
 		{
-		case OpenmodelicaPackage.BLOCK:
-			return mmf.createBlock();
-		case OpenmodelicaPackage.CLASS:
-			return mmf.createClass();
-		case OpenmodelicaPackage.MODEL:
-			return mmf.createModel();
+		case OpenmodelicaPackage.MO_BLOCK:
+			return mmf.createMoBlock();
+		case OpenmodelicaPackage.MO_CLASS:
+			return mmf.createMoClass();
+		case OpenmodelicaPackage.MO_MODEL:
+			return mmf.createMoModel();
 		default:
 			throw new IllegalArgumentException(
 					"The type '" + type + "' is not a valid classifier");

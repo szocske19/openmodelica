@@ -3,11 +3,11 @@ package onlab.openmodelica.own.waitlist;
 import java.util.ArrayDeque;
 import java.util.Queue;
 
-import openmodelica.ComponentPrototype;
+import openmodelica.MoClass;
 
 public final class FifoWaitlist implements Waitlist {
 
-	private final Queue<ComponentPrototype> nodes;
+	private final Queue<MoClass> nodes;
 
 	private FifoWaitlist() {
 		nodes = new ArrayDeque<>();
@@ -18,17 +18,17 @@ public final class FifoWaitlist implements Waitlist {
 	}
 
 	@Override
-	public void add(final ComponentPrototype node) {
+	public void add(final MoClass node) {
 		nodes.add(node);
 	}
 
 	@Override
-	public ComponentPrototype remove() {
+	public MoClass remove() {
 		return nodes.remove();
 	}
 	
 	@Override
-	public ComponentPrototype getFirst() {		
+	public MoClass getFirst() {		
 		return nodes.element();
 	}
 
@@ -40,7 +40,7 @@ public final class FifoWaitlist implements Waitlist {
 	@Override
 	public void print() {
 		System.out.println("Print start");
-		for (ComponentPrototype cp : nodes)
+		for (MoClass cp : nodes)
 		{
 			cp.toString();			
 		}

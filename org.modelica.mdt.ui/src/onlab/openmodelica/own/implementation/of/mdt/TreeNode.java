@@ -3,8 +3,7 @@ package onlab.openmodelica.own.implementation.of.mdt;
 
 import java.util.ArrayList;
 
-import openmodelica.ComponentPrototype;
-import openmodelica.OpenmodelicaFactory;
+import openmodelica.MoClass;
 
 public class TreeNode
 {
@@ -13,7 +12,7 @@ public class TreeNode
 	private TreeNode parent;
 	private String name; // key
 	private int level;
-	private ComponentPrototype componentPrototype;
+	private MoClass componentPrototype;
 	private int prototypeType;
 
 	public void setExtension(ArrayList<ExtensionReference> extension)
@@ -36,12 +35,12 @@ public class TreeNode
 		this.prototypeType = prototypeType;
 	}
 
-	public ComponentPrototype getComponentPrototype()
+	public MoClass getComponentPrototype()
 	{
 		return componentPrototype;
 	}
 
-	public void setComponentPrototype(ComponentPrototype componentPrototype)
+	public void setComponentPrototype(MoClass componentPrototype)
 	{
 		this.componentPrototype = componentPrototype;
 	}

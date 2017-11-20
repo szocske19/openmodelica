@@ -3,14 +3,12 @@ package org.modelica.mdt.ui.graph;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
-import java.util.Map;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -23,18 +21,10 @@ import org.apache.log4j.PatternLayout;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.ETypedElement;
-import org.eclipse.emf.ecore.EcoreFactory;
-import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.swt.SWT;
 import org.modelica.mdt.core.ICompilerResult;
 import org.modelica.mdt.core.List;
@@ -45,12 +35,7 @@ import org.modelica.mdt.core.compiler.InvocationError;
 import org.modelica.mdt.core.compiler.UnexpectedReplyException;
 import org.modelica.mdt.internal.core.CompilerProxy;
 
-import openmodelica.Block;
-import openmodelica.ComponentInstance;
-import openmodelica.Connector;
 import openmodelica.Extension;
-import openmodelica.Function;
-import openmodelica.Package;
 import openmodelica.OpenmodelicaFactory;
 import openmodelica.OpenmodelicaPackage;
 
@@ -165,19 +150,19 @@ public class ModelicaGraphAnalyzer {
 		}
 		
 
-		Block block1 = mmf.createBlock();
-		block1.setName("Block1");
-		
-		Block block2 = mmf.createBlock();
-		block2.setName("Block2");
-		
-		ComponentInstance cInstance = mmf.createComponentInstance();
-		cInstance.setIs_a(block2);
-		
-		block1.getChildren().add(cInstance);
-		
-		Block block3 = mmf.createBlock();
-		block3.setName("Block3");
+//		Block block1 = mmf.createBlock();
+//		block1.setName("Block1");
+//		
+//		Block block2 = mmf.createBlock();
+//		block2.setName("Block2");
+//		
+//		ComponentInstance cInstance = mmf.createComponentInstance();
+//		cInstance.setIs_a(block2);
+//		
+//		block1.getChildren().add(cInstance);
+//		
+//		Block block3 = mmf.createBlock();
+//		block3.setName("Block3");
 		
 		Extension extension = mmf.createExtension();
 
@@ -207,7 +192,7 @@ public class ModelicaGraphAnalyzer {
 	        e.printStackTrace();
 	    }
 	    
-	    resource.getContents().add(block3);
+//	    resource.getContents().add(block3);
 	    
 	    try {
 		    resource.save(Collections.EMPTY_MAP);
@@ -280,8 +265,8 @@ public class ModelicaGraphAnalyzer {
 		
 
 		
-		Package model = mmf.createPackage();
-		model.setName(className);
+//		Package model = mmf.createPackage();
+//		model.setName(className);
 		
 
 		// Find the underlying classes of a package
@@ -413,28 +398,28 @@ public class ModelicaGraphAnalyzer {
 					+ classType.substring(1, classType.length()));
 		
 		
-		switch (classType)
-		{
-		case "Block":
-			Block blockImpl = mmf.createBlock();
-			blockImpl.setName(className);
-			return blockImpl;
-		case "Connector":
-			Connector connectorImpl = mmf
-					.createConnector();
-			connectorImpl.setName(className);
-			return connectorImpl;
-		case "Function":
-			Function functionImpl = mmf
-					.createFunction();
-			functionImpl.setName(className);
-			return functionImpl;
-		case "Package":
-			Package packageImpl = mmf
-					.createPackage();
-			packageImpl.setName(className);
-			return packageImpl;
-		}
+//		switch (classType)
+//		{
+//		case "Block":
+//			Block blockImpl = mmf.createBlock();
+//			blockImpl.setName(className);
+//			return blockImpl;
+//		case "Connector":
+//			Connector connectorImpl = mmf
+//					.createConnector();
+//			connectorImpl.setName(className);
+//			return connectorImpl;
+//		case "Function":
+//			Function functionImpl = mmf
+//					.createFunction();
+//			functionImpl.setName(className);
+//			return functionImpl;
+//		case "Package":
+//			Package packageImpl = mmf
+//					.createPackage();
+//			packageImpl.setName(className);
+//			return packageImpl;
+//		}
 
 		return null;
 	}

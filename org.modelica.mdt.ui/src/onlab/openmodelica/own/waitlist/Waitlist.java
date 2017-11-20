@@ -1,19 +1,19 @@
 package onlab.openmodelica.own.waitlist;
 
-import openmodelica.ComponentPrototype;
+import openmodelica.MoClass;;
 
 public interface Waitlist {
 
-	void add(final ComponentPrototype node);
+	void add(final MoClass node);
 
-	ComponentPrototype remove();
+	MoClass remove();
 
 	int size();
 	
-	ComponentPrototype getFirst();
+	MoClass getFirst();
 		
 
-	default void addAll(final Iterable<? extends ComponentPrototype> nodes) {
+	default void addAll(final Iterable<? extends MoClass> nodes) {
 		nodes.forEach(this::add);
 	}
 
