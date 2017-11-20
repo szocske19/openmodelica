@@ -7,6 +7,8 @@ import org.modelica.mdt.core.compiler.ConnectException;
 import org.modelica.mdt.core.compiler.UnexpectedReplyException;
 import org.modelica.mdt.omc.OMCProxy;
 
+import onlab.modelica.omc.AnswerListParser.ListType;
+
 public class OMCAdvancedProxy extends OMCProxy {
 	
 	@Override
@@ -24,7 +26,7 @@ public class OMCAdvancedProxy extends OMCProxy {
 		ICompilerResult res = sendExpression("getComponents("+ className +")", true);
 		List list = null;
 		try {
-			list = ComponentAdvancedParser.parseList(res.getFirstResult());
+			list = AnswerListParser.parseList(res.getFirstResult(), ListType.COMPONENT_ELEMENT);
 		}
 		catch (ModelicaParserException e) {
 			throw new UnexpectedReplyException("Unable to parse list: "
@@ -45,11 +47,20 @@ public class OMCAdvancedProxy extends OMCProxy {
 	}
 	
 	@Override
-	public ICompilerResult getExtendsModifierNames(String subClass, String superclass) throws ConnectException{
+	public List getExtendsModifierNames(String subClass, String superclass) throws ConnectException, UnexpectedReplyException{
 		String command = "getExtendsModifierNames(" + subClass + "," + superclass + ")";
 		ICompilerResult result = sendExpression(command, true);
 		
-		return result;
+		List list = null;		
+		try {
+			list = AnswerListParser.parseList(result.getFirstResult(), ListType.EXTENDS_MODIFIER);
+		}
+		catch (ModelicaParserException e) {
+			throw new UnexpectedReplyException("Unable to parse list: "
+					+ e.getMessage());
+		}
+		
+		return list;
 	}
 	
 	@Override
@@ -75,7 +86,7 @@ public class OMCAdvancedProxy extends OMCProxy {
 		
 		List list = null;		
 		try {
-			list = LoadedLibrariesParser.parseList(result.getFirstResult());
+			list = AnswerListParser.parseList(result.getFirstResult(), ListType.LOADED_LIBRARY);
 		}
 		catch (ModelicaParserException e) {
 			throw new UnexpectedReplyException("Unable to parse list: "
@@ -83,6 +94,16 @@ public class OMCAdvancedProxy extends OMCProxy {
 		}
 		
 		return list;
+	}
+	
+	@Override
+	public ICompilerResult getParameterValue(String className, String parameter)
+			throws ConnectException
+	{
+		String command = "getParameterValue(" + className + ", \"" + parameter + "\")";
+		ICompilerResult result = sendExpression(command, true);		
+		
+		return result;
 	}
 	
 }
