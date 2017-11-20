@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<openmodelica:Root xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:openmodelica="hu.bme.mit.inf.onlab/openmodelica" Name="Root">
+  <mainClass xsi:type="openmodelica:MoPackage" Name="ExtendedStateGraph">
+    <extension superClass="//@dependencies.94"/>
+  </mainClass>
+  <dependencies xsi:type="openmodelica:MoConnector" Name="Modelica.StateGraph.Interfaces.CompositeStepStatePort_in">
+    <children Name="suspend" is_a="//@dependencies.9" comment="= true, if suspend transition of CompositeStep fires" variability="unspecified" innerOuter="none" dimensions="{}"/>
+    <children Name="resume" is_a="//@dependencies.9" comment="= true, if resume transition of CompositeStep fires" variability="unspecified" innerOuter="none" dimensions="{}"/>
+    <children Name="activeStepsDummy" is_a="//@dependencies.4" comment="Dummy variable in order that connector fulfills restriction of connector" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="activeSteps" is_a="//@dependencies.4" comment="Number of active steps in the CompositeStep" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoConnector" Name="Modelica.Blocks.Interfaces.BooleanOutput">
+    <extension superClass="//@dependencies.9"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoModel" Name="Modelica.StateGraph.PartialCompositeStep.OuterState">
+    <children Name="subgraphStatePort" is_a="//@dependencies.0" comment="Port connected to outer stateGraphRoot" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoModel" Name="Modelica.StateGraph.PartialCompositeStep.InnerState">
+    <children Name="stateGraphRoot" is_a="//@dependencies.45" comment="" variability="unspecified" innerOuter="outer" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:Real" Name="Real"/>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.Blocks.Icons.PartialBooleanBlock"/>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.StateGraph.Step">
+    <extension superClass="//@dependencies.82"/>
+    <children Name="active" is_a="//@dependencies.9" comment="= true if step is active, otherwise the step is not active" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.StateGraph.Transition">
+    <extension superClass="//@dependencies.83"/>
+    <children Name="condition" is_a="//@dependencies.9" comment="= true, if transition may fire (time varying expression)" variability="unspecified" innerOuter="none" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoModel" Name="Modelica.StateGraph.PartialCompositeStep">
+    <children Name="nSuspend" is_a="//@dependencies.10" comment="Number of suspend ports" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="nResume" is_a="//@dependencies.10" comment="Number of resume ports" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="stateGraphRoot" is_a="//@dependencies.45" comment="Communication port between the CompositeStep and the steps within the CompositeStep" variability="unspecified" innerOuter="innerouter" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="active" is_a="//@dependencies.9" comment="= true if step is active, otherwise the step is not active" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
+    <children Name="inPort" is_a="//@dependencies.41" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="outPort" is_a="//@dependencies.42" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="suspend" is_a="//@dependencies.81" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{nSuspend}"/>
+    <children Name="resume" is_a="//@dependencies.80" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{nResume}"/>
+    <children Name="outerState" is_a="//@dependencies.2" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="innerState" is_a="//@dependencies.3" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="newActive" is_a="//@dependencies.9" comment="Value of active in the next iteration" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="activeSteps" is_a="//@dependencies.10" comment="Number of active steps within the CompositeStep" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:Boolean" Name="Boolean"/>
+  <dependencies xsi:type="openmodelica:Integer" Name="Integer"/>
+  <dependencies xsi:type="openmodelica:MoConnector" Name="Modelica.StateGraph.Alternative.Step_in_forAlternative">
+    <children Name="occupied" is_a="//@dependencies.9" comment="true, if step is active" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
+    <children Name="set" is_a="//@dependencies.9" comment="true, if transition fires and step is activated" variability="unspecified" innerOuter="none" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoConnector" Name="Modelica.StateGraph.Alternative.Step_out_forAlternative">
+    <children Name="available" is_a="//@dependencies.9" comment="true, if step is active" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
+    <children Name="reset" is_a="//@dependencies.9" comment="true, if transition fires and step is deactivated" variability="unspecified" innerOuter="none" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:Real" Name="Modelica.StateGraph.Temporary.SetRealParameter">
+    <extension superClass="//@dependencies.4"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:Real" Name="Modelica.SIunits.Time">
+    <extension superClass="//@dependencies.4"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoConnector" Name="Modelica.Blocks.Interfaces.RealInput">
+    <extension superClass="//@dependencies.4"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:Real" Name="Modelica.SIunits.VolumeFlowRate">
+    <extension superClass="//@dependencies.4"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.Blocks.Interfaces.partialBooleanSource">
+    <extension superClass="//@dependencies.5"/>
+    <children Name="y" is_a="//@dependencies.1" comment="Connector of Boolean output signal" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.StateGraph.InitialStep">
+    <extension superClass="//@dependencies.82"/>
+    <children Name="active" is_a="//@dependencies.9" comment="= true if step is active, otherwise the step is not active" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.StateGraph.Alternative">
+    <children Name="nBranches" is_a="//@dependencies.10" comment="Number of alternative branches" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="inPort" is_a="//@dependencies.43" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="outPort" is_a="//@dependencies.44" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="join" is_a="//@dependencies.11" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{nBranches}"/>
+    <children Name="split" is_a="//@dependencies.12" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{nBranches}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoPackage" Name="Modelica.Icons.Package"/>
+  <dependencies xsi:type="openmodelica:MoConnector" Name="Modelica.StateGraph.Interfaces.CompositeStepStatePort_out">
+    <children Name="suspend" is_a="//@dependencies.9" comment="= true, if suspend transition of CompositeStep fires" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
+    <children Name="resume" is_a="//@dependencies.9" comment="= true, if resume transition of CompositeStep fires" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
+    <children Name="activeStepsDummy" is_a="//@dependencies.4" comment="Dummy variable in order that connector fulfills restriction of connector" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="activeSteps" is_a="//@dependencies.4" comment="Number of active steps in the CompositeStep" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.StateGraph.Interfaces.PartialStateGraphIcon"/>
+  <dependencies xsi:type="openmodelica:MoConnector" Name="Modelica.Blocks.Interfaces.BooleanInput">
+    <extension superClass="//@dependencies.9"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoConnector" Name="Modelica.StateGraph.Parallel.Transition_in_forParallel">
+    <children Name="available" is_a="//@dependencies.9" comment="true, if step connected to the transition input is active" variability="unspecified" innerOuter="none" dimensions="{}"/>
+    <children Name="reset" is_a="//@dependencies.9" comment="true, if transition fires and the step connected to the transition input is deactivated" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoConnector" Name="Modelica.StateGraph.Parallel.Transition_out_forParallel">
+    <children Name="occupied" is_a="//@dependencies.9" comment="true, if step connected to the transition output is active" variability="unspecified" innerOuter="none" dimensions="{}"/>
+    <children Name="set" is_a="//@dependencies.9" comment="true, if transition fires and step connected to the transition output becomes active" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.Blocks.Sources.BooleanExpression">
+    <children Name="y" is_a="//@dependencies.1" comment="Value of Boolean output" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoModel" Name="Modelica.StateGraph.Examples.Utilities.MakeProduct">
+    <extension superClass="//@dependencies.8"/>
+    <children Name="limit" is_a="//@dependencies.13" comment="Limit level of tank 1" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="waitTime" is_a="//@dependencies.13" comment="Wait time" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="level1" is_a="//@dependencies.15" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="fillTank1" is_a="//@dependencies.6" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="T1" is_a="//@dependencies.7" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="fillTank2" is_a="//@dependencies.6" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="T3" is_a="//@dependencies.7" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="emptyTank2" is_a="//@dependencies.6" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="wait1" is_a="//@dependencies.6" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="T2" is_a="//@dependencies.7" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="wait2" is_a="//@dependencies.6" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="T4" is_a="//@dependencies.7" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoConnector" Name="Modelica.StateGraph.Examples.Utilities.Inflow1">
+    <children Name="Fi" is_a="//@dependencies.16" comment="inflow" variability="unspecified" innerOuter="none" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoConnector" Name="Modelica.StateGraph.Examples.Utilities.Inflow2">
+    <children Name="Fi" is_a="//@dependencies.16" comment="inflow" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoConnector" Name="Modelica.StateGraph.Examples.Utilities.Outflow1">
+    <children Name="Fo" is_a="//@dependencies.16" comment="outflow" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
+    <children Name="open" is_a="//@dependencies.9" comment="valve open" variability="unspecified" innerOuter="none" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoConnector" Name="Modelica.StateGraph.Examples.Utilities.Outflow2">
+    <children Name="Fo" is_a="//@dependencies.16" comment="outflow" variability="unspecified" innerOuter="none" dimensions="{}"/>
+    <children Name="open" is_a="//@dependencies.9" comment="valve open" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoModel" Name="Modelica.StateGraph.Examples.Utilities.CompositeStep2">
+    <extension superClass="//@dependencies.8"/>
+    <children Name="transition" is_a="//@dependencies.7" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="initStep" is_a="//@dependencies.6" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="exitStep" is_a="//@dependencies.6" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="waitTime" is_a="//@dependencies.13" comment="waiting time in this composite step" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.Blocks.Sources.BooleanTable">
+    <extension superClass="//@dependencies.17"/>
+    <children Name="startValue" is_a="//@dependencies.9" comment="Start value of y. At time = table[1], y changes to 'not startValue'" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="table" is_a="//@dependencies.14" comment="Vector of time points. At every time point, the output y gets its opposite value (e.g., table={0,1})" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{:}"/>
+    <children Name="n" is_a="//@dependencies.10" comment="Number of table points" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="nextTime" is_a="//@dependencies.14" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="index" is_a="//@dependencies.10" comment="Index of actual table entry" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoConnector" Name="Modelica.Blocks.Interfaces.RealOutput">
+    <extension superClass="//@dependencies.4"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.Blocks.Interfaces.partialBooleanThresholdComparison">
+    <children Name="threshold" is_a="//@dependencies.4" comment="Comparison with respect to threshold" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="u" is_a="//@dependencies.15" comment="Connector of Real input signal" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="y" is_a="//@dependencies.1" comment="Connector of Boolean output signal" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.StateGraph.StepWithSignal">
+    <extension superClass="//@dependencies.82"/>
+    <children Name="active" is_a="//@dependencies.1" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.StateGraph.TransitionWithSignal">
+    <extension superClass="//@dependencies.83"/>
+    <children Name="condition" is_a="//@dependencies.23" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.StateGraph.Parallel">
+    <children Name="nBranches" is_a="//@dependencies.10" comment="Number of parallel branches that are executed in parallel" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="inPort" is_a="//@dependencies.41" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="outPort" is_a="//@dependencies.42" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="join" is_a="//@dependencies.24" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{nBranches}"/>
+    <children Name="split" is_a="//@dependencies.25" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{nBranches}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoModel" Name="Modelica.StateGraph.StateGraphRoot">
+    <extension superClass="//@dependencies.45"/>
+    <children Name="activeSteps" is_a="//@dependencies.10" comment="Number of active steps within the stategraph" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
+  </dependencies>
+  <dependencies Name="Modelica.Icons.Information"/>
+  <dependencies xsi:type="openmodelica:MoConnector" Name="Modelica.StateGraph.Interfaces.Step_in">
+    <children Name="occupied" is_a="//@dependencies.9" comment="true, if step is active" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
+    <children Name="set" is_a="//@dependencies.9" comment="true, if transition fires and step is activated" variability="unspecified" innerOuter="none" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoConnector" Name="Modelica.StateGraph.Interfaces.Step_out">
+    <children Name="available" is_a="//@dependencies.9" comment="true, if step is active" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
+    <children Name="reset" is_a="//@dependencies.9" comment="true, if transition fires and step is deactivated" variability="unspecified" innerOuter="none" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoConnector" Name="Modelica.StateGraph.Interfaces.Transition_in">
+    <children Name="available" is_a="//@dependencies.9" comment="true, if step connected to the transition input is active" variability="unspecified" innerOuter="none" dimensions="{}"/>
+    <children Name="reset" is_a="//@dependencies.9" comment="true, if transition fires and the step connected to the transition input is deactivated" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoConnector" Name="Modelica.StateGraph.Interfaces.Transition_out">
+    <children Name="occupied" is_a="//@dependencies.9" comment="true, if step connected to the transition output is active" variability="unspecified" innerOuter="none" dimensions="{}"/>
+    <children Name="set" is_a="//@dependencies.9" comment="true, if transition fires and step connected to the transition output becomes active" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoModel" Name="Modelica.StateGraph.Interfaces.CompositeStepState">
+    <children Name="suspend" is_a="//@dependencies.9" comment="" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
+    <children Name="resume" is_a="//@dependencies.9" comment="" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
+    <children Name="subgraphStatePort" is_a="//@dependencies.21" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.StateGraph.Temporary.RadioButton">
+    <children Name="buttonTimeTable" is_a="//@dependencies.14" comment="Time instants where button is pressed and released" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{:}"/>
+    <children Name="reset" is_a="//@dependencies.9" comment="Reset button to false, if an element of reset becomes true" variability="unspecified" innerOuter="none" dimensions="{:}"/>
+    <children Name="on" is_a="//@dependencies.1" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="table" is_a="//@dependencies.33" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoModel" Name="Modelica.StateGraph.Temporary.NumericValue">
+    <children Name="precision" is_a="//@dependencies.10" comment="Number of significant digits to be shown" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="hideConnector" is_a="//@dependencies.9" comment="= true, if connector is not shown in the dynamic object diagram" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="Value" is_a="//@dependencies.15" comment="Real value to be shown in icon" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies Name="Modelica.Icons.ReleaseNotes"/>
+  <dependencies Name="Modelica.Icons.References"/>
+  <dependencies Name="Modelica.Icons.Contact"/>
+  <dependencies xsi:type="openmodelica:MoModel" Name="Modelica.Icons.Example"/>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.Blocks.Logical.Timer">
+    <extension superClass="//@dependencies.5"/>
+    <children Name="u" is_a="//@dependencies.23" comment="Connector of Boolean input signal" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="y" is_a="//@dependencies.34" comment="Connector of Real output signal" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="entryTime" is_a="//@dependencies.14" comment="Time instant when u became true" variability="discrete" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.Blocks.Logical.GreaterEqualThreshold">
+    <extension superClass="//@dependencies.35"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.Blocks.Sources.RealExpression">
+    <children Name="y" is_a="//@dependencies.34" comment="Value of Real output" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoModel" Name="Modelica.StateGraph.Examples.Utilities.CompositeStep">
+    <extension superClass="//@dependencies.8"/>
+    <children Name="transition3" is_a="//@dependencies.7" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="transition4" is_a="//@dependencies.7" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="step3" is_a="//@dependencies.6" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="step4" is_a="//@dependencies.6" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="transition5" is_a="//@dependencies.7" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="transition6" is_a="//@dependencies.7" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="transition4a" is_a="//@dependencies.7" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="step4a" is_a="//@dependencies.6" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="transition6a" is_a="//@dependencies.7" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="initStep" is_a="//@dependencies.6" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="exitStep" is_a="//@dependencies.6" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="Alternative1" is_a="//@dependencies.19" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoModel" Name="Modelica.StateGraph.Examples.Utilities.CompositeStep1">
+    <extension superClass="//@dependencies.8"/>
+    <children Name="transition1" is_a="//@dependencies.7" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="initStep" is_a="//@dependencies.6" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="exitStep" is_a="//@dependencies.6" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="compositeStep11" is_a="//@dependencies.32" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="compositeStep12" is_a="//@dependencies.32" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="transition2" is_a="//@dependencies.7" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="transition3" is_a="//@dependencies.7" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="transition4" is_a="//@dependencies.7" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="Alternative1" is_a="//@dependencies.19" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoModel" Name="Modelica.StateGraph.Examples.Utilities.TankController">
+    <extension superClass="//@dependencies.22"/>
+    <children Name="limit" is_a="//@dependencies.13" comment="Limit level of tank 1" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="waitTime" is_a="//@dependencies.13" comment="Wait time" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="s1" is_a="//@dependencies.18" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="makeProduct" is_a="//@dependencies.27" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="T1" is_a="//@dependencies.7" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="T2" is_a="//@dependencies.7" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="T3" is_a="//@dependencies.7" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="s2" is_a="//@dependencies.6" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="T4" is_a="//@dependencies.7" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="T5" is_a="//@dependencies.7" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="emptyTanks" is_a="//@dependencies.6" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="T6" is_a="//@dependencies.7" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="start" is_a="//@dependencies.23" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="stop" is_a="//@dependencies.23" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="shut" is_a="//@dependencies.23" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="level1" is_a="//@dependencies.15" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="level2" is_a="//@dependencies.15" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="valve1" is_a="//@dependencies.1" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="valve2" is_a="//@dependencies.1" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="valve3" is_a="//@dependencies.1" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="setValve1" is_a="//@dependencies.26" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="setValve2" is_a="//@dependencies.26" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="setValve3" is_a="//@dependencies.26" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoModel" Name="Modelica.StateGraph.Examples.Utilities.Tank">
+    <children Name="levelSensor" is_a="//@dependencies.34" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="inflow1" is_a="//@dependencies.28" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="outflow1" is_a="//@dependencies.30" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="level" is_a="//@dependencies.4" comment="Tank level in % of max height" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="A" is_a="//@dependencies.4" comment="Ground area of tank in m^2" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="a" is_a="//@dependencies.4" comment="Area of drain hole in m^2" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="hmax" is_a="//@dependencies.4" comment="Max height of tank in m" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="g" is_a="//@dependencies.4" comment="" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoModel" Name="Modelica.StateGraph.Examples.Utilities.valve">
+    <children Name="valveControl" is_a="//@dependencies.23" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="inflow1" is_a="//@dependencies.29" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="outflow1" is_a="//@dependencies.31" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoModel" Name="Modelica.StateGraph.Examples.Utilities.Source">
+    <children Name="outflow1" is_a="//@dependencies.30" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="maxflow" is_a="//@dependencies.4" comment="maximal flow out of source" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoPackage" Name="Modelica.Icons.UtilitiesPackage">
+    <extension superClass="//@dependencies.20"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoModel" Name="Modelica.StateGraph.Interfaces.PartialStep.OuterStatePort">
+    <children Name="subgraphStatePort" is_a="//@dependencies.0" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoFunction" Name="Modelica.Icons.Function"/>
+  <dependencies Name="Modelica.StateGraph.UsersGuide.OverView">
+    <extension superClass="//@dependencies.40"/>
+  </dependencies>
+  <dependencies Name="Modelica.StateGraph.UsersGuide.FirstExample">
+    <extension superClass="//@dependencies.40"/>
+  </dependencies>
+  <dependencies Name="Modelica.StateGraph.UsersGuide.ApplicationExample">
+    <extension superClass="//@dependencies.40"/>
+  </dependencies>
+  <dependencies Name="Modelica.StateGraph.UsersGuide.ComparisonWithStateGraph2">
+    <extension superClass="//@dependencies.40"/>
+  </dependencies>
+  <dependencies Name="Modelica.StateGraph.UsersGuide.ReleaseNotes">
+    <extension superClass="//@dependencies.48"/>
+  </dependencies>
+  <dependencies Name="Modelica.StateGraph.UsersGuide.Literature">
+    <extension superClass="//@dependencies.49"/>
+  </dependencies>
+  <dependencies Name="Modelica.StateGraph.UsersGuide.Contact">
+    <extension superClass="//@dependencies.50"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoModel" Name="Modelica.StateGraph.Examples.FirstExample">
+    <extension superClass="//@dependencies.51"/>
+    <children Name="initialStep" is_a="//@dependencies.18" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="transition1" is_a="//@dependencies.7" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="step" is_a="//@dependencies.6" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="transition2" is_a="//@dependencies.7" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="stateGraphRoot" is_a="//@dependencies.39" comment="" variability="unspecified" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoModel" Name="Modelica.StateGraph.Examples.FirstExample_Variant2">
+    <extension superClass="//@dependencies.51"/>
+    <children Name="initialStep" is_a="//@dependencies.18" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="transition1" is_a="//@dependencies.7" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="step" is_a="//@dependencies.36" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="transition2" is_a="//@dependencies.37" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="timer" is_a="//@dependencies.52" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="greaterEqual" is_a="//@dependencies.53" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="stateGraphRoot" is_a="//@dependencies.39" comment="" variability="unspecified" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoModel" Name="Modelica.StateGraph.Examples.FirstExample_Variant3">
+    <extension superClass="//@dependencies.51"/>
+    <children Name="initialStep" is_a="//@dependencies.18" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="transition1" is_a="//@dependencies.7" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="step" is_a="//@dependencies.36" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="transition2" is_a="//@dependencies.37" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="timer" is_a="//@dependencies.52" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="SetBoolean1" is_a="//@dependencies.26" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="SetBoolean2" is_a="//@dependencies.26" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="stateGraphRoot" is_a="//@dependencies.39" comment="" variability="unspecified" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoModel" Name="Modelica.StateGraph.Examples.ExecutionPaths">
+    <extension superClass="//@dependencies.51"/>
+    <children Name="step0" is_a="//@dependencies.18" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="transition1" is_a="//@dependencies.7" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="step1" is_a="//@dependencies.6" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="transition2" is_a="//@dependencies.7" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="step6" is_a="//@dependencies.6" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="step2" is_a="//@dependencies.6" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="transition3" is_a="//@dependencies.7" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="transition4" is_a="//@dependencies.7" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="step3" is_a="//@dependencies.6" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="step4" is_a="//@dependencies.6" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="transition5" is_a="//@dependencies.7" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="transition6" is_a="//@dependencies.7" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="step5" is_a="//@dependencies.6" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="setReal" is_a="//@dependencies.54" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="transition7" is_a="//@dependencies.37" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="setCondition" is_a="//@dependencies.26" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="transition4a" is_a="//@dependencies.7" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="step4a" is_a="//@dependencies.6" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="transition6a" is_a="//@dependencies.7" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="NumericValue1" is_a="//@dependencies.47" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="alternative" is_a="//@dependencies.19" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="Parallel1" is_a="//@dependencies.38" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="stateGraphRoot" is_a="//@dependencies.39" comment="" variability="unspecified" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoModel" Name="Modelica.StateGraph.Examples.ShowCompositeStep">
+    <extension superClass="//@dependencies.51"/>
+    <children Name="compositeStep" is_a="//@dependencies.55" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="step0" is_a="//@dependencies.18" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="transition1" is_a="//@dependencies.7" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="step1" is_a="//@dependencies.6" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="transition2" is_a="//@dependencies.7" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="step6" is_a="//@dependencies.6" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="transition7" is_a="//@dependencies.37" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="Parallel1" is_a="//@dependencies.38" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="setCondition" is_a="//@dependencies.26" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="stateGraphRoot" is_a="//@dependencies.39" comment="" variability="unspecified" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoModel" Name="Modelica.StateGraph.Examples.ShowExceptions">
+    <extension superClass="//@dependencies.51"/>
+    <children Name="compositeStep" is_a="//@dependencies.56" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="initialStep" is_a="//@dependencies.18" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="transition1" is_a="//@dependencies.7" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="transition2" is_a="//@dependencies.7" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="transition3" is_a="//@dependencies.7" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="step1" is_a="//@dependencies.6" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="transition4" is_a="//@dependencies.7" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="stateGraphRoot" is_a="//@dependencies.39" comment="" variability="unspecified" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoModel" Name="Modelica.StateGraph.Examples.ControlledTanks">
+    <extension superClass="//@dependencies.51"/>
+    <children Name="tankController" is_a="//@dependencies.57" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="start" is_a="//@dependencies.46" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="stop" is_a="//@dependencies.46" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="shut" is_a="//@dependencies.46" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="tank1" is_a="//@dependencies.58" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="tank2" is_a="//@dependencies.58" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="valve1" is_a="//@dependencies.59" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="source" is_a="//@dependencies.60" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="valve2" is_a="//@dependencies.59" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="valve3" is_a="//@dependencies.59" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="stateGraphRoot" is_a="//@dependencies.39" comment="" variability="unspecified" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoPackage" Name="Modelica.StateGraph.Examples.Utilities">
+    <extension superClass="//@dependencies.61"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoPackage" Name="Modelica.Icons.ExamplesPackage">
+    <extension superClass="//@dependencies.20"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoConnector" Name="Modelica.StateGraph.Interfaces.CompositeStep_resume">
+    <children Name="occupied" is_a="//@dependencies.9" comment="true, if step is active" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
+    <children Name="set" is_a="//@dependencies.9" comment="true, if transition fires and step is activated" variability="unspecified" innerOuter="none" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoConnector" Name="Modelica.StateGraph.Interfaces.CompositeStep_suspend">
+    <children Name="available" is_a="//@dependencies.9" comment="true, if step is active" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
+    <children Name="reset" is_a="//@dependencies.9" comment="true, if transition fires and step is deactivated" variability="unspecified" innerOuter="none" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.StateGraph.Interfaces.PartialStep">
+    <children Name="nIn" is_a="//@dependencies.10" comment="Number of input connections" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="nOut" is_a="//@dependencies.10" comment="Number of output connections" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="localActive" is_a="//@dependencies.9" comment="= true if step is active, otherwise the step is not active" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
+    <children Name="inPort" is_a="//@dependencies.41" comment="Vector of step input connectors" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{nIn}"/>
+    <children Name="outPort" is_a="//@dependencies.42" comment="Vector of step output connectors" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{nOut}"/>
+    <children Name="stateGraphRoot" is_a="//@dependencies.45" comment="" variability="unspecified" innerOuter="outer" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="outerStatePort" is_a="//@dependencies.62" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="newActive" is_a="//@dependencies.9" comment="Value of active in the next iteration" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="oldActive" is_a="//@dependencies.9" comment="Value of active when CompositeStep was aborted" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.StateGraph.Interfaces.PartialTransition">
+    <children Name="localCondition" is_a="//@dependencies.9" comment="= true, if transition may fire" variability="unspecified" innerOuter="none" dimensions="{}"/>
+    <children Name="enableTimer" is_a="//@dependencies.9" comment="= true, if timer is enabled" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="waitTime" is_a="//@dependencies.14" comment="Wait time before transition fires" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="t" is_a="//@dependencies.14" comment="= actual waiting time (transition will fire when t > waitTime)" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
+    <children Name="enableFire" is_a="//@dependencies.9" comment="= true, if all firing conditions are true" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
+    <children Name="fire" is_a="//@dependencies.9" comment="= true, if transition fires" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
+    <children Name="inPort" is_a="//@dependencies.43" comment="Vector of transition input connectors" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="outPort" is_a="//@dependencies.44" comment="Vector of transition output connectors" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="t_start" is_a="//@dependencies.14" comment="Time instant at which the transition would fire, if waitTime would be zero" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="t_dummy" is_a="//@dependencies.4" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoPackage" Name="Modelica.Icons.InterfacesPackage">
+    <extension superClass="//@dependencies.20"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoFunction" Name="Modelica.StateGraph.Temporary.anyTrue">
+    <extension superClass="//@dependencies.63"/>
+    <children Name="b" is_a="//@dependencies.9" comment="" variability="unspecified" innerOuter="none" dimensions="{:}"/>
+    <children Name="result" is_a="//@dependencies.9" comment="" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoFunction" Name="Modelica.StateGraph.Temporary.allTrue">
+    <extension superClass="//@dependencies.63"/>
+    <children Name="b" is_a="//@dependencies.9" comment="" variability="unspecified" innerOuter="none" dimensions="{:}"/>
+    <children Name="result" is_a="//@dependencies.9" comment="" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoModel" Name="Modelica.StateGraph.Temporary.IndicatorLamp">
+    <children Name="u" is_a="//@dependencies.23" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoPackage" Name="Modelica.StateGraph.UsersGuide">
+    <extension superClass="//@dependencies.40"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoPackage" Name="Modelica.StateGraph.Examples">
+    <extension superClass="//@dependencies.79"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoPackage" Name="Modelica.StateGraph.Interfaces">
+    <extension superClass="//@dependencies.84"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.StateGraph.InitialStepWithSignal">
+    <extension superClass="//@dependencies.82"/>
+    <children Name="active" is_a="//@dependencies.1" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoPackage" Name="Modelica.StateGraph.Temporary">
+    <extension superClass="//@dependencies.20"/>
+  </dependencies>
+  <dependencies Name="ExternalObject"/>
+  <dependencies xsi:type="openmodelica:MoPackage" Name="Modelica.StateGraph">
+    <extension superClass="//@dependencies.20"/>
+  </dependencies>
+</openmodelica:Root>

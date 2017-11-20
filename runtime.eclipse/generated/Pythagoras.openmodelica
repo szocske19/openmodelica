@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<openmodelica:Root xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:openmodelica="hu.bme.mit.inf.onlab/openmodelica" Name="Root">
+  <mainClass xsi:type="openmodelica:MoModel" Name="Pythagoras">
+    <children Name="a" is_a="//@dependencies.1" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="b" is_a="//@dependencies.1" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="c" is_a="//@dependencies.1" comment="" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
+    <children Name="f" is_a="//@dependencies.1" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </mainClass>
+  <dependencies Name="ExternalObject"/>
+  <dependencies xsi:type="openmodelica:Real" Name="Real"/>
+</openmodelica:Root>

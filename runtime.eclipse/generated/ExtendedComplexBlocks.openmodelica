@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<openmodelica:Root xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:openmodelica="hu.bme.mit.inf.onlab/openmodelica" Name="Root">
+  <mainClass xsi:type="openmodelica:MoPackage" Name="ExtendedComplexBlocks">
+    <extension superClass="//@dependencies.72"/>
+  </mainClass>
+  <dependencies xsi:type="openmodelica:Real" Name="Real"/>
+  <dependencies xsi:type="openmodelica:MoOperatorRecord" Name="Complex">
+    <children Name="re" is_a="//@dependencies.0" comment="Real part of complex number" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="im" is_a="//@dependencies.0" comment="Imaginary part of complex number" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoConnector" Name="Modelica.ComplexBlocks.Interfaces.ComplexInput">
+    <extension superClass="//@dependencies.1"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoConnector" Name="Modelica.ComplexBlocks.Interfaces.ComplexOutput">
+    <extension superClass="//@dependencies.1"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.Blocks.Icons.Block"/>
+  <dependencies xsi:type="openmodelica:Boolean" Name="Boolean"/>
+  <dependencies xsi:type="openmodelica:MoConnector" Name="Modelica.Blocks.Interfaces.RealOutput">
+    <extension superClass="//@dependencies.0"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.ComplexBlocks.Interfaces.ComplexSO">
+    <extension superClass="//@dependencies.4"/>
+    <children Name="y" is_a="//@dependencies.3" comment="Connector of Complex output signal" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.ComplexBlocks.Interfaces.ComplexSISO">
+    <extension superClass="//@dependencies.4"/>
+    <children Name="u" is_a="//@dependencies.2" comment="Connector of Complex input signal" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="y" is_a="//@dependencies.3" comment="Connector of Complex output signal" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="useConjugateInput" is_a="//@dependencies.5" comment="If true, input is processed conjugate complex" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="uInternal" is_a="//@dependencies.1" comment="Equals either u or conjugate complex input u if useComplexInput = true" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:Real" Name="Modelica.SIunits.Time">
+    <extension superClass="//@dependencies.0"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoConnector" Name="Modelica.Blocks.Interfaces.RealInput">
+    <extension superClass="//@dependencies.0"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.Blocks.Interfaces.SO">
+    <extension superClass="//@dependencies.4"/>
+    <children Name="y" is_a="//@dependencies.6" comment="Connector of Real output signal" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoPackage" Name="Modelica.Icons.Package"/>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.ComplexBlocks.Interfaces.ComplexSI2SO">
+    <extension superClass="//@dependencies.4"/>
+    <children Name="u1" is_a="//@dependencies.2" comment="Connector of Complex input signal 1" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="u2" is_a="//@dependencies.2" comment="Connector of Complex input signal 2" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="y" is_a="//@dependencies.3" comment="Connector of Complex output signal" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="useConjugateInput1" is_a="//@dependencies.5" comment="If true, input 1 is processed conjugate complex" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="useConjugateInput2" is_a="//@dependencies.5" comment="If true, input 2 is processed conjugate complex" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="u1Internal" is_a="//@dependencies.1" comment="Equals either u1 or conjugate complex input u1 if useComplexInput1 = true" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="u2Internal" is_a="//@dependencies.1" comment="Equals either u2 or conjugate complex input u2 if useComplexInput2 = true" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.ComplexBlocks.Interfaces.ComplexMISO">
+    <extension superClass="//@dependencies.4"/>
+    <children Name="nin" is_a="//@dependencies.27" comment="Number of inputs" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="u" is_a="//@dependencies.2" comment="Connector of Complex input signals" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{nin}"/>
+    <children Name="y" is_a="//@dependencies.3" comment="Connector of Complex output signal" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="useConjugateInput" is_a="//@dependencies.5" comment="If true, inputs are processed conjugate complex" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{nin}"/>
+    <children Name="uInternal" is_a="//@dependencies.1" comment="Equals either u or conjugate complex input u if useComplexInput = true" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{nin}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.ComplexBlocks.Interfaces.ComplexSignalSource">
+    <extension superClass="//@dependencies.7"/>
+    <children Name="offset" is_a="//@dependencies.1" comment="Offset of output signal y" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="startTime" is_a="//@dependencies.9" comment="Output y = offset for time &lt; startTime" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.ComplexBlocks.ComplexMath.PolarToComplex">
+    <extension superClass="//@dependencies.7"/>
+    <children Name="len" is_a="//@dependencies.10" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="phi" is_a="//@dependencies.10" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.ComplexBlocks.ComplexMath.ComplexToReal">
+    <extension superClass="//@dependencies.4"/>
+    <children Name="re" is_a="//@dependencies.6" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="im" is_a="//@dependencies.6" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="u" is_a="//@dependencies.2" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="useConjugateInput" is_a="//@dependencies.5" comment="If true, input is processed conjugate complex" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.ComplexBlocks.ComplexMath.ComplexToPolar">
+    <extension superClass="//@dependencies.4"/>
+    <children Name="len" is_a="//@dependencies.6" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="phi" is_a="//@dependencies.6" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="u" is_a="//@dependencies.2" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="useConjugateInput" is_a="//@dependencies.5" comment="If true, input is processed conjugate complex" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.ComplexBlocks.ComplexMath.TransferFunction">
+    <extension superClass="//@dependencies.8"/>
+    <children Name="b" is_a="//@dependencies.0" comment="Numerator coefficients of transfer function (e.g., 2*s+3 is specified as {2,3})" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{:}"/>
+    <children Name="a" is_a="//@dependencies.0" comment="Denominator coefficients of transfer function (e.g., 5*s+6 is specified as {5,6})" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{:}"/>
+    <children Name="w" is_a="//@dependencies.10" comment="Frequency input" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="bw" is_a="//@dependencies.1" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{size(b, 1)}"/>
+    <children Name="aw" is_a="//@dependencies.1" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{size(a, 1)}"/>
+    <children Name="bSum" is_a="//@dependencies.1" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="aSum" is_a="//@dependencies.1" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.ComplexBlocks.Sources.ComplexConstant">
+    <extension superClass="//@dependencies.7"/>
+    <children Name="k" is_a="//@dependencies.1" comment="Constant output value" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.ComplexBlocks.Sources.LogFrequencySweep">
+    <extension superClass="//@dependencies.11"/>
+    <children Name="wMin" is_a="//@dependencies.0" comment="Lower frequency border" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="wMax" is_a="//@dependencies.0" comment="Upper frequency border" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="duration" is_a="//@dependencies.9" comment="Duration of ramp (= 0.0 gives a Step)" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies Name="Modelica.Icons.Contact"/>
+  <dependencies Name="Modelica.Icons.ReleaseNotes"/>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.Blocks.Sources.Ramp">
+    <extension superClass="//@dependencies.11"/>
+    <children Name="height" is_a="//@dependencies.0" comment="Height of ramps" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="duration" is_a="//@dependencies.9" comment="Duration of ramp (= 0.0 gives a Step)" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="offset" is_a="//@dependencies.0" comment="Offset of output signal" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="startTime" is_a="//@dependencies.9" comment="Output = offset for time &lt; startTime" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoModel" Name="Modelica.Icons.Example"/>
+  <dependencies xsi:type="openmodelica:Real" Name="Modelica.SIunits.Angle">
+    <extension superClass="//@dependencies.0"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:Integer" Name="Integer"/>
+  <dependencies xsi:type="openmodelica:Real" Name="Modelica.SIunits.AngularVelocity">
+    <extension superClass="//@dependencies.0"/>
+  </dependencies>
+  <dependencies Name="Modelica.ComplexBlocks.UsersGuide.Contact">
+    <extension superClass="//@dependencies.22"/>
+  </dependencies>
+  <dependencies Name="Modelica.ComplexBlocks.UsersGuide.ReleaseNotes">
+    <extension superClass="//@dependencies.23"/>
+  </dependencies>
+  <dependencies Name="Modelica.Icons.Information"/>
+  <dependencies xsi:type="openmodelica:MoModel" Name="Modelica.ComplexBlocks.Examples.TestConversionBlock">
+    <extension superClass="//@dependencies.25"/>
+    <children Name="len" is_a="//@dependencies.24" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="phi" is_a="//@dependencies.24" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="polarToComplex" is_a="//@dependencies.16" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="complexToReal" is_a="//@dependencies.17" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoModel" Name="Modelica.ComplexBlocks.Examples.ShowTransferFunction">
+    <extension superClass="//@dependencies.25"/>
+    <children Name="d" is_a="//@dependencies.0" comment="" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="b" is_a="//@dependencies.0" comment="" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{:}"/>
+    <children Name="a" is_a="//@dependencies.0" comment="" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{:}"/>
+    <children Name="wMin" is_a="//@dependencies.0" comment="" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="wMax" is_a="//@dependencies.0" comment="" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="lg_w" is_a="//@dependencies.0" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="dB" is_a="//@dependencies.0" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="phi" is_a="//@dependencies.26" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="logFrequencySweep" is_a="//@dependencies.21" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="const" is_a="//@dependencies.20" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="transferFunction" is_a="//@dependencies.19" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="complexToPolar" is_a="//@dependencies.18" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoPackage" Name="Modelica.Icons.ExamplesPackage">
+    <extension superClass="//@dependencies.12"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.ComplexBlocks.Interfaces.ComplexMO">
+    <extension superClass="//@dependencies.4"/>
+    <children Name="nout" is_a="//@dependencies.27" comment="Number of outputs" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="y" is_a="//@dependencies.3" comment="Connector of Complex output signals" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{nout}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.ComplexBlocks.Interfaces.ComplexSIMO">
+    <extension superClass="//@dependencies.4"/>
+    <children Name="nout" is_a="//@dependencies.27" comment="Number of outputs" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="u" is_a="//@dependencies.2" comment="Connector of Complex input signal" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="y" is_a="//@dependencies.3" comment="Connector of Complex output signals" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{nout}"/>
+    <children Name="useConjugateInput" is_a="//@dependencies.5" comment="If true, input is processed conjugate complex" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="uInternal" is_a="//@dependencies.1" comment="Equals either u or conjugate complex input u if useComplexInput = true" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.ComplexBlocks.Interfaces.ComplexMIMO">
+    <extension superClass="//@dependencies.4"/>
+    <children Name="nin" is_a="//@dependencies.27" comment="Number of inputs" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="nout" is_a="//@dependencies.27" comment="Number of outputs" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="u" is_a="//@dependencies.2" comment="Connector of Complex input signals" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{nin}"/>
+    <children Name="y" is_a="//@dependencies.3" comment="Connector of Complex output signals" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{nout}"/>
+    <children Name="useConjugateInput" is_a="//@dependencies.5" comment="If true, inputs are processed conjugate complex" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{nin}"/>
+    <children Name="uInternal" is_a="//@dependencies.1" comment="Equals either u or conjugate complex input u if useComplexInput = true" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{nin}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.ComplexBlocks.Interfaces.ComplexMIMOs">
+    <extension superClass="//@dependencies.4"/>
+    <children Name="n" is_a="//@dependencies.27" comment="Number of inputs (= number of outputs)" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="u" is_a="//@dependencies.2" comment="Connector of Complex input signals" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{n}"/>
+    <children Name="y" is_a="//@dependencies.3" comment="Connector of Complex output signals" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{n}"/>
+    <children Name="useConjugateInput" is_a="//@dependencies.5" comment="If true, inputs are processed conjugate complex" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{n}"/>
+    <children Name="uInternal" is_a="//@dependencies.1" comment="Equals either u or conjugate complex input u if useComplexInput = true" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{n}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.ComplexBlocks.Interfaces.ComplexMI2MO">
+    <extension superClass="//@dependencies.4"/>
+    <children Name="n" is_a="//@dependencies.27" comment="Dimension of input and output vectors." variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="u1" is_a="//@dependencies.2" comment="Connector 1 of Complex input signals" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{n}"/>
+    <children Name="u2" is_a="//@dependencies.2" comment="Connector 2 of Complex input signals" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{n}"/>
+    <children Name="y" is_a="//@dependencies.3" comment="Connector of Complex output signals" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{n}"/>
+    <children Name="useConjugateInput1" is_a="//@dependencies.5" comment="If true, inputs 1 are processed conjugate complex" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{n}"/>
+    <children Name="useConjugateInput2" is_a="//@dependencies.5" comment="If true, inputs 2 are processed conjugate complex" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{n}"/>
+    <children Name="u1Internal" is_a="//@dependencies.1" comment="Equals either u1 or conjugate complex input u1 if useComplexInput = true" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{n}"/>
+    <children Name="u2Internal" is_a="//@dependencies.1" comment="Equals either u1 or conjugate complex input u1 if useComplexInput = true" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{n}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoPackage" Name="Modelica.Icons.InterfacesPackage">
+    <extension superClass="//@dependencies.12"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.ComplexBlocks.ComplexMath.Conj">
+    <extension superClass="//@dependencies.8"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.ComplexBlocks.ComplexMath.Gain">
+    <children Name="k" is_a="//@dependencies.1" comment="Gain value multiplied with input signal" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="useConjugateInput" is_a="//@dependencies.5" comment="If true, input is processed conjugate complex" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="u" is_a="//@dependencies.2" comment="Input signal connector" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="y" is_a="//@dependencies.3" comment="Output signal connector" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.ComplexBlocks.ComplexMath.Sum">
+    <extension superClass="//@dependencies.14"/>
+    <children Name="k" is_a="//@dependencies.1" comment="Optional: sum coefficients" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{nin}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.ComplexBlocks.ComplexMath.Feedback">
+    <children Name="u1" is_a="//@dependencies.2" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="u2" is_a="//@dependencies.2" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="y" is_a="//@dependencies.3" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="useConjugateInput1" is_a="//@dependencies.5" comment="If true, input 1 is processed conjugate complex" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="useConjugateInput2" is_a="//@dependencies.5" comment="If true, input 2 is processed conjugate complex" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.ComplexBlocks.ComplexMath.Add">
+    <extension superClass="//@dependencies.13"/>
+    <children Name="k1" is_a="//@dependencies.1" comment="Gain of input 1" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="k2" is_a="//@dependencies.1" comment="Gain of input 2" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.ComplexBlocks.ComplexMath.Add3">
+    <extension superClass="//@dependencies.4"/>
+    <children Name="k1" is_a="//@dependencies.1" comment="Gain of upper input" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="useConjugateInput1" is_a="//@dependencies.5" comment="If true, input 1 is processed conjugate complex" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="k2" is_a="//@dependencies.1" comment="Gain of middle input" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="useConjugateInput2" is_a="//@dependencies.5" comment="If true, input 2 is processed conjugate complex" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="k3" is_a="//@dependencies.1" comment="Gain of lower input" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="useConjugateInput3" is_a="//@dependencies.5" comment="If true, input 3 is processed conjugate complex" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="u1" is_a="//@dependencies.2" comment="Connector 1 of Complex input signals" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="u2" is_a="//@dependencies.2" comment="Connector 2 of Complex input signals" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="u3" is_a="//@dependencies.2" comment="Connector 3 of Complex input signals" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="y" is_a="//@dependencies.3" comment="Connector of Complex output signals" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.ComplexBlocks.ComplexMath.Product">
+    <extension superClass="//@dependencies.13"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.ComplexBlocks.ComplexMath.Division">
+    <extension superClass="//@dependencies.13"/>
+    <children Name="useConjugateInput1" is_a="//@dependencies.5" comment="If true, input 1 is processed conjugate complex" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="useConjugateInput2" is_a="//@dependencies.5" comment="If true, input 2 is processed conjugate complex" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.ComplexBlocks.ComplexMath.Sqrt">
+    <extension superClass="//@dependencies.8"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.ComplexBlocks.ComplexMath.Sin">
+    <extension superClass="//@dependencies.8"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.ComplexBlocks.ComplexMath.Cos">
+    <extension superClass="//@dependencies.8"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.ComplexBlocks.ComplexMath.Tan">
+    <extension superClass="//@dependencies.8"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.ComplexBlocks.ComplexMath.Asin">
+    <extension superClass="//@dependencies.8"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.ComplexBlocks.ComplexMath.Acos">
+    <extension superClass="//@dependencies.8"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.ComplexBlocks.ComplexMath.Atan">
+    <extension superClass="//@dependencies.8"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.ComplexBlocks.ComplexMath.Sinh">
+    <extension superClass="//@dependencies.8"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.ComplexBlocks.ComplexMath.Cosh">
+    <extension superClass="//@dependencies.8"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.ComplexBlocks.ComplexMath.Tanh">
+    <extension superClass="//@dependencies.8"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.ComplexBlocks.ComplexMath.Exp">
+    <extension superClass="//@dependencies.8"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.ComplexBlocks.ComplexMath.Log">
+    <extension superClass="//@dependencies.8"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.ComplexBlocks.ComplexMath.RealToComplex">
+    <extension superClass="//@dependencies.7"/>
+    <children Name="re" is_a="//@dependencies.10" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="im" is_a="//@dependencies.10" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.ComplexBlocks.Sources.ComplexExpression">
+    <children Name="y" is_a="//@dependencies.3" comment="Value of Complex output" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.ComplexBlocks.Sources.ComplexStep">
+    <extension superClass="//@dependencies.15"/>
+    <children Name="height" is_a="//@dependencies.1" comment="Height of step" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoBlock" Name="Modelica.ComplexBlocks.Sources.ComplexRotatingPhasor">
+    <extension superClass="//@dependencies.7"/>
+    <children Name="magnitude" is_a="//@dependencies.0" comment="Magnitude of complex phasor" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="w" is_a="//@dependencies.28" comment="Constant angular velocity of complex phasor" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="phi0" is_a="//@dependencies.26" comment="Initial angle of complex phasor at time = 0" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoPackage" Name="Modelica.Icons.SourcesPackage">
+    <extension superClass="//@dependencies.12"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoPackage" Name="Modelica.ComplexBlocks.UsersGuide">
+    <extension superClass="//@dependencies.31"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoPackage" Name="Modelica.ComplexBlocks.Examples">
+    <extension superClass="//@dependencies.34"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoPackage" Name="Modelica.ComplexBlocks.Interfaces">
+    <extension superClass="//@dependencies.40"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoPackage" Name="Modelica.ComplexBlocks.ComplexMath">
+    <extension superClass="//@dependencies.12"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:MoPackage" Name="Modelica.ComplexBlocks.Sources">
+    <extension superClass="//@dependencies.65"/>
+  </dependencies>
+  <dependencies Name="ExternalObject"/>
+  <dependencies xsi:type="openmodelica:MoPackage" Name="Modelica.ComplexBlocks">
+    <extension superClass="//@dependencies.12"/>
+  </dependencies>
+</openmodelica:Root>

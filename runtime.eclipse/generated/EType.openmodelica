@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<openmodelica:Package xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:openmodelica="hu.bme.mit.inf.onlab/openmodelica" Name="Root">
-  <componentprototype xsi:type="openmodelica:Package" Name="dependency"/>
-  <componentprototype xsi:type="openmodelica:Enumeration" Name="EType"/>
-</openmodelica:Package>
+<openmodelica:Root xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:openmodelica="hu.bme.mit.inf.onlab/openmodelica" Name="Root">
+  <mainClass xsi:type="openmodelica:Enumeration" Name="EType"/>
+  <dependencies xsi:type="openmodelica:Class" Name="ExternalObject"/>
+</openmodelica:Root>
