@@ -3,27 +3,28 @@ package onlab.openmodelica.own.implementation.of.mdt;
 
 import java.util.ArrayList;
 
-import openmodelica.ComponentPrototype;
+import openmodelica.MoClass;
 
 public class LevelNode
 {
-	private LevelNode parent;
+	private ArrayList<LevelNode> parents;
 	private ArrayList<LevelNode> children;
 	private int level;
-	private ComponentPrototype cp;
+	private MoClass cp;
 
-	public LevelNode(ComponentPrototype cp, LevelNode parent, int level){
+	public LevelNode(MoClass cp, LevelNode parent, int level){
 		this.level = level;
 		this.cp = cp;
-		this.parent = parent;
-		children = new ArrayList<LevelNode>();
+		this.parents = new ArrayList<LevelNode>();		
+		this.children = new ArrayList<LevelNode>();
 		
-		if(this.parent != null){
-			this.parent.children.add(this);
+		if(parent != null){
+			this.parents.add(parent);
+			parent.children.add(this);
 		}
 	}
 	
-	public ComponentPrototype getCp()
+	public MoClass getCp()
 	{
 		return cp;
 	}
@@ -33,22 +34,21 @@ public class LevelNode
 		return level;
 	}
 	
-	public void raiseLevelAndChangeParent(LevelNode newParent, int levelDifference){
-		if(parent != null){
-			parent.children.remove(this);
+	public void raiseLevelAndChangeParent(LevelNode newParent, int newLevel){
+		if(newParent != null){
+			parents.add(newParent);
+			newParent.children.add(this);
 		}
-		parent = newParent;
-		parent.children.add(this);
-		raiseLevel(levelDifference);
+		raiseLevel(newLevel);
 	}	
 
-	private void raiseLevel(int levelDifference){
-		System.out.println("cp: " + cp.getName() + ", old level: " + level + ", new level: " + ( level + levelDifference ) );
-		level += levelDifference;
-		if(children != null){
+	private void raiseLevel(int newLevel){
+		System.out.println("cp: " + cp.getName() + ", old level: " + level + ", new level: " + newLevel );
+		if(newLevel > level){
+			level = newLevel;
 			for (LevelNode child : children)
 			{
-				child.raiseLevel(levelDifference);			
+				child.raiseLevel(newLevel+1);			
 			}
 		}
 	}
