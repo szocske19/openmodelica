@@ -37,9 +37,7 @@
       <genEnumLiterals ecoreEnumLiteral="openmodelica.ecore#//StateSelect/PREFER"/>
       <genEnumLiterals ecoreEnumLiteral="openmodelica.ecore#//StateSelect/ALWAYS"/>
     </genEnums>
-    <genClasses ecoreClass="openmodelica.ecore#//MoPackage">
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference openmodelica.ecore#//MoPackage/packagedClass"/>
-    </genClasses>
+    <genClasses ecoreClass="openmodelica.ecore#//MoPackage"/>
     <genClasses ecoreClass="openmodelica.ecore#//MoRecord"/>
     <genClasses ecoreClass="openmodelica.ecore#//MoModel"/>
     <genClasses ecoreClass="openmodelica.ecore#//MoBlock"/>
@@ -51,6 +49,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference openmodelica.ecore#//MoClass/connectclause"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference openmodelica.ecore#//MoClass/children"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference openmodelica.ecore#//MoClass/overload"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference openmodelica.ecore#//MoClass/packagedClasses"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference openmodelica.ecore#//MoClass/packagedBy"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference openmodelica.ecore#//MoClass/error"/>
     </genClasses>
     <genClasses ecoreClass="openmodelica.ecore#//Primitives">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute openmodelica.ecore#//Primitives/quantity"/>
@@ -167,5 +168,8 @@
     <genClasses ecoreClass="openmodelica.ecore#//MoOperatorRecord"/>
     <genClasses ecoreClass="openmodelica.ecore#//MoExpandableConnector"/>
     <genClasses ecoreClass="openmodelica.ecore#//MoOperator"/>
+    <genClasses ecoreClass="openmodelica.ecore#//Error">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute openmodelica.ecore#//Error/message"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

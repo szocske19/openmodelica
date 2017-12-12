@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="openmodelica" nsURI="hu.bme.mit.inf.onlab/openmodelica" nsPrefix="openmodelica">
-  <eClassifiers xsi:type="ecore:EClass" name="MoPackage" eSuperTypes="#//MoClass">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="packagedClass" upperBound="-1"
-        eType="#//MoClass"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MoPackage" eSuperTypes="#//MoClass"/>
   <eClassifiers xsi:type="ecore:EClass" name="MoRecord" eSuperTypes="#//MoClass"/>
   <eClassifiers xsi:type="ecore:EClass" name="MoModel" eSuperTypes="#//MoBlock"/>
   <eClassifiers xsi:type="ecore:EClass" name="MoBlock" eSuperTypes="#//MoRecord"/>
@@ -21,6 +18,12 @@
         eType="#//ComponentInstance" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="overload" upperBound="-1"
         eType="#//OverLoad" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="packagedClasses" upperBound="-1"
+        eType="#//MoClass" containment="true" eOpposite="#//MoClass/packagedBy"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="packagedBy" eType="#//MoClass"
+        eOpposite="#//MoClass/packagedClasses"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="error" upperBound="-1"
+        eType="#//Error" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Primitives" abstract="true" eSuperTypes="#//MoType">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="quantity" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
@@ -193,4 +196,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="MoOperatorRecord" eSuperTypes="#//MoClass"/>
   <eClassifiers xsi:type="ecore:EClass" name="MoExpandableConnector" eSuperTypes="#//MoClass"/>
   <eClassifiers xsi:type="ecore:EClass" name="MoOperator" eSuperTypes="#//MoClass"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Error">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="message" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+  </eClassifiers>
 </ecore:EPackage>
