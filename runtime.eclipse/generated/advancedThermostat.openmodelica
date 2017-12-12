@@ -2,116 +2,124 @@
 <openmodelica:Root xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:openmodelica="hu.bme.mit.inf.onlab/openmodelica" Name="Root">
   <mainClass xsi:type="openmodelica:MoPackage" Name="advancedThermostat">
     <children Name="MAX_INDEX" is_a="//@dependencies.0" comment="" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
-    <children Name="DELAY_TIME" is_a="//@dependencies.2" comment="" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="DELAY_TIME" is_a="//@dependencies.4/@packagedClasses.0/@packagedClasses.0" comment="" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <packagedClasses xsi:type="openmodelica:Integer" Name="advancedThermostat.parameterIndex">
+      <extension superClass="//@dependencies.0"/>
+    </packagedClasses>
+    <packagedClasses xsi:type="openmodelica:Enumeration" Name="advancedThermostat.transformLogic"/>
+    <packagedClasses xsi:type="openmodelica:MoModel" Name="advancedThermostat.SignalHolder">
+      <children Name="y" is_a="//@dependencies.2" comment="" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
+      <children Name="u" is_a="//@dependencies.2" comment="" variability="unspecified" innerOuter="none" dimensions="{}"/>
+      <children Name="entryTime" is_a="//@dependencies.4/@packagedClasses.0/@packagedClasses.0" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    </packagedClasses>
+    <packagedClasses xsi:type="openmodelica:MoFunction" Name="advancedThermostat.BooleanTransform">
+      <children Name="source" is_a="//@dependencies.2" comment="" variability="unspecified" innerOuter="none" dimensions="{:}"/>
+      <children Name="maxIndex" is_a="//@mainClass/@packagedClasses.0" comment="" variability="unspecified" innerOuter="none" dimensions="{}"/>
+      <children Name="logic" is_a="//@mainClass/@packagedClasses.1" comment="" variability="unspecified" innerOuter="none" dimensions="{}"/>
+      <children Name="result" is_a="//@dependencies.2" comment="" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
+      <children Name="resoultArray" is_a="//@dependencies.2" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{transformLogic}"/>
+    </packagedClasses>
+    <packagedClasses xsi:type="openmodelica:MoFunction" Name="advancedThermostat.RealTransform">
+      <children Name="source" is_a="//@dependencies.1" comment="" variability="unspecified" innerOuter="none" dimensions="{:}"/>
+      <children Name="maxIndex" is_a="//@mainClass/@packagedClasses.0" comment="" variability="unspecified" innerOuter="none" dimensions="{}"/>
+      <children Name="logic" is_a="//@mainClass/@packagedClasses.1" comment="" variability="unspecified" innerOuter="none" dimensions="{}"/>
+      <children Name="result" is_a="//@dependencies.1" comment="" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
+      <children Name="resoultArray" is_a="//@dependencies.1" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{transformLogic}"/>
+    </packagedClasses>
+    <packagedClasses xsi:type="openmodelica:MoFunction" Name="advancedThermostat.IntegerTransform">
+      <children Name="source" is_a="//@dependencies.0" comment="" variability="unspecified" innerOuter="none" dimensions="{:}"/>
+      <children Name="maxIndex" is_a="//@mainClass/@packagedClasses.0" comment="" variability="unspecified" innerOuter="none" dimensions="{}"/>
+      <children Name="logic" is_a="//@mainClass/@packagedClasses.1" comment="" variability="unspecified" innerOuter="none" dimensions="{}"/>
+      <children Name="result" is_a="//@dependencies.0" comment="" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
+      <children Name="resoultArray" is_a="//@dependencies.0" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{transformLogic}"/>
+    </packagedClasses>
+    <packagedClasses xsi:type="openmodelica:MoConnector" Name="advancedThermostat.ThermostatControlPort">
+      <children Name="turn_thermostat_on1" is_a="//@mainClass/@packagedClasses.6/@packagedClasses.0" comment="" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
+      <children Name="set_target_temperature1" is_a="//@mainClass/@packagedClasses.6/@packagedClasses.1" comment="" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
+      <children Name="turn_thermostat_off1" is_a="//@mainClass/@packagedClasses.6/@packagedClasses.2" comment="" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
+      <packagedClasses xsi:type="openmodelica:MoConnector" Name="advancedThermostat.ThermostatControlPort.turn_thermostat_on">
+        <children Name="counter" is_a="//@dependencies.0" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+      </packagedClasses>
+      <packagedClasses xsi:type="openmodelica:MoConnector" Name="advancedThermostat.ThermostatControlPort.set_target_temperature">
+        <children Name="counter" is_a="//@dependencies.0" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+        <children Name="target_temperature" is_a="//@dependencies.1" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{MAX_INDEX}"/>
+      </packagedClasses>
+      <packagedClasses xsi:type="openmodelica:MoConnector" Name="advancedThermostat.ThermostatControlPort.turn_thermostat_off">
+        <children Name="counter" is_a="//@dependencies.0" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+      </packagedClasses>
+    </packagedClasses>
+    <packagedClasses xsi:type="openmodelica:MoConnector" Name="advancedThermostat.TemperatureStreamPort">
+      <children Name="measured_temperature1" is_a="//@mainClass/@packagedClasses.7/@packagedClasses.0" comment="" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
+      <packagedClasses xsi:type="openmodelica:MoConnector" Name="advancedThermostat.TemperatureStreamPort.measured_temperature">
+        <children Name="counter" is_a="//@dependencies.0" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+        <children Name="measured_temperature" is_a="//@dependencies.1" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{MAX_INDEX}"/>
+      </packagedClasses>
+    </packagedClasses>
+    <packagedClasses xsi:type="openmodelica:MoConnector" Name="advancedThermostat.HeatingControlPort">
+      <children Name="turn_heating_on1" is_a="//@mainClass/@packagedClasses.8/@packagedClasses.0" comment="" variability="unspecified" innerOuter="none" dimensions="{}"/>
+      <children Name="turn_heating_off1" is_a="//@mainClass/@packagedClasses.8/@packagedClasses.1" comment="" variability="unspecified" innerOuter="none" dimensions="{}"/>
+      <children Name="set_hysteresis_intervallum1" is_a="//@mainClass/@packagedClasses.8/@packagedClasses.2" comment="" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
+      <packagedClasses xsi:type="openmodelica:MoConnector" Name="advancedThermostat.HeatingControlPort.turn_heating_on">
+        <children Name="counter" is_a="//@dependencies.0" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+      </packagedClasses>
+      <packagedClasses xsi:type="openmodelica:MoConnector" Name="advancedThermostat.HeatingControlPort.turn_heating_off">
+        <children Name="counter" is_a="//@dependencies.0" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+      </packagedClasses>
+      <packagedClasses xsi:type="openmodelica:MoConnector" Name="advancedThermostat.HeatingControlPort.set_hysteresis_intervallum">
+        <children Name="counter" is_a="//@dependencies.0" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+        <children Name="hysteresis_intervallum" is_a="//@dependencies.1" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{MAX_INDEX}"/>
+      </packagedClasses>
+    </packagedClasses>
+    <packagedClasses xsi:type="openmodelica:MoModel" Name="advancedThermostat.ThermostatControlPortTransformer">
+      <children Name="turn_thermostat_on" is_a="//@dependencies.4/@packagedClasses.1/@packagedClasses.0/@packagedClasses.0" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+      <children Name="set_target_temperature" is_a="//@dependencies.4/@packagedClasses.1/@packagedClasses.0/@packagedClasses.0" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+      <children Name="set_target_temperature_target_temperature" is_a="//@dependencies.4/@packagedClasses.1/@packagedClasses.0/@packagedClasses.1" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+      <children Name="turn_thermostat_off" is_a="//@dependencies.4/@packagedClasses.1/@packagedClasses.0/@packagedClasses.0" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+      <children Name="ThermostatControlPort1" is_a="//@mainClass/@packagedClasses.6" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+      <children Name="set_target_temperature_target_temperature_initial" is_a="//@dependencies.1" comment="" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+      <children Name="turn_thermostat_onSignalHolder" is_a="//@mainClass/@packagedClasses.2" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+      <children Name="set_target_temperatureSignalHolder" is_a="//@mainClass/@packagedClasses.2" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+      <children Name="turn_thermostat_offSignalHolder" is_a="//@mainClass/@packagedClasses.2" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    </packagedClasses>
+    <packagedClasses xsi:type="openmodelica:MoModel" Name="advancedThermostat.TemperatureStreamPortTransformer">
+      <children Name="measured_temperature" is_a="//@dependencies.4/@packagedClasses.1/@packagedClasses.0/@packagedClasses.0" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+      <children Name="measured_temperature_measured_temperature" is_a="//@dependencies.4/@packagedClasses.1/@packagedClasses.0/@packagedClasses.1" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+      <children Name="TemperatureStreamPort1" is_a="//@mainClass/@packagedClasses.7" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+      <children Name="measured_temperature_measured_temperature_initial" is_a="//@dependencies.1" comment="" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+      <children Name="measured_temperatureSignalHolder" is_a="//@mainClass/@packagedClasses.2" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    </packagedClasses>
+    <packagedClasses xsi:type="openmodelica:MoModel" Name="advancedThermostat.HeatingControlPortTransformer">
+      <children Name="turn_heating_on" is_a="//@dependencies.4/@packagedClasses.1/@packagedClasses.0/@packagedClasses.2" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+      <children Name="turn_heating_off" is_a="//@dependencies.4/@packagedClasses.1/@packagedClasses.0/@packagedClasses.2" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+      <children Name="set_hysteresis_intervallum" is_a="//@dependencies.4/@packagedClasses.1/@packagedClasses.0/@packagedClasses.0" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+      <children Name="set_hysteresis_intervallum_hysteresis_intervallum" is_a="//@dependencies.4/@packagedClasses.1/@packagedClasses.0/@packagedClasses.1" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+      <children Name="HeatingControlPort1" is_a="//@mainClass/@packagedClasses.8" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+      <children Name="set_hysteresis_intervallum_hysteresis_intervallum_initial" is_a="//@dependencies.1" comment="" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+      <children Name="set_hysteresis_intervallumSignalHolder" is_a="//@mainClass/@packagedClasses.2" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    </packagedClasses>
   </mainClass>
   <dependencies xsi:type="openmodelica:Integer" Name="Integer"/>
   <dependencies xsi:type="openmodelica:Real" Name="Real"/>
-  <dependencies xsi:type="openmodelica:Real" Name="Modelica.SIunits.Time">
-    <extension superClass="//@dependencies.1"/>
-  </dependencies>
   <dependencies xsi:type="openmodelica:Boolean" Name="Boolean"/>
-  <dependencies xsi:type="openmodelica:MoConnector" Name="advancedThermostat.ThermostatControlPort.turn_thermostat_on">
-    <children Name="counter" is_a="//@dependencies.0" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
-  </dependencies>
-  <dependencies xsi:type="openmodelica:MoConnector" Name="advancedThermostat.ThermostatControlPort.set_target_temperature">
-    <children Name="counter" is_a="//@dependencies.0" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
-    <children Name="target_temperature" is_a="//@dependencies.1" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{MAX_INDEX}"/>
-  </dependencies>
-  <dependencies xsi:type="openmodelica:MoConnector" Name="advancedThermostat.ThermostatControlPort.turn_thermostat_off">
-    <children Name="counter" is_a="//@dependencies.0" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
-  </dependencies>
-  <dependencies xsi:type="openmodelica:MoConnector" Name="advancedThermostat.TemperatureStreamPort.measured_temperature">
-    <children Name="counter" is_a="//@dependencies.0" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
-    <children Name="measured_temperature" is_a="//@dependencies.1" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{MAX_INDEX}"/>
-  </dependencies>
-  <dependencies xsi:type="openmodelica:MoConnector" Name="advancedThermostat.HeatingControlPort.turn_heating_on">
-    <children Name="counter" is_a="//@dependencies.0" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
-  </dependencies>
-  <dependencies xsi:type="openmodelica:MoConnector" Name="advancedThermostat.HeatingControlPort.turn_heating_off">
-    <children Name="counter" is_a="//@dependencies.0" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
-  </dependencies>
-  <dependencies xsi:type="openmodelica:MoConnector" Name="advancedThermostat.HeatingControlPort.set_hysteresis_intervallum">
-    <children Name="counter" is_a="//@dependencies.0" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
-    <children Name="hysteresis_intervallum" is_a="//@dependencies.1" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{MAX_INDEX}"/>
-  </dependencies>
-  <dependencies xsi:type="openmodelica:Integer" Name="advancedThermostat.parameterIndex">
-    <extension superClass="//@dependencies.0"/>
-  </dependencies>
-  <dependencies xsi:type="openmodelica:Enumeration" Name="advancedThermostat.transformLogic"/>
-  <dependencies xsi:type="openmodelica:MoModel" Name="advancedThermostat.SignalHolder">
-    <children Name="y" is_a="//@dependencies.3" comment="" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
-    <children Name="u" is_a="//@dependencies.3" comment="" variability="unspecified" innerOuter="none" dimensions="{}"/>
-    <children Name="entryTime" is_a="//@dependencies.2" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
-  </dependencies>
-  <dependencies xsi:type="openmodelica:MoConnector" Name="advancedThermostat.ThermostatControlPort">
-    <children Name="turn_thermostat_on1" is_a="//@dependencies.4" comment="" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
-    <children Name="set_target_temperature1" is_a="//@dependencies.5" comment="" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
-    <children Name="turn_thermostat_off1" is_a="//@dependencies.6" comment="" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
-  </dependencies>
-  <dependencies xsi:type="openmodelica:MoConnector" Name="advancedThermostat.TemperatureStreamPort">
-    <children Name="measured_temperature1" is_a="//@dependencies.7" comment="" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
-  </dependencies>
-  <dependencies xsi:type="openmodelica:MoConnector" Name="advancedThermostat.HeatingControlPort">
-    <children Name="turn_heating_on1" is_a="//@dependencies.8" comment="" variability="unspecified" innerOuter="none" dimensions="{}"/>
-    <children Name="turn_heating_off1" is_a="//@dependencies.9" comment="" variability="unspecified" innerOuter="none" dimensions="{}"/>
-    <children Name="set_hysteresis_intervallum1" is_a="//@dependencies.10" comment="" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
-  </dependencies>
-  <dependencies xsi:type="openmodelica:MoConnector" Name="Modelica.Blocks.Interfaces.BooleanInput">
-    <extension superClass="//@dependencies.3"/>
-  </dependencies>
-  <dependencies xsi:type="openmodelica:MoConnector" Name="Modelica.Blocks.Interfaces.RealInput">
-    <extension superClass="//@dependencies.1"/>
-  </dependencies>
-  <dependencies xsi:type="openmodelica:MoConnector" Name="Modelica.Blocks.Interfaces.BooleanOutput">
-    <extension superClass="//@dependencies.3"/>
-  </dependencies>
   <dependencies Name="ExternalObject"/>
-  <dependencies xsi:type="openmodelica:MoFunction" Name="advancedThermostat.BooleanTransform">
-    <children Name="source" is_a="//@dependencies.3" comment="" variability="unspecified" innerOuter="none" dimensions="{:}"/>
-    <children Name="maxIndex" is_a="//@dependencies.11" comment="" variability="unspecified" innerOuter="none" dimensions="{}"/>
-    <children Name="logic" is_a="//@dependencies.12" comment="" variability="unspecified" innerOuter="none" dimensions="{}"/>
-    <children Name="result" is_a="//@dependencies.3" comment="" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
-    <children Name="resoultArray" is_a="//@dependencies.3" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{transformLogic}"/>
-  </dependencies>
-  <dependencies xsi:type="openmodelica:MoFunction" Name="advancedThermostat.RealTransform">
-    <children Name="source" is_a="//@dependencies.1" comment="" variability="unspecified" innerOuter="none" dimensions="{:}"/>
-    <children Name="maxIndex" is_a="//@dependencies.11" comment="" variability="unspecified" innerOuter="none" dimensions="{}"/>
-    <children Name="logic" is_a="//@dependencies.12" comment="" variability="unspecified" innerOuter="none" dimensions="{}"/>
-    <children Name="result" is_a="//@dependencies.1" comment="" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
-    <children Name="resoultArray" is_a="//@dependencies.1" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{transformLogic}"/>
-  </dependencies>
-  <dependencies xsi:type="openmodelica:MoFunction" Name="advancedThermostat.IntegerTransform">
-    <children Name="source" is_a="//@dependencies.0" comment="" variability="unspecified" innerOuter="none" dimensions="{:}"/>
-    <children Name="maxIndex" is_a="//@dependencies.11" comment="" variability="unspecified" innerOuter="none" dimensions="{}"/>
-    <children Name="logic" is_a="//@dependencies.12" comment="" variability="unspecified" innerOuter="none" dimensions="{}"/>
-    <children Name="result" is_a="//@dependencies.0" comment="" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
-    <children Name="resoultArray" is_a="//@dependencies.0" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{transformLogic}"/>
-  </dependencies>
-  <dependencies xsi:type="openmodelica:MoModel" Name="advancedThermostat.ThermostatControlPortTransformer">
-    <children Name="turn_thermostat_on" is_a="//@dependencies.17" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
-    <children Name="set_target_temperature" is_a="//@dependencies.17" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
-    <children Name="set_target_temperature_target_temperature" is_a="//@dependencies.18" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
-    <children Name="turn_thermostat_off" is_a="//@dependencies.17" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
-    <children Name="ThermostatControlPort1" is_a="//@dependencies.14" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
-    <children Name="set_target_temperature_target_temperature_initial" is_a="//@dependencies.1" comment="" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
-    <children Name="turn_thermostat_onSignalHolder" is_a="//@dependencies.13" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
-    <children Name="set_target_temperatureSignalHolder" is_a="//@dependencies.13" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
-    <children Name="turn_thermostat_offSignalHolder" is_a="//@dependencies.13" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
-  </dependencies>
-  <dependencies xsi:type="openmodelica:MoModel" Name="advancedThermostat.TemperatureStreamPortTransformer">
-    <children Name="measured_temperature" is_a="//@dependencies.17" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
-    <children Name="measured_temperature_measured_temperature" is_a="//@dependencies.18" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
-    <children Name="TemperatureStreamPort1" is_a="//@dependencies.15" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
-    <children Name="measured_temperature_measured_temperature_initial" is_a="//@dependencies.1" comment="" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
-    <children Name="measured_temperatureSignalHolder" is_a="//@dependencies.13" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
-  </dependencies>
-  <dependencies xsi:type="openmodelica:MoModel" Name="advancedThermostat.HeatingControlPortTransformer">
-    <children Name="turn_heating_on" is_a="//@dependencies.19" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
-    <children Name="turn_heating_off" is_a="//@dependencies.19" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
-    <children Name="set_hysteresis_intervallum" is_a="//@dependencies.17" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
-    <children Name="set_hysteresis_intervallum_hysteresis_intervallum" is_a="//@dependencies.18" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
-    <children Name="HeatingControlPort1" is_a="//@dependencies.16" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
-    <children Name="set_hysteresis_intervallum_hysteresis_intervallum_initial" is_a="//@dependencies.1" comment="" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
-    <children Name="set_hysteresis_intervallumSignalHolder" is_a="//@dependencies.13" comment="" variability="unspecified" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+  <dependencies xsi:type="openmodelica:MoPackage" Name="Modelica">
+    <packagedClasses xsi:type="openmodelica:MoPackage" Name="Modelica.SIunits">
+      <packagedClasses xsi:type="openmodelica:Real" Name="Modelica.SIunits.Time">
+        <extension superClass="//@dependencies.1"/>
+      </packagedClasses>
+    </packagedClasses>
+    <packagedClasses xsi:type="openmodelica:MoPackage" Name="Modelica.Blocks">
+      <packagedClasses xsi:type="openmodelica:MoPackage" Name="Modelica.Blocks.Interfaces">
+        <packagedClasses xsi:type="openmodelica:MoConnector" Name="Modelica.Blocks.Interfaces.BooleanInput">
+          <extension superClass="//@dependencies.2"/>
+        </packagedClasses>
+        <packagedClasses xsi:type="openmodelica:MoConnector" Name="Modelica.Blocks.Interfaces.RealInput">
+          <extension superClass="//@dependencies.1"/>
+        </packagedClasses>
+        <packagedClasses xsi:type="openmodelica:MoConnector" Name="Modelica.Blocks.Interfaces.BooleanOutput">
+          <extension superClass="//@dependencies.2"/>
+        </packagedClasses>
+      </packagedClasses>
+    </packagedClasses>
   </dependencies>
 </openmodelica:Root>

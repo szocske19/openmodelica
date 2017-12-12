@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<openmodelica:Root xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:openmodelica="hu.bme.mit.inf.onlab/openmodelica" Name="Root">
+  <mainClass xsi:type="openmodelica:Package" Name="TypeDepTest" componentprototype="//@dependencies.2 //@dependencies.5"/>
+  <dependencies xsi:type="openmodelica:Real" Name="Real"/>
+  <dependencies xsi:type="openmodelica:Integer" Name="Integer"/>
+  <dependencies xsi:type="openmodelica:Integer" Name="TypeDepTest.CType">
+    <extension superClass="//@dependencies.1"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:Real" Name="Modelica.SIunits.Velocity">
+    <extension superClass="//@dependencies.0"/>
+  </dependencies>
+  <dependencies xsi:type="openmodelica:Class" Name="ExternalObject"/>
+  <dependencies xsi:type="openmodelica:Integer" Name="TypeDepTest.DType">
+    <extension superClass="//@dependencies.2"/>
+    <extension superClass="//@dependencies.3"/>
+  </dependencies>
+</openmodelica:Root>

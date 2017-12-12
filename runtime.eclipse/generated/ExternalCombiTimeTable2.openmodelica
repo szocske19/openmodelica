@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<openmodelica:Root xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:openmodelica="hu.bme.mit.inf.onlab/openmodelica" Name="Root">
+  <mainClass Name="ExternalCombiTimeTable2">
+    <extension superClass="//@dependencies.0"/>
+    <packagedClasses xsi:type="openmodelica:MoFunction" Name="ExternalCombiTimeTable2.constructor">
+      <extension superClass="//@dependencies.4/@packagedClasses.2/@packagedClasses.0"/>
+      <children Name="tableName" is_a="//@dependencies.2" comment="Table name" variability="unspecified" innerOuter="none" dimensions="{}"/>
+      <children Name="fileName" is_a="//@dependencies.2" comment="File name" variability="unspecified" innerOuter="none" dimensions="{}"/>
+      <children Name="table" is_a="//@dependencies.1" comment="" variability="unspecified" innerOuter="none" dimensions="{:,:}"/>
+      <children Name="startTime" is_a="//@dependencies.4/@packagedClasses.0/@packagedClasses.0" comment="" variability="unspecified" innerOuter="none" dimensions="{}"/>
+      <children Name="columns" is_a="//@dependencies.3" comment="" variability="unspecified" innerOuter="none" dimensions="{:}"/>
+      <children Name="smoothness" is_a="//@dependencies.4/@packagedClasses.1/@packagedClasses.0/@packagedClasses.0" comment="" variability="unspecified" innerOuter="none" dimensions="{}"/>
+      <children Name="extrapolation" is_a="//@dependencies.4/@packagedClasses.1/@packagedClasses.0/@packagedClasses.1" comment="" variability="unspecified" innerOuter="none" dimensions="{}"/>
+      <children Name="externalCombiTimeTable" is_a="//@mainClass" comment="" variability="unspecified" innerOuter="none" inputOutput="output" dimensions="{}"/>
+    </packagedClasses>
+    <packagedClasses xsi:type="openmodelica:MoFunction" Name="ExternalCombiTimeTable2.destructor">
+      <extension superClass="//@dependencies.4/@packagedClasses.2/@packagedClasses.0"/>
+      <children Name="externalCombiTimeTable" is_a="//@mainClass" comment="" variability="unspecified" innerOuter="none" dimensions="{}"/>
+    </packagedClasses>
+  </mainClass>
+  <dependencies Name="ExternalObject"/>
+  <dependencies xsi:type="openmodelica:Real" Name="Real"/>
+  <dependencies xsi:type="openmodelica:String" Name="String"/>
+  <dependencies xsi:type="openmodelica:Integer" Name="Integer"/>
+  <dependencies xsi:type="openmodelica:MoPackage" Name="Modelica">
+    <packagedClasses xsi:type="openmodelica:MoPackage" Name="Modelica.SIunits">
+      <packagedClasses xsi:type="openmodelica:Real" Name="Modelica.SIunits.Time">
+        <extension superClass="//@dependencies.1"/>
+      </packagedClasses>
+    </packagedClasses>
+    <packagedClasses xsi:type="openmodelica:MoPackage" Name="Modelica.Blocks">
+      <packagedClasses xsi:type="openmodelica:MoPackage" Name="Modelica.Blocks.Types">
+        <packagedClasses xsi:type="openmodelica:Enumeration" Name="Modelica.Blocks.Types.Smoothness"/>
+        <packagedClasses xsi:type="openmodelica:Enumeration" Name="Modelica.Blocks.Types.Extrapolation"/>
+      </packagedClasses>
+    </packagedClasses>
+    <packagedClasses xsi:type="openmodelica:MoPackage" Name="Modelica.Icons">
+      <packagedClasses xsi:type="openmodelica:MoFunction" Name="Modelica.Icons.Function"/>
+    </packagedClasses>
+  </dependencies>
+</openmodelica:Root>

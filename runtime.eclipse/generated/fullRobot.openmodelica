@@ -354,7 +354,7 @@
     <children Name="gravityArrowColor" is_a="//@dependencies.24" comment="Color of gravity arrow" variability="unspecified" innerOuter="none" dimensions="{}"/>
     <children Name="gravitySphereDiameter" is_a="//@dependencies.49" comment="Diameter of sphere representing gravity center (default = mean diameter of earth)" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
     <children Name="gravitySphereColor" is_a="//@dependencies.24" comment="Color of gravity sphere" variability="unspecified" innerOuter="none" dimensions="{}"/>
-    <children Name="nominalLength" is_a="//@dependencies.3" comment="\&quot;Nominal\&quot; length of multi-body system&quot;" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
+    <children Name="nominalLength" is_a="//@dependencies.3" comment="&quot;Nominal&quot; length of multi-body system" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
     <children Name="defaultAxisLength" is_a="//@dependencies.3" comment="Default for length of a frame axis (but not world frame)" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
     <children Name="defaultJointLength" is_a="//@dependencies.3" comment="Default for the fixed length of a shape representing a joint" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
     <children Name="defaultJointWidth" is_a="//@dependencies.3" comment="Default for the fixed width of a shape representing a joint" variability="parameter" innerOuter="none" inputOutput="unspecified" dimensions="{}"/>
