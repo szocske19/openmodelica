@@ -6,7 +6,6 @@ import java.util.Map
 import openmodelica.InnerOuter
 import openmodelica.InputOutput
 import openmodelica.MoClass
-import openmodelica.MoPackage
 import openmodelica.OpenmodelicaFactory
 import openmodelica.OpenmodelicaPackage
 import openmodelica.Variability
@@ -17,11 +16,15 @@ import openmodelica.impl.RealImpl
 import openmodelica.impl.StringImpl
 import org.eclipse.emf.common.util.Enumerator
 import org.modelica.mdt.core.compiler.IModelicaCompiler
+import org.apache.log4j.Logger
 
 class CreateEMFModelProvider {
 
 	private extension OpenmodelicaFactory modelicaFactory = OpenmodelicaFactory.eINSTANCE
 	private static IModelicaCompiler currentCompiler;
+	
+//	private static Logger log = Logger.getLogger(CreateEMFModelProvider.getName());
+	private static Logger log = Logger.rootLogger
 
 	new(IModelicaCompiler _currentCompiler) {
 		currentCompiler = _currentCompiler;
@@ -36,10 +39,10 @@ class CreateEMFModelProvider {
 		val listOflevelList = new ArrayList<ArrayList<String>>
 		val orderedKeys = new ArrayList<String>
 
-		println("\nOriginal order:")
+		log.debug("\nOriginal order:")
 		for (key : keys) {
-			println(key)
-			val level = metaClassMap.get(key).level
+			log.debug(key)
+			val level = if (metaClassMap.get(key).level < 0) 0 else metaClassMap.get(key).level
 			while (listOflevelList.size <= level) {
 				listOflevelList.add(new ArrayList<String>)
 			}
@@ -47,25 +50,29 @@ class CreateEMFModelProvider {
 		}
 		Collections.reverse(listOflevelList)
 
-		println("\nOrdered order")
+		log.debug("\nOrdered order")
 		for (var i = 0; i < listOflevelList.size; i++) {
-			println("Level:" + i)
+			log.debug("Level:" + i)
 			for (key : listOflevelList.get(i)) {
-				println(key)
+				log.debug(key)
 				orderedKeys.add(key)
 			}
 		}
 
-		println("\nAdding dependencies:")
+		log.debug("\nAdding dependencies:")
 		for (String key : orderedKeys) {
-			println(key)
+			log.debug(key)
 			val componentPrototype = metaClassMap.get(key).cp
 			if (!key.equals(rootComponent.name)) {
-				root.dependencies.add(componentPrototype)
+				if(componentPrototype.packagedBy === null){
+					root.dependencies.add(componentPrototype)
+				}
 			} else {
 				root.mainClass = componentPrototype
 			}
 		}
+		log.debug("Count of meta Classes: " + orderedKeys.size)
+		
 
 		return root
 	}
@@ -158,11 +165,9 @@ class CreateEMFModelProvider {
 		}
 	}
 
-	def addClass(MoPackage modelicaPackage, ArrayList<MoClass> cpList) {
-		if (modelicaPackage instanceof Package) {
-			for (subcp : cpList) {
-				modelicaPackage.packagedClass.add(subcp)
-			}
+	def addClass(MoClass modelicaPackage, ArrayList<MoClass> cpList) {
+		for (subcp : cpList) {
+			modelicaPackage.packagedClasses.add(subcp)
 		}
 	}
 
@@ -216,9 +221,17 @@ class CreateEMFModelProvider {
 	
 	def setInheritedVariables(MoClass cp){
 		for(ext: cp.getExtension){			
-			val modifierNames = currentCompiler.getExtendsModifierNames(cp.name, ext.superClass.name)
+//			val modifierNames = currentCompiler.getExtendsModifierNames(cp.name, ext.superClass.name)
 //			for(modifierNames)
 		}
+	}
+	
+	def createErrorNode(MoClass cp, String message){
+		
+		cp.error.add(createError() => 
+			[ error |
+				error.message = message
+			])
 	}
 
 }

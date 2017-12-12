@@ -9,3 +9,4 @@ Require-Bundle: org.modelica.mdt.omc,
  org.eclipse.core.runtime;bundle-version="3.11.1",
  org.eclipse.core.resources;bundle-version="3.10.1"
 Export-Package: onlab.modelica.omc
+Import-Package: org.apache.log4j

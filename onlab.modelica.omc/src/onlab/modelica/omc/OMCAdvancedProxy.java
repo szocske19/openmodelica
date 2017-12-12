@@ -1,5 +1,6 @@
 package onlab.modelica.omc;
 
+import org.apache.log4j.Logger;
 import org.modelica.mdt.core.ICompilerResult;
 import org.modelica.mdt.core.List;
 import org.modelica.mdt.core.ModelicaParserException;
@@ -10,6 +11,8 @@ import org.modelica.mdt.omc.OMCProxy;
 import onlab.modelica.omc.AnswerListParser.ListType;
 
 public class OMCAdvancedProxy extends OMCProxy {
+	
+	private static Logger log = Logger.getLogger(OMCAdvancedProxy.class.getName());
 	
 	@Override
 	public ICompilerResult getNthImport(String className, int n) throws ConnectException, UnexpectedReplyException {
@@ -40,8 +43,16 @@ public class OMCAdvancedProxy extends OMCProxy {
 	public ICompilerResult sendExpression(String command, boolean showInConsole) throws ConnectException {
 		ICompilerResult result = super.sendExpression(command, showInConsole);
 
-		System.out.printf("						Command: %-160.160s \n", command);
-		System.out.printf("						Reply: %s \n", String.join(",", result.getResult()));
+		
+		String str = String.join(", ", result.getResult()) + "\n";
+		str = str.replaceAll("\\}(.)\\{", "},\n{");
+		
+		log.debug(String.format("						Command: %-160.160s \n", command));
+		log.debug(String.format("						Reply: %s \n", str));
+		if(result.getResult() == null || result.getFirstResult() == null || result.getFirstResult().equals("")){
+			throw new ConnectException("Reply to the command is empty. The Command is: " + command);
+		}
+		
 
 		return result;
 	}

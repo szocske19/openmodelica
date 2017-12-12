@@ -52,7 +52,7 @@ Require-Bundle: org.eclipse.xtext.xbase.lib,
  org.eclipse.emf.workspace;bundle-version="1.5.1",
  onlab.modelica.omc;bundle-version="1.0.0",
  org.modelica.mdt.omc;bundle-version="0.7.47"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.emf.ecore.xmi.impl,
  org.eclipse.ltk.core.refactoring.participants,

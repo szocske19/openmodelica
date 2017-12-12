@@ -3,117 +3,64 @@ package onlab.modelica.omc;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.log4j.Logger;
 import org.modelica.mdt.core.Element;
 import org.modelica.mdt.core.List;
 import org.modelica.mdt.core.ModelicaParserException;
 
 public class AnswerListParser {
+
+	private static Logger log = Logger.getRootLogger();
+
 	public static enum ListType {
-		LOADED_LIBRARY {
-			LoadedLibrary list;
-			
+		LOADED_LIBRARY(2, 
+				"\"[^\"]*\",?") {
+
 			@Override
-			Element createElement(String[] atributes) {
+			void createElement(String[] atributes) {
 				list = new LoadedLibrary(atributes);
-				return list;
-			}
-			
-			@Override
-			Element getElement() {
-				return list;
-			}
-			
-			@Override
-			String getRegex() {
-				return "\"[^\"]*\",?";
-			}
-			
-			@Override
-			int getElementDimension() {
-				return 2;
-			}
-			
-			@Override
-			void print() {
-				list.print();
 			}
 		},
 
-		COMPONENT_ELEMENT {
-			ComponentElement list;
-			
+		COMPONENT_ELEMENT(12, "(" 
+				+ "\\[[^\\]]*\\],|"
+				+ "\\([^\\)]*\\),|" 
+				+ "\\{[^\\}]*\\},?|"
+				+ "\"(\\\\\\\"|[^\\\\\\\"])*\",|"
+				+ "[^\"\\(\\{\\[][^,]*,"
+				+ ")") {
+
 			@Override
-			Element createElement(String[] atributes) {
+			void createElement(String[] atributes) {
 				list = new ComponentElement(atributes);
-				return list;
-			}
-			
-			@Override
-			Element getElement() {
-				return list;
-			}
-			
-			@Override
-			String getRegex() {
-				return "(" + 
-						"\\[[^\\]]*\\],|" + 
-						"\\([^\\)]*\\),|" + 
-						"\\{[^\\}]*\\},?|" + 
-      					"\"(\\\\\\\"|[^\\\\\\\"])*\",|" +
-						"[^\"\\(\\{\\[][^,]*," 
-					+ ")";
-			}
-			
-			@Override
-			int getElementDimension() {
-				return 12;
-			}
-			
-			@Override
-			void print() {
-				list.print();
 			}
 		},
-		
-		EXTENDS_MODIFIER {
-			ExtendsModifier list;
-			
+
+		EXTENDS_MODIFIER(1, 
+				"\"[^\"]*\",?") {
+
 			@Override
-			Element createElement(String[] atributes) {
+			void createElement(String[] atributes) {
 				list = new ExtendsModifier(atributes);
-				return list;
-			}
-			
-			@Override
-			Element getElement() {
-				return list;
-			}
-			
-			@Override
-			String getRegex() {
-				return "\"[^\"]*\",?";
-			}
-			
-			@Override
-			int getElementDimension() {
-				return 1;
-			}
-			
-			@Override
-			void print() {
-				list.print();
 			}
 		};
 
-		
-		
-		abstract Element createElement(String[] atributes);
-		abstract Element getElement();
-		abstract String getRegex();
-		abstract int getElementDimension();
-		abstract void print();
+		Element list;
+		int elementDimension;
+		String regex;
+
+		ListType(int elementDimension, String regex) {
+			this.elementDimension = elementDimension;
+			this.regex = regex;
+		}
+
+		abstract void createElement(String[] atributes);
+
+		void print() {
+			log.debug(list.toString());
+		}
 	}
-	
+
 	public static List parseList(String str, ListType listType) throws ModelicaParserException {
 		List elements = new List();
 
@@ -130,9 +77,9 @@ public class AnswerListParser {
 
 		String[] tokens = dummy.split("\\},\\{");
 
-		Pattern pattern = Pattern.compile(listType.getRegex());
-		
-		int elementDimension = listType.getElementDimension();
+		Pattern pattern = Pattern.compile(listType.regex);
+
+		int elementDimension = listType.elementDimension;
 
 		for (int i = 0; i < tokens.length; i++) {
 			Matcher matcher = pattern.matcher(tokens[i]);
@@ -151,7 +98,7 @@ public class AnswerListParser {
 					if (atributes[j].endsWith(",")) {
 						atributes[j] = atributes[j].substring(0, atributes[j].length() - 1);
 					}
-					if (atributes[j].startsWith("\"") && atributes[j].endsWith("\"") ){
+					if (atributes[j].startsWith("\"") && atributes[j].endsWith("\"")) {
 						atributes[j] = atributes[j].substring(1, atributes[j].length() - 1);
 					}
 					j++;
@@ -161,7 +108,7 @@ public class AnswerListParser {
 				throw new ModelicaParserException("matchCount = " + matchCount + " != " + elementDimension);
 			}
 			listType.print();
-			elements.append(listType.getElement());
+			elements.append(listType.list);
 
 		}
 		return elements;
